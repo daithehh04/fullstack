@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FORM ACCESS MANAGER</title>
+        <link rel="stylesheet" href="./assets/css/style_3.css" />
+    </head>
+
+    <body>
+        <form action="" method="post" class="form-access">
+            <div class="username">
+                <label for="username"> Username: </label>
+                <input type="text" name="username" id="username" />
+            </div>
+
+            <div class="password">
+                <label for="passwd"> Password: </label>
+                <input type="password" name="passwd" id="passwd" />
+            </div>
+
+            <div class="city">
+                <label for="city"> City of Employment: </label>
+                <input type="text" name="city" id="city" />
+            </div>
+
+            <div class="server">
+                <label for="server"> Web server: </label>
+                <select name="server" id="server">
+                    <option value="0" hidden>--Choose a server--</option>
+                    <option value="1">Server 1</option>
+                    <option value="2">Server 2</option>
+                    <option value="3">Server 3</option>
+                </select>
+            </div>
+
+            <div class="role">
+                <label>Please specify your role:</label>
+                <div>
+                    <div class="role-row">
+                        <label class="role-radio">
+                            <input
+                                type="radio"
+                                name="role"
+                                id="admin"
+                                value="1"
+                            />
+                            Admin
+                        </label>
+                    </div>
+                    <div class="role-row">
+                        <label class="role-radio">
+                            <input
+                                type="radio"
+                                name="role"
+                                id="enginner"
+                                value="2"
+                            />
+                            Engineer
+                        </label>
+                    </div>
+                    <div class="role-row">
+                        <label class="role-radio">
+                            <input
+                                type="radio"
+                                name="role"
+                                id="manager"
+                                value="3"
+                            />
+                            Manager
+                        </label>
+                    </div>
+                    <div class="role-row">
+                        <label class="role-radio">
+                            <input
+                                type="radio"
+                                name="role"
+                                id="guest"
+                                value="4"
+                                checked
+                            />
+                            Guest
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sign-on">
+                <label for="sign-on">Single Sign-on to the following</label>
+                <div>
+                    <div class="sign-on__row">
+                        <label class="sign-on__checkbox">
+                            <input type="checkbox" name="sign-on" value="1" />
+                            Mail
+                        </label>
+                    </div>
+                    <div class="sign-on__row">
+                        <label class="sign-on__checkbox">
+                            <input type="checkbox" name="sign-on" value="2" />
+                            Payroll
+                        </label>
+                    </div>
+                    <div class="sign-on__row">
+                        <label class="sign-on__checkbox">
+                            <input type="checkbox" name="sign-on" value="3" />
+                            Self-service
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="btn">
+                <button type="submit">Login</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </body>
+</html>
