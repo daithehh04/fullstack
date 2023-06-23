@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+}
+
+.footer-form {
+    margin-top: 8px;
+    margin-left: 8px;
+    width: 90%;
+    background-color: #345;
+    padding: 30px 40px;
+    border-radius: 10px;
+}
+
+.footer-form .title {
+    margin: 0;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.footer-form .title span {
+    color: #ffa500;
+}
+
+.footer-form .desc {
+    width: 60%;
+    color: #fff;
+}
+
+.footer-form .form-submit .form-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-form .form-submit .input-email {
+    outline: none;
+    border: none;
+    height: 40px;
+    padding-left: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 280px;
+}
+
+.footer-form .form-submit .btn {
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+    border: none;
+    height: 40px;
+    border-radius: 4px;
+    width: 240px;
+    background-color: #f8db35;
+    color: #232b2c;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footer-form:hover .form-submit .input-email::placeholder {
+    color: #ffa500;
+}
+
+.footer-form:hover .form-submit .input-email {
+    background-color: #ddd;
+}
+
+.footer-form:hover .form-submit .btn {
+    background-color: #ffa500;
+    color: #fff;
+}

@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.best-seller {
+    margin-top: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.best-seller .title {
+    margin: 0;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.best-seller .category {
+    display: flex;
+    justify-content: center;
+}
+.best-seller .category ul {
+    display: flex;
+    gap: 4px;
+}
+
+.best-seller .category ul li {
+    background-color: #e1e1e1;
+}
+
+.best-seller .category ul li label {
+    padding: 8px 20px;
+    display: block;
+    cursor: pointer;
+}
+
+.category li:has(input[type="radio"]:checked) {
+    background-color: #28378d;
+    color: #fff;
+}
+
+.products .list-product {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 80px;
+}
+
+.products .list-product .product-item {
+    cursor: pointer;
+    text-align: center;
+}
+
+.product-item .info-bottom .rate {
+    margin-top: 20px;
+    color: #6a6a6a;
+}
+
+.product-item .info-bottom .rate i.active {
+    color: #f4c241;
+}
+
+.product-item .info-bottom .price {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.product-item .info-bottom .name {
+    font-size: 16px;
+    margin: 12px 0;
+}
+
+.product-item .info-top {
+    overflow: hidden;
+    position: relative;
+}
+
+.product-item .info-top .info-cart {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.product-item .info-top .info-cart .icon {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-item .info-top .info-cart .icon i {
+    color: #fff;
+    background-color: #28378d;
+    width: 30%;
+    padding: 12px 0;
+}
+
+.product-item .info-top .info-cart .text {
+    display: block;
+    background-color: #28378d;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.product-item .info-top .info-cart {
+    transform: translateY(100%);
+    transition: all 0.2s linear;
+}
+
+.list-product .product-item:hover .info-top .info-cart {
+    transform: translateY(0);
+}
+
+.products .list-product {
+    display: none;
+}
+
+.category:has(#skincare[type="radio"]:checked) ~ .products .list-1,
+.category:has(#haircare[type="radio"]:checked) ~ .products .list-2,
+.category:has(#cosmetics[type="radio"]:checked) ~ .products .list-3,
+.category:has(#fragrance[type="radio"]:checked) ~ .products .list-4,
+.category:has(#makeup[type="radio"]:checked) ~ .products .list-5 {
+    display: flex;
+}

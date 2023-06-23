@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --font-alfa: "Alfa Slab One", cursive;
+    --font-bebas: "Bebas Neue", sans-serif;
+}
+
+.reservation {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.reservation .title {
+    margin: 0;
+    color: #392516;
+    font-size: 40px;
+    font-weight: 500;
+    font-family: var(--font-bebas);
+}
+
+.reservation .sub-title {
+    margin: 0;
+    font-weight: 900;
+    font-size: 60px;
+    color: #392516;
+    font-family: var(--font-alfa);
+}
+
+.reservation .form-booking {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.reservation .form-booking .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.reservation .form-booking .form-group input {
+    padding-left: 16px;
+    width: 50%;
+    outline: none;
+    height: 46px;
+    border: 1px solid #ccc;
+    font-family: var(--font-bebas);
+    font-size: 18px;
+}
+
+.reservation .form-booking .form-group input::placeholder {
+    color: #392516;
+    font-weight: 600;
+}
+
+.reservation .form-booking .form-group input[type="submit"] {
+    cursor: pointer;
+    background-color: #af322a;
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+    border-radius: 8px;
+    font-family: var(--font-alfa);
+    letter-spacing: 0.05em;
+}

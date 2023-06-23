@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Book Your Table</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./assets/css/style_2.css" />
+    </head>
+    <body>
+        <section class="reservation">
+            <h1 class="title">RESERVATION</h1>
+            <h2 class="sub-title">Book your table</h2>
+            <form
+                action="https://api-gateway.fullstack.edu.vn/action_page.php"
+                method="post"
+                class="form-booking"
+            >
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="NAME"
+                        required
+                    />
+                    <input type="email" name="email" placeholder="EMAIL" />
+                </div>
+
+                <div class="form-group">
+                    <input
+                        type="text"
+                        name="date"
+                        placeholder="DATE"
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="time"
+                        placeholder="TIME"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <input
+                        type="number"
+                        name="num_people"
+                        placeholder="PEOPLE"
+                        required
+                    />
+                    <input type="submit" value="Find A Table" />
+                </div>
+            </form>
+        </section>
+    </body>
+</html>

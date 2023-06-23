@@ -1,0 +1,142 @@
+.todos input:checked + span {
+    color: red;
+    text-decoration: line-through;
+}
+h3 + h3 {
+    color: red;
+}
+
+ul li a[href*=".vn"] {
+    color: red;
+}
+
+[class^="item-"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid purple;
+}
+
+.content > * {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.pseudo .title::before {
+    content: "F8 ";
+}
+
+.pseudo p {
+    width: 300px;
+}
+.pseudo p::first-line {
+    color: red;
+}
+
+.pseudo p::first-letter {
+    font-size: 32px;
+}
+
+.pseudo p::selection {
+    color: #fff;
+    background-color: red;
+}
+
+.pseudo .name::placeholder {
+    color: aqua;
+    font-style: italic;
+}
+
+.pseudo .btn:hover {
+    color: #fff;
+    background-color: red;
+}
+
+.pseudo .btn:active {
+    color: #fff;
+    background-color: green;
+}
+
+/* .pseudo .btn:focus {
+    color: #fff;
+    background-color: purple;
+} */
+
+.pseudo span:focus {
+    color: red;
+}
+
+.pseudo .form input:disabled {
+    border: 2px solid red;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transition: all ease-in-out 0.4s;
+}
+.img_f,
+.img_l {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all ease-in-out 0.4s;
+}
+.img .img_l {
+    opacity: 0;
+    transition: all ease-in-out 0.4s;
+}
+.img:hover .img_f {
+    opacity: 0;
+    transition: all ease-in-out 0.4s;
+}
+.img:hover .img_l {
+    opacity: 1;
+    transition: all ease-in-out 0.4s;
+}
+.products h2:first-of-type {
+    color: red;
+}
+
+.products h2:last-child {
+    color: green;
+}
+
+.products h2:nth-child(3) {
+    color: peru;
+}
+
+.nav label {
+    margin-right: 20px;
+}
+
+/* .nav:has(button:nth-child(1):focus) ~ .container p {
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+}
+
+.nav:has(button:nth-child(2):focus) ~ .container p {
+    font-weight: bold;
+    font-size: 20px;
+    color: green;
+}
+
+.nav:has(button:nth-child(3):focus) ~ .container p {
+    font-weight: bold;
+    font-size: 20px;
+    color: blue;
+} */
+
+#red:checked ~ .container p {
+    color: red;
+}
+
+.color:nth-of-type(2):checked ~ .container p {
+    color: green;
+}
+
+.color:nth-of-type(3):checked ~ .container p {
+    color: blue;
+}
