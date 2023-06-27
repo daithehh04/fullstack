@@ -1,0 +1,109 @@
+/* @font-face {
+    font-family: Montserrat;
+    src: url(../fonts/Montserrat-Light.ttf);
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap");
+
+body {
+    color: rgb(96, 194, 162);
+    font-family: "Montserrat", sans-serif;
+    padding-top: 50px;
+    padding-bottom: 200px;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.container {
+    padding: 20px;
+    width: 70%;
+    height: 70vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0.7;
+    margin: auto;
+    /* background-image: url(../img/photo-1682695798256-28a674122872.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom; */
+
+    background: url(../img/photo-1682695798256-28a674122872.avif) no-repeat
+        bottom/cover;
+}
+
+.title {
+    text-align: center;
+    margin: 0;
+    padding-top: 50px;
+    color: rgb(204, 216, 241);
+    font-size: 50px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-transform: capitalize;
+}
+
+.title:hover {
+    color: inherit;
+}
+
+.description {
+    margin-top: 30px;
+    padding: 10px;
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-weight: 600;
+    word-spacing: 4px;
+    background-color: #14208d;
+}
+
+.done {
+    display: block;
+    margin-top: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: line-through;
+    font-size: 2rem;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: #14208d;
+    text-align: justify;
+    text-align-last: center;
+}
+
+.desc .btn {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 10px 25px;
+    background-color: #14208d;
+    color: #fff;
+}
+.desc {
+    padding: 20px;
+    border: 2px dashed #14208d;
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.btn-wrap {
+    text-align: center;
+}
+
+.border {
+    margin-top: 200px;
+    margin-left: 40%;
+    width: 0;
+    height: 0;
+    border-width: 150px;
+    border-style: solid;
+    border-color: #14208d;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
