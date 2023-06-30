@@ -1,0 +1,233 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: url(../img/login-bg2.jpg) no-repeat bottom / cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-login {
+    width: 50%;
+    display: flex;
+}
+
+.form-login .left {
+    position: relative;
+    padding-bottom: 60px;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 40%;
+    text-align: center;
+    background-color: #ff574d;
+}
+.form-login .right {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #fff;
+    width: 60%;
+}
+
+.left .title {
+    padding-top: 60px;
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+}
+
+.left .title .logo {
+    padding: 0 6px;
+    background-color: #fff;
+    color: #ff574d;
+    font-weight: 700;
+    font-size: 24px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.left .title .heading {
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.left .text {
+    padding: 0 10px;
+    font-size: 14px;
+}
+
+.left .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 25px;
+    background-color: #fff;
+    color: #ff574d;
+    border-radius: 4px;
+}
+
+.left .list-social {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.left .list-social li {
+    min-width: 30px;
+    padding: 4px;
+    border-radius: 2px;
+    background-color: #da5b4e;
+}
+
+.left .list-social li a {
+    color: #fff;
+}
+
+.left .arrow-right {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff574d;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.right {
+    padding: 40px;
+    padding-bottom: 60px;
+}
+
+.right .title {
+    color: #717171;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+.right .title::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 1.5px;
+    background: #ff574d;
+}
+
+.right .title span {
+    color: #ff574d;
+}
+
+.right .input-field {
+    margin-top: 20px;
+    width: 100%;
+    display: block;
+    outline: none;
+    height: 44px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    border-radius: 4px;
+}
+
+.right .row {
+    color: #717171;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.right button {
+    margin-top: 12px;
+    width: 100%;
+    color: #fff;
+    background-color: #ff574d;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.right .regis {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    color: #717171;
+}
+.right .regis a {
+    color: #717171;
+}
+
+.right .regis a:hover {
+    color: #ff574d;
+}
+
+/* custom checkbox */
+.label-checkbox::before,
+.label-checkbox::after {
+    content: "";
+    display: inline-block;
+}
+
+.label-checkbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.label-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.label-checkbox::before {
+    margin-right: 6px;
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    border: 1.5px solid #ccc;
+}
+
+.label-checkbox:has(:checked)::after {
+    position: absolute;
+    top: 5px;
+    left: 2px;
+    width: 7px;
+    height: 4px;
+    border-left: 2px solid #ff574d;
+    border-bottom: 2px solid #ff574d;
+    rotate: -45deg;
+}

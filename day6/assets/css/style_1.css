@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    margin-top: 40px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigate {
+    display: flex;
+    border: 1px solid #ccc;
+}
+
+.nav-item {
+    position: relative;
+    cursor: pointer;
+    border-right: 1px solid #ccc;
+}
+
+.nav-item .list-item {
+    position: absolute;
+    margin-top: 10px;
+    left: 0;
+    width: 150%;
+    box-shadow: 0px 0px 10px 5px rgb(207, 207, 207);
+    display: none;
+}
+
+.nav-item .list-item li:hover {
+    background-color: #53a3d4;
+    color: #fff;
+}
+
+.nav-item .list-item::before {
+    position: absolute;
+    top: -10px;
+    content: "";
+    width: 100%;
+    height: 10px;
+    display: inline-block;
+}
+.nav-item:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 30px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.nav-item:hover .list-item {
+    display: block;
+}
+
+.nav-item:has(.list-item li:first-child:hover):hover::after {
+    border-bottom-color: #53a3d4;
+}
+
+.list-item li:hover i {
+    color: #fff;
+}
+
+.list-item i {
+    color: #656565;
+    font-size: 14px;
+}
+.list-item li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    border-bottom: 1px solid #ccc;
+    padding: 12px;
+    z-index: 2;
+}
+
+.nav-item:hover .nav-content {
+    background-color: #53a3d4;
+    color: #fff;
+}
+
+.nav-item:hover .nav-content i {
+    color: #fff;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    margin: 4px;
+}
+
+.nav-content .arrow-down {
+    font-size: 12px;
+}
+.nav-item i {
+    line-height: 1.5;
+    color: #656565;
+}
+
+.navigate .item-contact {
+    border-right: 0;
+    border-left: 1px solid #ccc;
+    margin-left: auto;
+}
