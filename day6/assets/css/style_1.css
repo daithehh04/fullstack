@@ -26,6 +26,7 @@ ul {
 }
 
 .nav-item {
+    color: #666;
     position: relative;
     cursor: pointer;
     border-right: 1px solid #ccc;
