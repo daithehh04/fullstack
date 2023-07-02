@@ -76,10 +76,11 @@ ul {
 .list-item {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 20px;
 }
 
 .item img {
+    display: block;
     width: 100%;
     object-fit: cover;
 }
