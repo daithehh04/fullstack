@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Asap", sans-serif;
+}
+h1,
+h2 {
+    margin: 0;
+}
+
+@font-face {
+    font-family: SFU;
+    src: url(../fonts/SFUMachineRegular.TTF);
+}
+.banner {
+    padding: 100px;
+    padding-left: 140px;
+    background: url(../../assets/img/bg-bai1.jpg) no-repeat bottom / cover;
+    width: 100%;
+    height: auto;
+}
+
+.block {
+    position: relative;
+    padding: 40px;
+    padding-bottom: 60px;
+    width: 50%;
+    background-color: #ffffffd2;
+}
+
+.title {
+    color: #bf4240;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: normal;
+    color: #3f3424;
+}
+
+.name i {
+    font-size: 16px;
+    color: #3f3424;
+}
+.desc {
+    line-height: 1.5;
+    color: #3f3424;
+}
+.price {
+    font-family: SFU;
+    padding: 12px 20px;
+    background-color: #bf4240;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: -24px;
+    right: 30px;
+}

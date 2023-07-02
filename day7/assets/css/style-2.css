@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Asap", sans-serif;
+}
+h1,
+h2 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.image .banner {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+.image {
+    position: relative;
+}
+.info {
+    position: absolute;
+    bottom: 0;
+    left: 70px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.info .logo {
+    width: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.info .title {
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.info .year {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.info .project {
+    color: #fff;
+    text-transform: uppercase;
+    margin-left: 30px;
+}
+
+.info strong {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.navigate {
+    margin-right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+}
+
+.navigate li a {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.navigate li {
+    position: relative;
+}
+.navigate li:hover::after {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    display: inline-block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: red;
+}
+
+.navigate li:hover a {
+    color: red;
+}
