@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Manrope", sans-serif;
+    color: #353e4f;
+    background-color: #f6f6f8;
+}
+
+a {
+    text-decoration: none;
+    color: #353e4f;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+h1,
+h2 {
+    margin: 0;
+}
+
+.container {
+    width: 1070px;
+    max-width: calc(100% - 48px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navigate {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.navigate .logo {
+    font-weight: 800;
+    font-size: 36px;
+}
+
+.menu {
+    margin-left: auto;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    margin-right: 32px;
+}
+
+.menu > li {
+    padding: 10px 0;
+}
+
+.menu > li a {
+    font-weight: 700;
+    display: flex;
+    gap: 4px;
+    align-items: baseline;
+}
+
+.menu > li a i {
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.navigate .icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sub-menu {
+    background-color: #fff;
+    display: flex;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    border-radius: 4px;
+    display: none;
+}
+
+.sub-menu ul li {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.sub-menu .title {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.sub-menu .wrapper {
+    display: flex;
+}
+.sub-menu .left {
+    padding-right: 100px;
+}
+
+.sub-menu .left .bottom {
+    margin-top: 30px;
+}
+.sub-menu .left .wrapper {
+    column-gap: 100px;
+}
+
+.sub-menu .right {
+    padding-left: 40px;
+    border-left: 1px solid #e8e8e8;
+}
+
+.sub-menu .right .wrapper {
+    gap: 160px;
+}
+
+.menu > li:hover > .sub-menu {
+    display: flex;
+}
+
+.menu > li:hover > a {
+    cursor: pointer;
+    opacity: 0.7;
+}
