@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --font-heading: "Space Grotesk", sans-serif;
+    --font-text: "Inter", sans-serif;
+}
+.container {
+    width: 1170px;
+    max-width: calc(100% - 48px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 100px;
+}
+h2 {
+    margin: 0;
+}
+
+.list-item {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 20px;
+}
+.item {
+    background: url("https://images.unsplash.com/photo-1688666922861-3a0a32ec41a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80")
+        no-repeat bottom / cover;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.item .item-content {
+    position: relative;
+    padding: 40px;
+    transition: all 0.4s ease;
+    background-color: #fff;
+}
+
+.item .item-content::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    inset: 0;
+    border: 2px solid #ddd;
+    transition: all 0.4s ease;
+}
+
+.item:hover .item-content::before {
+    inset: 20px;
+    border-color: #da9477;
+}
+
+.item:hover .item-content {
+    background: #a1634983;
+}
+
+.item .item-wrapper {
+    transition: all 0.4s ease;
+}
+
+.item:hover .item-wrapper {
+    transform: translateY(-90px);
+}
+
+.item:hover .item-content .title,
+.item:hover .item-content .text,
+.item:hover .item-content .btn {
+    color: #fff;
+}
+
+.item .icon {
+    color: #a26f5a;
+    font-size: 48px;
+    margin-bottom: 24px;
+}
+
+.item .title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+}
+
+.item .text {
+    margin-top: 20px;
+    font-family: var(--font-text);
+    font-size: 18px;
+    color: #777777;
+    line-height: 1.5;
+}
+
+.item .btn {
+    cursor: pointer;
+    padding: 0;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: none;
+    transform: translateY(100px);
+}
+
+.item .btn span {
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.item .btn .arrow {
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #a26f5a;
+    transition: all 0.4s ease;
+}
+
+.item .btn:hover .arrow {
+    background-color: #fff;
+    border-color: #fff;
+    color: #a26f5a;
+}
