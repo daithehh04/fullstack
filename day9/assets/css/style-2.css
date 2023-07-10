@@ -72,6 +72,10 @@ h2 {
     transform: translateY(-90px);
 }
 
+.item:hover .icon {
+    scale: 0;
+}
+
 .item:hover .item-content .title,
 .item:hover .item-content .text,
 .item:hover .item-content .btn {
