@@ -1,0 +1,2 @@
+# fullstack
+## Weekly exercise list ##
