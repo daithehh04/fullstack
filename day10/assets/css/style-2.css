@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    background: #ccc;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+.container {
+    width: 740px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu {
+    display: flex;
+}
+
+label {
+    flex-grow: 1;
+    display: inline-block;
+    cursor: pointer;
+    background: #fff;
+    line-height: 46px;
+    border: 1px solid #ccc;
+}
+
+label span {
+    display: block;
+    padding: 5px;
+    background: #fff;
+}
+
+label span span {
+    padding: 0 12px;
+    transition: all 0.3s ease;
+}
+
+label:hover span span {
+    background: #3098de;
+    color: #fff;
+}
+
+input:checked + label span span {
+    background: #3098de;
+    color: #fff;
+}
+
+.list-item {
+    position: relative;
+}
+
+.item {
+    padding: 12px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    overflow-x: scroll;
+    transform-origin: 0% 0%;
+    transition: all 1s;
+}
+
+.list-item {
+    perspective: 3000px;
+    perspective-origin: top;
+}
+
+.item {
+    transform: rotateX(-90deg);
+}
+
+.menu:has(#simples:checked) ~ .list-item .item:nth-child(1),
+.menu:has(#algoritmo:checked) ~ .list-item .item:nth-child(2),
+.menu:has(#barra:checked) ~ .list-item .item:nth-child(3),
+.menu:has(#captcha:checked) ~ .list-item .item:nth-child(4) {
+    opacity: 1;
+    transform: rotateX(0deg);
+    transition-delay: 0.25s;
+}
+
+.animation > .simples:checked ~ ul > .simples,
+.animation > .algoritmo:checked ~ ul > .algoritmo,
+.animation > .barra:checked ~ ul > .barra,
+.animation > .captcha:checked ~ ul > .captcha {
+    transform: rotateX(0deg);
+    transition-delay: 0.2s;
+}
