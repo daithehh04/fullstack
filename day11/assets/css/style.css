@@ -346,6 +346,7 @@ input[id="menu"]:checked ~ .row nav {
     width: 100%;
     background-color: #fff;
     margin: 10px 0;
+    border-radius: 12px;
     padding: 30px 22px;
 }
 .service-item img {
