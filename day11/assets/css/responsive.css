@@ -180,6 +180,7 @@
         width: 83.33%;
         margin-left: auto;
         margin-right: auto;
+        gap: 60px;
     }
     .service .service-item {
         padding: 40px 26px;
@@ -197,6 +198,9 @@
 @media screen and (min-width: 1400px) {
     .container {
         --container-width: 1320px;
+    }
+    .header nav ul {
+        margin-right: 15vw;
     }
     .banner .title {
         font-size: 7.4rem;
@@ -216,6 +220,9 @@
     }
     .service-item .info h3 {
         font-size: 2.2rem;
+    }
+    .service .service-item {
+        padding: 50px 28px;
     }
     /*  */
     .section .info h4 {
