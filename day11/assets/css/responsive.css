@@ -94,6 +94,9 @@
         transform: translateX(0);
     }
     /* Download */
+    .download-app {
+        padding: 100px 0;
+    }
     .btn-download {
         gap: 60px;
         justify-content: flex-start;
@@ -166,6 +169,11 @@
     .banner .text {
         font-size: 1.8rem;
         max-width: 80%;
+    }
+    .banner .btn-right,
+    .banner .btn-left {
+        width: 186px;
+        font-size: 2rem;
     }
     /* Service */
     .service .list-service {
