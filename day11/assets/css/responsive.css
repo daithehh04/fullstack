@@ -1,0 +1,233 @@
+@media screen and (min-width: 400px) {
+    /* Banner */
+    .banner .title {
+        font-size: 3.8rem;
+        line-height: 1.52;
+    }
+    .banner .text {
+        font-size: 1.6rem;
+    }
+    .banner .btn-left {
+        padding: 20px 12px;
+    }
+    /* Service */
+    .service .title {
+        font-size: 1.6rem;
+    }
+    .service .sub-title {
+        font-size: 3.2rem;
+        line-height: 1.375;
+    }
+    /* Common */
+    .section .info h4 {
+        font-size: 1.6rem;
+    }
+    .section .info h2 {
+        font-size: 3.2rem;
+        line-height: 1.375;
+    }
+    .section .info p {
+        font-size: 1.6rem;
+        line-height: 1.875;
+    }
+    /* Download */
+    .btn-download a {
+        font-size: 1.6rem;
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .container {
+        --container-width: 540px;
+    }
+    /* Banner */
+    .banner .btn-left,
+    .banner .btn-right {
+        width: 160px;
+        font-size: 1.6rem;
+        /* padding: 25px 20px; */
+    }
+}
+@media screen and (min-width: 768px) {
+    .container {
+        --container-width: 720px;
+    }
+    /* banner */
+    .banner .info .short-text {
+        margin-left: 0;
+        transform: translateX(0);
+    }
+    .banner .title {
+        text-align: left;
+    }
+    .banner .text {
+        text-align: left;
+    }
+    .banner .btn {
+        justify-content: flex-start;
+    }
+    .banner .btn-right img {
+        width: 70px;
+        height: 70px;
+    }
+    /* Service */
+    .service {
+        padding: 100px 0;
+    }
+    .service .list-service {
+        gap: 20px;
+        flex-wrap: nowrap;
+    }
+    /* Common */
+    .section .info h4 {
+        text-align: left;
+    }
+    .section .info h2 {
+        text-align: left;
+    }
+    .section .info p {
+        text-align: left;
+    }
+    .section .info .btn {
+        margin-left: 0;
+        transform: translateX(0);
+    }
+    /* Download */
+    .btn-download {
+        gap: 60px;
+        justify-content: flex-start;
+    }
+    /* Footer */
+    .footer .copy-right {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+@media screen and (min-width: 992px) {
+    .container {
+        --container-width: 960px;
+    }
+    .header .menu-icon {
+        display: none;
+    }
+    .header nav {
+        height: 100%;
+        width: auto;
+        overflow: visible;
+        display: flex;
+    }
+    .header nav ul {
+        display: flex;
+        align-items: center;
+        margin-right: 60px;
+    }
+    .header nav ul li {
+        margin: 0 16px;
+    }
+    .header .row {
+        justify-content: space-between;
+        align-items: center;
+    }
+    input[id="menu"]:checked ~ .row nav {
+        height: 100%;
+    }
+    /* Service */
+    .service .list-service {
+        gap: 40px;
+    }
+    /* delivery */
+    .delivery .row {
+        flex-direction: row-reverse;
+    }
+    /* footer */
+    .footer .item {
+        text-align: left;
+    }
+    .footer .row {
+        align-items: flex-start;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        --container-width: 1140px;
+    }
+    .header nav ul {
+        margin-right: 150px;
+    }
+    .header {
+        padding-bottom: 88px;
+    }
+    /* banner */
+    .banner .title {
+        font-size: 4.8rem;
+    }
+    .banner .text {
+        font-size: 1.8rem;
+        max-width: 80%;
+    }
+    /* Service */
+    .service .list-service {
+        width: 83.33%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .service .service-item {
+        padding: 40px 26px;
+    }
+    /*  */
+    .section .info h2 {
+        max-width: 90%;
+    }
+    /* footer */
+    .footer .item .text {
+        max-width: 75%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .container {
+        --container-width: 1320px;
+    }
+    .banner .title {
+        font-size: 7.4rem;
+        line-height: 1.18;
+    }
+    .banner .text {
+        line-height: 1.66;
+    }
+    .service .title {
+        font-size: 1.8rem;
+    }
+    .service .sub-title {
+        font-size: 4rem;
+        max-width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .service-item .info h3 {
+        font-size: 2.2rem;
+    }
+    /*  */
+    .section .info h4 {
+        font-size: 1.8rem;
+    }
+    .section .info h2 {
+        font-size: 4rem;
+    }
+    .section .info p {
+        font-size: 1.8rem;
+    }
+    .section .info .btn {
+        font-size: 2rem;
+        padding: 24px 20px;
+        width: 200px;
+    }
+    .footer .item li a {
+        font-size: 1.6rem;
+    }
+    .footer .item .text {
+        font-size: 1.6rem;
+    }
+}
