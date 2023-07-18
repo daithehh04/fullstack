@@ -135,6 +135,9 @@
     input[id="menu"]:checked ~ .row nav {
         height: 100%;
     }
+    .banner .btn-left {
+        flex-basis: auto;
+    }
     /* Service */
     .service .list-service {
         gap: 40px;
@@ -174,6 +177,9 @@
     .banner .btn-left {
         width: 186px;
         font-size: 2rem;
+    }
+    .banner .btn-right {
+        width: 224px;
     }
     /* Service */
     .service .list-service {

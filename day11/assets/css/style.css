@@ -291,6 +291,7 @@ input[id="menu"]:checked ~ .row nav {
     border-color: var(--primary-color);
 }
 .banner .btn-right {
+    cursor: pointer;
     text-transform: capitalize;
     font-weight: 500;
     margin-left: 12px;
@@ -299,6 +300,12 @@ input[id="menu"]:checked ~ .row nav {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
+}
+.banner .btn-right:hover span {
+    transition: 0.4s ease;
+}
+.banner .btn-right:hover span {
+    opacity: 0.6;
 }
 .banner .btn-right img {
     width: 50px;
