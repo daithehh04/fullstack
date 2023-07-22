@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- link font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <!-- link icon -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!-- link css -->
+        <link rel="stylesheet" href="./css/main.css" />
+        <title>Vikinger | Form</title>
+    </head>
+    <body>
+        <section class="landing">
+            <input type="radio" id="login" name="form" checked hidden />
+            <input type="radio" id="register" name="form" hidden />
+            <div class="info">
+                <span class="info__text">Welcome to</span>
+                <h1 class="info__title">VIKINGER</h1>
+                <p class="info__desc">
+                    The next generation social network & community! Connect with
+                    your friends and play with our quests and badges
+                    gamification system!
+                </p>
+                <div class="info__btn">
+                    <label for="login">Login</label>
+                    <label for="register">Register</label>
+                </div>
+            </div>
+            <div class="form">
+                <div class="form__login">
+                    <h2 class="form__title">Account Login</h2>
+                    <form action="">
+                        <div class="field">
+                            <input type="text" id="user" name="user" required />
+                            <label for="user">Username or Email</label>
+                        </div>
+                        <div class="field">
+                            <input
+                                type="text"
+                                id="password"
+                                name="password"
+                                required
+                            />
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="row">
+                            <div class="row__text">
+                                <input type="checkbox" id="remember" hidden />
+                                <i class="fa-solid fa-xmark checkbox"></i>
+                                <label for="remember">Remember Me</label>
+                            </div>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn">
+                            Login to your Account!
+                        </button>
+                    </form>
+                    <p class="form__text">Login with your Social Account</p>
+                    <div class="socials">
+                        <a href="#" class="socials__link facebook">
+                            <i class="fa-brands fa-square-facebook"></i>
+                        </a>
+                        <a href="#" class="socials__link twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="socials__link twitch">
+                            <i class="fa-brands fa-twitch"></i>
+                        </a>
+                        <a href="#" class="socials__link youtubbe">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                    <img
+                        src="./assets/img/rocket.png"
+                        alt="rocket"
+                        class="image"
+                    />
+                </div>
+                <div class="form__register">
+                    <h2 class="form__title">Create your Account!</h2>
+                    <form action="">
+                        <div class="field">
+                            <input
+                                type="text"
+                                id="email"
+                                name="email"
+                                required
+                            />
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="field">
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                required
+                            />
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="field">
+                            <input
+                                type="text"
+                                id="password"
+                                name="password"
+                                required
+                            />
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="field">
+                            <input
+                                type="text"
+                                id="re-password"
+                                name="re-password"
+                                required
+                            />
+                            <label for="re-password">Reset Password</label>
+                        </div>
+                        <div class="row">
+                            <div class="row__text">
+                                <input type="checkbox" id="remember-2" hidden />
+                                <i class="fa-solid fa-xmark checkbox-2"></i>
+                                <label for="remember-2"
+                                    >Send me news and updates via email</label
+                                >
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Register Now!</button>
+                        <p class="desc">
+                            You'll receive a confirmation email in your inbox
+                            with a link to activate your account. If you have
+                            any problems, <a href="#">contact us</a>!
+                        </p>
+                    </form>
+                    <img src="./assets/img/rocket.png" alt="" class="image" />
+                </div>
+            </div>
+            <div class="decoration"></div>
+        </section>
+    </body>
+</html>
