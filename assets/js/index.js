@@ -217,6 +217,16 @@ const exercise = [
             },
         ],
     },
+    {
+        day: "day 14",
+        link: "day14",
+        list: [
+            {
+                title: "Exercise 1",
+                link: "https://daithehh04.github.io/fullstack/day14/exercise-1.html",
+            },
+        ],
+    },
 ];
 
 const root = document.querySelector("#root");

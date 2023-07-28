@@ -1,0 +1,68 @@
+@import "./parts/variable";
+@import "./parts/fonts";
+@import "./parts/reset";
+@import "./parts/mixin";
+@import "./parts/base";
+
+// Header
+@import "./layouts/header";
+// Home page
+@import "./pages/home";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: $textColor;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 6.8rem;
+}
+h2 {
+    font-size: 5.2rem;
+}
+h3 {
+    font-size: 3.8rem;
+}
+p {
+    margin-bottom: 0;
+}
+.container {
+    max-width: $max-width;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        $max-width: 91.25%;
+        max-width: $max-width;
+    }
+}

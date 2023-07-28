@@ -1,0 +1,28 @@
+.text-common {
+    color: $textColor;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.27;
+}
+
+.heading-common {
+    color: $textColor;
+    text-align: center;
+    font-size: 3.166rem;
+    font-weight: 800;
+    line-height: 1.31;
+}
+
+section {
+    margin-top: 100px;
+}
+
+.btn-primary {
+    border: none;
+    font-size: 16.667px;
+    font-weight: 700;
+    padding: 13.333px 11.667px;
+    background-color: $primaryColor;
+    color: #fff;
+    border-radius: 6.667px;
+}
