@@ -181,6 +181,9 @@
                         height: 2px;
                         background: #a3a3a3;
                     }
+                    & span {
+                        display: block;
+                    }
                 }
                 .desc {
                     display: inline-block;
@@ -391,6 +394,7 @@
             }
             .images {
                 width: 100%;
+                border-radius: 0;
                 img {
                     width: 71%;
                     left: 0;
@@ -418,6 +422,15 @@
     .product {
         .list-product {
             grid-template-columns: repeat(2, 1fr);
+            .product-item {
+                .info {
+                    .name {
+                        span {
+                            display: inline;
+                        }
+                    }
+                }
+            }
         }
     }
     .news {
@@ -452,6 +465,25 @@
     }
 }
 @media screen and (max-width: 768px) {
+    .banner {
+        .wrapper {
+            .info {
+                .title {
+                    padding-top: 20px;
+                    font-size: 3rem;
+                }
+                .sub-title {
+                    margin-top: 10px;
+                    width: 100%;
+                    font-size: 3.6rem;
+                }
+                .text {
+                    width: 100%;
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
     .quantity {
         .quantity-wrapper {
             .list-quatity {
@@ -466,6 +498,7 @@
     }
     .product {
         .list-product {
+            row-gap: 48px;
             .product-item {
                 .images {
                     .circle {
@@ -473,12 +506,21 @@
                         height: 33vw;
                     }
                     img {
-                        top: 80px;
+                        top: 50px;
                         width: 30vw;
                     }
                 }
                 .info {
-                    margin-top: 70px;
+                    margin-top: 40px;
+                    .name {
+                        width: 100%;
+                    }
+                    .btn {
+                        font-size: 14px;
+                    }
+                    .price span {
+                        font-size: 2rem;
+                    }
                 }
             }
         }
@@ -492,6 +534,49 @@
     .safety {
         .list {
             grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    section {
+        margin-top: 50px;
+    }
+    .banner {
+        .wrapper {
+            .images {
+                span {
+                    top: 10px;
+                    font-size: 13vw;
+                    left: calc(100% - 15px);
+                }
+            }
+        }
+    }
+    .product {
+        .list-product {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    .quantity {
+        .quantity-wrapper {
+            .list-quatity {
+                padding: 0;
+            }
+        }
+    }
+    .safety {
+        .list {
+            .item {
+                .info {
+                    min-height: auto;
+                    padding: 16px;
+                    padding-bottom: 30px;
+                    .desc {
+                        width: 100% !important;
+                    }
+                }
+            }
         }
     }
 }

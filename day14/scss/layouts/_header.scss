@@ -92,7 +92,6 @@
 
         .wrapper {
             justify-content: space-between;
-
             nav {
                 transform: translateX(-100%);
                 padding-top: 50px;
@@ -110,9 +109,23 @@
                 }
             }
             .icons {
+                margin-left: auto;
+                column-gap: 30px;
                 .menu-icon {
                     display: block;
                     width: 24px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        .wrapper {
+            nav {
+                .nav-link {
+                    padding: 24px 0;
                 }
             }
         }
