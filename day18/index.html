@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 18</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      h2 {
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+      }
+
+      h1 {
+        margin-left: 40px;
+      }
+      h1:hover {
+        text-decoration: underline;
+      }
+
+      h1,
+      h1 a {
+        text-transform: uppercase;
+        color: #1f45fc;
+      }
+      #root {
+        width: 91.25%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .block .title {
+        margin-top: 10px;
+        color: #1f45fc;
+      }
+      .block .title a {
+        cursor: initial;
+        font-size: 24px;
+        color: #1f45fc;
+        padding: 6px 10px;
+        text-transform: capitalize;
+      }
+      .exercise-item a:hover {
+        text-decoration: underline;
+      }
+      .exercise-item a {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 16px;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <a href="https://daithehh04.github.io/fullstack/" target="_blank"
+        >All Day</a
+      >
+    </h1>
+    <div id="root"></div>
+  </body>
+  <script>
+    const exercise = [
+      {
+        day: "day 18",
+        link: "day18",
+        list: [
+          {
+            title: "Exercise 1",
+            link: "https://daithehh04.github.io/fullstack/day18/exercise-1.html",
+          },
+        ],
+      },
+    ];
+    const root = document.querySelector("#root");
+    root.innerHTML = exercise
+      .map(
+        (item) =>
+          `<div class="block">
+            <h2 class="title">
+                <a href="${item?.link}">#${item.day}</a>
+            </h2>
+            <ul class="list-exercise">
+                ${item.list
+                  .map(
+                    (item2) =>
+                      `<li class="exercise-item">
+                        <a href="${item2.link}" target="_blank">${item2.title}</a>
+                    </li>`
+                  )
+                  .join("")}
+            </ul>
+        </div>`
+      )
+      .join("");
+  </script>
+</html>
