@@ -74,7 +74,7 @@ function handleRegister(name, password, email) {
     return 'Tài khoản đã tồn tại!'
   }
   const user = new User(name,password,email)
-  user.role = 'User'
+  user.role = 'user'
   dataUser.push(user)
   console.log('Đăng ký thành công!');
   return user
