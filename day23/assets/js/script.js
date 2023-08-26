@@ -31,6 +31,8 @@ titleForms.forEach((title,index) => {
     $('.form-item.active').classList.remove('active')
     this.classList.add('active')
     form.classList.add('active')
+    resetFormLogin()
+    resetFormRegister()
   })
 })
 
@@ -78,6 +80,20 @@ function ValidateName(name,ele) {
   }else {
     ele.innerHTML = ""
   }
+}
+
+// Reset form
+function resetFormLogin() {
+  formLogin.reset()
+  errEmailLogin.innerHTML = ""
+  errPasswordLogin.innerHTML = ""
+}
+
+function resetFormRegister() {
+  formRegister.reset()
+  errEmailRegister.innerHTML = ''
+  errNameRegister.innerHTML = ''
+  errPasswordRegister.innerHTML =''
 }
 
 // Blur, Input
