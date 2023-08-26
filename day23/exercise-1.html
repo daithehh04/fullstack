@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <span>Đăng nhập</span>
+      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <div class="form-group">
+      <div class="row-title">
+        <button class="item-title active">Đăng nhập</button>
+        <button class="item-title">Đăng ký</button>
+      </div>
+      <div class="list-form">
+        <!-- Form login -->
+        <form class="form-item active form-login">
+          <span class="text">với các tài khoản mạng xã hội</span>
+          <div class="buttons">
+            <button>
+              <img src="./assets/img/google.svg" alt="">
+              Google
+            </button>
+            <button>
+              <img src="./assets/img/facebook.svg" alt="">
+              Facebook
+            </button>
+          </div>
+          <span class="text">hoặc</span>
+          <div class="field-input">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email">
+            <p class="text-error err-email"></p>
+          </div>
+          <div class="field-input">
+            <label for="password">Mật khẩu</label>
+            <input type="password" name="password" id="password" placeholder="Mật khẩu" class="password">
+            <div class="show-hide">
+              <i class="fa-regular fa-eye"></i>
+            </div>
+            <p class="text-error err-password"></p>
+          </div>
+          <a href="#" class="forgot-pass">Quên mật khẩu?</a>
+          <button class="btn-login btn-form">Đăng nhập</button>
+        </form>
+
+        <!-- Form Register -->
+        <form class="form-item form-register">
+          <span class="text">Hoàn thành đăng ký, và bắt đầu trải nghiệm ngay!</span>
+          <div class="field-input">
+            <label for="name">Họ và tên</label>
+            <input type="text" name="name" id="name" placeholder="Họ và tên">
+            <p class="text-error err-name"></p>
+          </div>
+          <div class="field-input">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email">
+            <p class="text-error err-email"></p>
+          </div>
+          <div class="field-input">
+            <label for="password">Mật khẩu</label>
+            <input type="password" name="password" id="password" placeholder="Mật khẩu">
+            <div class="show-hide">
+              <i class="fa-regular fa-eye"></i>
+            </div>
+            <p class="text-error err-password"></p>
+          </div>
+          <p class="desc">
+            Bằng cách đăng ký tài khoản, bạn cũng đồng thời chấp nhận mọi <a href="#">điều kiện về qui định và chính sách của Dân trí</a>
+          </p>
+          <button class="btn-register btn-form">Đăng ký</button>
+        </form>
+      </div>
+    </div>
+    <div class="overlay"></div>
+  </div>
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>

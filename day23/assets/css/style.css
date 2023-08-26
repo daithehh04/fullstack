@@ -1,0 +1,184 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.container .row {
+  margin-top: 20px;
+  cursor: pointer;
+  width: max-content;
+  margin-left: auto;
+  margin-right: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #4d4d4d;
+  display: flex;
+  column-gap: 8px;
+}
+
+.container .row svg {
+  stroke: #4d4d4d;
+}
+
+.container .overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+}
+
+.container .form-group {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+a {
+  text-decoration: none;
+}
+.form-group {
+  margin-left: auto;
+  margin-right: auto;
+  width: 460px;
+  background-color: #fff;
+}
+
+.form-group .row-title {
+  width: 100%;
+}
+
+.form-group .row-title .item-title {
+  font-size: 18px;
+  font-weight: 500;
+  width: 50%;
+  cursor: pointer;
+  padding: 14px;
+  color: #999;
+  background-color: #eee;
+}
+
+.form-group .row-title .item-title.active {
+  background-color: #fff;
+  color: #000;
+}
+
+.form-group .list-form {
+  width: 100%;
+  padding: 0 40px;
+}
+.form-group .form-item {
+  padding-bottom: 30px;
+  background-color: #fff;
+  display: none;
+}
+
+.form-group .row-title {
+  display: flex;
+  align-items: center;
+}
+
+.form-login .buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.form-login .forgot-pass {
+  font-size: 14px;
+  margin-bottom: 16px;
+  font-style: italic;
+  color: #4d4d4d;
+  display: block;
+  text-align: end;
+}
+
+.form-login .buttons button{
+  height: 45px;
+  border-radius: 6px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+  background: #e2e8f0;
+  cursor: pointer;
+}
+
+
+.form-register .desc {
+  color: #4d4d4d;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.form-group .form-item label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.form-group .form-item .text {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  display: block;
+  font-size: 14px;
+  color: #1a1a1a;
+  text-align: center;
+}
+.form-group .form-item .field-input {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.form-group .form-item .field-input input{
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px 15px;
+}
+
+.form-group .form-item .field-input .show-hide {
+  cursor: pointer;
+  position: absolute;
+  top: 35px;
+  right: 10px;
+}
+
+.form-group .form-item .btn-form {
+  cursor: pointer;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  background-color: #1a7900 ;
+  padding: 10px;
+}
+
+.form-item.active {
+  display: block;
+}
+
+.field-input .text-error {
+  margin-top: 6px;
+  color: rgb(240, 51, 51);
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 500;
+}
