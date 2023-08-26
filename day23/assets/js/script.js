@@ -27,7 +27,7 @@ const nameRegister = $(".form-register #name")
 const errNameRegister = $(".form-register .field-input .err-name")
 
 
-// Overlay -form
+// Overlay - form
 btn.onclick = function() {
   form.classList.add('active')
   overlay.classList.add('active')
@@ -36,6 +36,8 @@ btn.onclick = function() {
 overlay.onclick = function() {
   form.classList.remove('active')
   overlay.classList.remove('active')
+  resetFormLogin()
+  resetFormRegister()
 }
 // Switch Login - Register
 titleForms.forEach((title,index) => {
