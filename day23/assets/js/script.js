@@ -58,10 +58,10 @@ showHideRegister.addEventListener('click',function() {
 
 function ValidateEmail(mail,ele) 
 {
-  if(mail === "") {
+  if(mail.value === "") {
     ele.innerHTML = "Vui lòng nhập thông tin"
   } else {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail.value))
     {
       ele.innerHTML = ""
     } else {
@@ -109,11 +109,11 @@ function resetFormRegister() {
 // Login
 passLogin.addEventListener('input', function() {
   ValidatePassword(passLogin,errPasswordLogin)
-  ValidateEmail(emailLogin.value,errEmailLogin)
+  ValidateEmail(emailLogin,errEmailLogin)
 })
 
 emailLogin.addEventListener('input', function() {
-  ValidateEmail(emailLogin.value,errEmailLogin)
+  ValidateEmail(emailLogin,errEmailLogin)
   ValidatePassword(passLogin,errPasswordLogin)
 })
 
@@ -124,7 +124,6 @@ passLogin.addEventListener('blur',function() {
   }
 })
 
-
 emailLogin.addEventListener('blur',function() {
   if(passLogin.value === "" && emailLogin.value === "") {
     errPasswordLogin.innerHTML = "Vui lòng nhập thông tin"
@@ -134,20 +133,18 @@ emailLogin.addEventListener('blur',function() {
 
 // Register
 nameRegister.addEventListener('input', function() {
-  if(nameRegister.value !== "") {
-    errNameRegister.innerHTML = ""
-  }
-  ValidateEmail(emailRegister.value,errEmailRegister)
+  ValidateName(nameRegister,errNameRegister)
+  ValidateEmail(emailRegister,errEmailRegister)
   ValidatePassword(passRegister,errPasswordRegister)
 })
 passRegister.addEventListener('input', function() {
   ValidatePassword(passRegister,errPasswordRegister)
-  ValidateEmail(emailRegister.value,errEmailRegister)
+  ValidateEmail(emailRegister,errEmailRegister)
   ValidateName(nameRegister,errNameRegister)
 })
 
 emailRegister.addEventListener('input', function() {
-  ValidateEmail(emailRegister.value,errEmailRegister)
+  ValidateEmail(emailRegister,errEmailRegister)
   ValidatePassword(passRegister,errPasswordRegister)
   ValidateName(nameRegister,errNameRegister)
 })
