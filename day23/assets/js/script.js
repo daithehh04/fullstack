@@ -1,6 +1,10 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+const form = $('.form-group')
+const overlay = $('.overlay')
+const btn = $('.container .row')
+
 const titleForms = $$('.row-title .item-title')
 const listForms = $$('.form-item')
 const showHideLogin = $('.form-login .field-input .show-hide i')
@@ -23,6 +27,16 @@ const nameRegister = $(".form-register #name")
 const errNameRegister = $(".form-register .field-input .err-name")
 
 
+// Overlay -form
+btn.onclick = function() {
+  form.classList.add('active')
+  overlay.classList.add('active')
+}
+
+overlay.onclick = function() {
+  form.classList.remove('active')
+  overlay.classList.remove('active')
+}
 // Switch Login - Register
 titleForms.forEach((title,index) => {
   const form = listForms[index]
