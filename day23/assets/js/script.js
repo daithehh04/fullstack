@@ -58,11 +58,15 @@ showHideRegister.addEventListener('click',function() {
 
 function ValidateEmail(mail,ele) 
 {
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
-  {
-    ele.innerHTML = ""
+  if(mail === "") {
+    ele.innerHTML = "Vui lòng nhập thông tin"
   } else {
-    ele.innerHTML = "Vui lòng nhập đúng định dạng email"
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+    {
+      ele.innerHTML = ""
+    } else {
+      ele.innerHTML = "Vui lòng nhập đúng định dạng email"
+  }
   }
 }
 
@@ -70,7 +74,11 @@ function ValidatePassword(pass,ele) {
   if(pass.value === "") {
     ele.innerHTML = "Vui lòng nhập thông tin"
   } else {
-    ele.innerHTML = ""
+    if (pass.value.length >= 6 && pass.value.length < 20) {
+      ele.innerHTML = ""
+    }  else {
+      ele.innerHTML = "Mật khẩu có từ 6 đến 20 ký tự"
+    }
   }
 }
 
@@ -100,17 +108,8 @@ function resetFormRegister() {
 
 // Login
 passLogin.addEventListener('input', function() {
-  if (passLogin.value.length >= 6 && passLogin.value.length < 20) {
-    errPasswordLogin.innerHTML = ""
-  }  else {
-    errPasswordLogin.innerHTML = "Mật khẩu có từ 6 đến 20 ký tự"
-  }
-})
-
-nameRegister.addEventListener('input', function() {
-  if(nameRegister.value !== "") {
-    errNameRegister.innerHTML = ""
-  }
+  ValidatePassword(passLogin,errPasswordLogin)
+  ValidateEmail(emailLogin.value,errEmailLogin)
 })
 
 emailLogin.addEventListener('input', function() {
@@ -134,12 +133,17 @@ emailLogin.addEventListener('blur',function() {
 })
 
 // Register
-passRegister.addEventListener('input', function() {
-  if (passRegister.value.length >= 6 && passRegister.value.length < 20) {
-    errPasswordRegister.innerHTML = ""
-  }  else {
-    errPasswordRegister.innerHTML = "Mật khẩu có từ 6 đến 20 ký tự"
+nameRegister.addEventListener('input', function() {
+  if(nameRegister.value !== "") {
+    errNameRegister.innerHTML = ""
   }
+  ValidateEmail(emailRegister.value,errEmailRegister)
+  ValidatePassword(passRegister,errPasswordRegister)
+})
+passRegister.addEventListener('input', function() {
+  ValidatePassword(passRegister,errPasswordRegister)
+  ValidateEmail(emailRegister.value,errEmailRegister)
+  ValidateName(nameRegister,errNameRegister)
 })
 
 emailRegister.addEventListener('input', function() {
