@@ -73,7 +73,9 @@ function ValidatePassword(pass,ele) {
 }
 
 function ValidateName(name,ele) {
-  if(name.value !== "") {
+  if(name.value === "") {
+    ele.innerHTML = "Vui lòng nhập thông tin"
+  }else {
     ele.innerHTML = ""
   }
 }
@@ -86,6 +88,12 @@ passLogin.addEventListener('input', function() {
     errPasswordLogin.innerHTML = ""
   }  else {
     errPasswordLogin.innerHTML = "Mật khẩu có từ 6 đến 20 ký tự"
+  }
+})
+
+nameRegister.addEventListener('input', function() {
+  if(nameRegister.value !== "") {
+    errNameRegister.innerHTML = ""
   }
 })
 
@@ -121,6 +129,7 @@ passRegister.addEventListener('input', function() {
 emailRegister.addEventListener('input', function() {
   ValidateEmail(emailRegister.value,errEmailRegister)
   ValidatePassword(passRegister,errPasswordRegister)
+  ValidateName(nameRegister,errNameRegister)
 })
 
 passRegister.addEventListener('blur',function() {
