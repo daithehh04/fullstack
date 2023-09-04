@@ -105,27 +105,31 @@ carouselInner.addEventListener("mousemove", function (e) {
     carouselInner.style.cursor = "move";
     carouselInner.style.transition = `none`;
     var distance = startX - e.pageX;
-    if (distance > 120) {
-      if (currentIndex < dotsItem.length - 1) {
-        currentIndex++;
-        position -= itemWidth;
-        moveSlide();
-        carouselInner.style.transition = `all 0.4s linear`;
+    if(distance > 0) {
+      if (distance > 120) {
+        if (currentIndex < dotsItem.length - 1) {
+          currentIndex++;
+          position -= itemWidth;
+          moveSlide();
+          carouselInner.style.transition = `all 0.4s linear`;
+        }
+        isDrag = false
+      } else {
+        carouselInner.style.translate = `${position - distance}px`;
       }
-      isDrag = false
-    } else if (distance > 0) {
-      carouselInner.style.translate = `${position - distance}px`;
     }
-    if (distance < -120) {
-      if (currentIndex > 0) {
-        currentIndex--;
-        position += itemWidth;
-        moveSlide();
-        carouselInner.style.transition = `all 0.4s linear`;
+    if (distance < 0) {
+      if (distance < -120) {
+        if (currentIndex > 0) {
+          currentIndex--;
+          position += itemWidth;
+          moveSlide();
+          carouselInner.style.transition = `all 0.4s linear`;
+        }
+        isDrag = false
+      } else {
+        carouselInner.style.translate = `${position - distance}px`;
       }
-      isDrag = false
-    } else if (distance < 0) {
-      carouselInner.style.translate = `${position - distance}px`;
     }
   }}
 });
