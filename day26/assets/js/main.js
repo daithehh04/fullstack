@@ -105,8 +105,8 @@ audio.addEventListener("ended", function () {
 progressBar.addEventListener("mousemove", function (e) {
   timer.style.display = "block";
   timer.style.left = `${e.offsetX}px`;
-  var space = (100 * e.offsetX) / progressBarWidth;
-  var time = (audio.duration * space) / 100;
+  var rate = (100 * e.offsetX) / progressBarWidth;
+  var time = (audio.duration * rate) / 100;
   timer.innerText = getTime(time);
 });
 
