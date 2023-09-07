@@ -10,6 +10,7 @@ body {
 
 .play-btn {
   margin-top: 30px;
+  margin-bottom: 10px;
   text-align: center;
   font-size: 1.5rem;
   cursor: pointer;
@@ -23,9 +24,6 @@ body {
   align-items: center;
 }
 
-.player span {
-  line-height: 1;
-}
 
 .progress-bar {
   width: 100%;
@@ -54,4 +52,19 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
+}
+
+.progress-bar .timer {
+  position: absolute;
+  top: -18px;
+  transform: translateX(-50%);
+  display: block;
+  width: 30px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 10px;
+  background: #333;
+  color: #fff;
+  display: none;
+  text-align: center;
 }
