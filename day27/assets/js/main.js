@@ -116,8 +116,8 @@ function renderCart() {
   const total = document.createElement("tr");
   total.innerHTML = `
   <td colspan="3">Tổng</td>
-  <td>${carts.reduce((total, cart) => total + +cart.quantity, 0)}</td>
-  <td>${carts.reduce((total, cart) => total + +cart.total, 0)}</td>
+  <td>${carts.reduce((total, product) => total + +product.quantity, 0)}</td>
+  <td>${carts.reduce((total, product) => total + +product.total, 0)}</td>
   `;
   tableCart.appendChild(total);
   const deleteBtn = document.querySelectorAll(".delete-product");
