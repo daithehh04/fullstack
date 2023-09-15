@@ -64,11 +64,13 @@ document.addEventListener("mousemove", function (e) {
 });
 
 document.addEventListener("mouseup", function (e) {
-    isDrag = false;
-    initialValue = value;
-    var time = (audio.duration * value) / 100;
-    currentTimeEl.innerText = getTime(time);
-    audio.currentTime = time;
+    if(isDrag) {
+        isDrag = false;
+        initialValue = value;
+        var time = (audio.duration * value) / 100;
+        currentTimeEl.innerText = getTime(time);
+        audio.currentTime = time;
+    }
 });
 
 audio.addEventListener("loadeddata", function () {
