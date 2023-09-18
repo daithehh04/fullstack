@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.container {
+  background: #4286f4;
+  width: 500px;
+  padding: 20px;
+}
+
+.list-item {
+  user-select: none;
+  background: #8bb3f4;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin: 1px 0;
+}
+
+.list-item.dragging {
+  background-color: #659cf5e4;
+}
+
+.list-item.active {
+  background: #ff6f00;
+}
+
+.list-item.active.dragging {
+  background: rgba(231, 155, 96, 0.89);
+}
+
+.opacity {
+  opacity: 0.5;
+}
+
+.placeholder {
+  display: none;
+  background: #303742;
+  pointer-events: none;
+}
