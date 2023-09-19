@@ -67,9 +67,9 @@ container.addEventListener("dragend", function () {
   const listItem = document.querySelectorAll(".list-item:not(.active) span");
   const listModule = document.querySelectorAll(".list-item.active span");
   listItem.forEach((item, index) => {
-    item.innerHTML = `Bài ${index++}:`;
+    item.innerHTML = `Bài ${++index}:`;
   });
   listModule.forEach((module, index) => {
-    module.innerHTML = `Module ${index++}:`;
+    module.innerHTML = `Module ${++index}:`;
   });
 });
