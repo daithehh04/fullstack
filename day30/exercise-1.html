@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2 class="title-editor">Doc Editor</h2>
+    <div class="editor-wrapper">
+        <div class="file-editor">
+            <div class="btn-container">
+                <button class="btn-file">File</button>
+                <div class="dropdown">
+                    <button class="new-btn">New</button>
+                    <button class="txt-btn">Save as TXT</button>
+                    <button class="pdf-btn">Save as PDF</button>
+                </div>
+                <input
+                    type="text"
+                    class="file-name"
+                    value="untitled"
+                    placeholder="Enter file's name"
+                />
+            </div>
+        </div>
+        <div class="style-editor">
+            <button class="btn-bold">b</button>
+            <button class="btn-underline">u</button>
+            <button class="btn-italic">i</button>
+            <input type="color" />
+        </div>
+    </div>
+    <div
+        class="text-editor"
+        contenteditable="true"
+        spellcheck="false"
+    ></div>
+    <div class="counter">
+        Số kí tự: <span class="num-characters">0</span> Số từ:
+        <span class="num-words">0</span>
+    </div>
+</div>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
