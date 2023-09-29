@@ -38,9 +38,9 @@ class F8 {
             btnCounts.forEach((btn) => {
               const nameAttribute = btn.getAttributeNames();
               const nameEvent = nameAttribute[0].split("v-on:");
-              const eventBtn = nameEvent[1];
-              const btnAttribute = btn.getAttribute(`v-on:${eventBtn}`);
-              btn.addEventListener(eventBtn, () => {
+              const btnEvent = nameEvent[1];
+              const btnAttribute = btn.getAttribute(`v-on:${btnEvent}`);
+              btn.addEventListener(btnEvent, () => {
                 if (btnAttribute === "count--") {
                   countNumber.innerText = --count;
                 }
@@ -48,7 +48,7 @@ class F8 {
                   countNumber.innerText = ++count;
                 }
                 if (btnAttribute.includes("title=")) {
-                  let contentTitle = btnAttribute.split("title=");
+                  const contentTitle = btnAttribute.split("title=");
                   h1.innerText = contentTitle[1];
                 }
               });
