@@ -1,0 +1,21 @@
+.search-box {
+  text-align: center;
+}
+.btn {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  background-color: pink;
+}
+
+.btn:hover {
+  background-color: rgb(251, 133, 153);
+}
+
+.action {
+  margin-top: 16px;
+  color: green;
+}
+.result {
+  margin-top: 20px;
+}
