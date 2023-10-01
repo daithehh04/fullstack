@@ -54,7 +54,7 @@ if ('webkitSpeechRecognition' in window) {
       const params = txt
         .replace("chỉ đường", "")
         .replace("chỉ đường tới", "")
-        .replace("đi", "")
+        .replace("đường tới", "")
         .replace("tới", "")
         .trim();
       window.open(`https://www.google.com/maps/search/${params}`);
@@ -75,8 +75,9 @@ if ('webkitSpeechRecognition' in window) {
       txt.includes("xem video")
     ) {
       const params = txt
-      .replace("xem", "")
       .replace("video", "")
+      .replace("mở video", "")
+      .replace("xem video", "")
       .trim();
       window.open(`https://www.youtube.com/results?search_query=${params}`);
     } else {
