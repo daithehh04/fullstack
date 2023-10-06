@@ -18,6 +18,7 @@ function imageZoom(imgID, resultID) {
   function remove() {
     result.style.display='none'
     lens.style.opacity='0'
+    img.style.outline='none'
   }
   function moveLens(e) {
     result.style.display='block'
