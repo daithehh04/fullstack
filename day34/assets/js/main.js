@@ -8,10 +8,13 @@ const inputSearch = $(".form-search input")
 const btnAdd = $(".btn-add")
 const btnSave = $(".btn-save")
 const btnCancel = $(".btn-cancel")
+const btnCompleted= $(".btn-completed")
 const popup = $(".popup")
 const overlay = $(".overlay")
 const listTodoNotComplete = $(".not-complete")
+const listTodoComplete = $(".completed")
 const inputAddTodo = $(".add-todo")
+const listTodo = $(".list-todo")
 
 var isEdit = false
 let lt = /</g,
@@ -33,8 +36,12 @@ const removePopup = () => {
 btnAdd.addEventListener('click',addPopup)
 btnCancel.addEventListener('click',removePopup)
 
+btnCompleted.addEventListener('click',function() {
+  this.classList.toggle('active')
+})
 const renderTodo = async () => {
-  const {data:todos} = await client.get('/todos')
+  const {data:todos} = await client.get('/todos?completed=false')
+  const {data:todosNot} = await client.get('/todos?completed=true')
   
   const html = todos.map((todo) => `
     <div class="todo-item" data-id="${todo.id}">
@@ -46,8 +53,23 @@ const renderTodo = async () => {
       </div>
     </div>
   `).join("")
+  const htmlNot = todosNot.map((todo) => `
+  <div class="todo-item" data-id="${todo.id}">
+    <span class="title-todo">${todo.name}</span>
+    <div class="list-action">
+      <button class="btn-delete"><i class="fa-regular fa-trash-can"></i></button>
+      <button class="btn-edit"><i class="fa-solid fa-pen-to-square"></i></button>
+      <button class="btn-done"><i class="fa-solid fa-square-check"></i></button>  
+    </div>
+  </div>
+`).join("")
+  if(!todos) {
+    listTodo.innerHTML = `<div class="loading"></div>`
+  }
   listTodoNotComplete.innerHTML = html
+  listTodoComplete.innerHTML = htmlNot
 
+  btnCompleted.innerHTML = `Completed Todos ${todosNot.length} <i class="fa-regular fa-circle-right"></i>`
   const deleteButtons = $$(".btn-delete");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", function () {
@@ -71,6 +93,21 @@ const renderTodo = async () => {
       }
     })
   })
+
+  const completeBtns = $$(".btn-check");
+  completeBtns.forEach((completeBtn, i) => {
+      completeBtn.addEventListener("click", async (e) => {
+          const {data} = await client.get('/todos?completed=false')
+          updateTodo(data[i].id,data[i].name ,true);
+      });
+  });
+  const btnDones = $$(".btn-done");
+  btnDones.forEach((btn, i) => {
+        btn.addEventListener("click", async (e) => {
+          const {data} = await client.get('/todos?completed=true')
+          updateTodo(data[i].id,data[i].name ,false);
+        });
+    });
 }
 renderTodo()
 
@@ -91,20 +128,20 @@ const addTodo = async () => {
                 .replace(dq, "&#34;");
       removePopup()
       inputAddTodo.value = ""
-      const {response} = await client.post('/todos', {name: value}) 
+      const {response} = await client.post('/todos', {name: value,completed: false}) 
       renderTodo()
     }
   })
 }
 addTodo()
 
-const updateTodo = async (id,value) => {
+const updateTodo = async (id,value,isCompleted=false) => {
   value = value
-                .replace(lt, "&lt;")
-                .replace(gt, "&gt;")
-                .replace(q, "&#39;")
-                .replace(dq, "&#34;");
-  const {response} = await client.put(`/todos/${id}`, {name: value})
+                ?.replace(lt, "&lt;")
+                ?.replace(gt, "&gt;")
+                ?.replace(q, "&#39;")
+                ?.replace(dq, "&#34;");
+  const {response} = await client.put(`/todos/${id}`, {name: value,completed:isCompleted})
   renderTodo()
 }
 
@@ -125,3 +162,9 @@ function handleSearch() {
   });
 }
 handleSearch();
+
+function checkComplete() {
+  
+}
+
+checkComplete()
