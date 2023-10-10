@@ -14,7 +14,7 @@ const overlay = $(".overlay")
 const listTodoNotComplete = $(".not-complete")
 const listTodoComplete = $(".completed")
 const inputAddTodo = $(".add-todo")
-const listTodo = $(".list-todo")
+const loading = $(".loading")
 
 var isEdit = false
 let lt = /</g,
@@ -40,6 +40,8 @@ btnCompleted.addEventListener('click',function() {
   this.classList.toggle('active')
 })
 const renderTodo = async () => {
+  loading.style.display = 'block'
+  try {
   const {data:todos} = await client.get('/todos?completed=false')
   const {data:todosNot} = await client.get('/todos?completed=true')
   
@@ -63,9 +65,6 @@ const renderTodo = async () => {
     </div>
   </div>
 `).join("")
-  if(!todos) {
-    listTodo.innerHTML = `<div class="loading"></div>`
-  }
   listTodoNotComplete.innerHTML = html
   listTodoComplete.innerHTML = htmlNot
 
@@ -108,6 +107,12 @@ const renderTodo = async () => {
           updateTodo(data[i].id,data[i].name ,false);
         });
     });
+  } catch (error) {
+    console.error('Fetch error:', error);
+  }
+  finally {
+    loading.style.display = 'none';
+  }
 }
 renderTodo()
 
@@ -162,9 +167,3 @@ function handleSearch() {
   });
 }
 handleSearch();
-
-function checkComplete() {
-  
-}
-
-checkComplete()

@@ -226,6 +226,7 @@ button i {
 }
 
 .loading {
+  margin-top: 16px;
   display: inline-block;
   width: 40px;
   height: 40px;
