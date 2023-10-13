@@ -55,12 +55,6 @@ function handleLoadMore() {
     if(data.length === 0) {
       loader.classList.remove('loader')
       allDataLoaded = true
-      if(allDataLoaded) {
-        const p = document.createElement('p')
-        p.className = 'loaded-data'
-        p.textContent = 'All data loaded'
-        listPost.appendChild(p)
-      }
     }
   });
   
