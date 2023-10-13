@@ -71,9 +71,10 @@ body {
   margin: 20px;
 }
 /* Loader */
-
-.loader {
+.loader-post {
   margin: 20px;
+}
+.loader {
   display: flex;
   gap: 8px;
 }
