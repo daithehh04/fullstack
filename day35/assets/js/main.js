@@ -68,7 +68,7 @@ function handleLoadMore() {
 
 window.addEventListener("scroll", () => {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  if (scrollTop + clientHeight >= scrollHeight - 300 && !allDataLoaded) {
+  if (scrollTop + clientHeight >= scrollHeight - 200 && !allDataLoaded) {
     handleLoadMore()
   }
 });
