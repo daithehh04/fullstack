@@ -28,7 +28,7 @@ ul {
   justify-content: center;
   width: 100%;
   height: 100vh;
-  background-image: url('http://42.96.41.29:880/quiz/static/media/background.9d9912f8005511120746.jpg');
+  background-image: url('../img/bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
