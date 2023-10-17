@@ -98,7 +98,7 @@ const handleQuestionQuiz = async () => {
   const handleNextQuestion =() => {
     QUESTION+=1
     if(QUESTION > totalQuestion) {
-      setTimeout(() => {
+      const idTimeAg = setTimeout(() => {
         QUESTION = totalQuestion
         quizContent.style.display = 'none'
         quizPerform.style.display = 'block'
@@ -130,8 +130,12 @@ const handleQuestionQuiz = async () => {
         const handlePlayAgain = () => {
           const btnPlay = document.querySelector('.result-quiz button')
           btnPlay.addEventListener('click',function() {
-            // cancelAnimationFrame(animationId);
+            if(timeId) {
+              clearTimeout(timeId)
+            }
+            clearTimeout(idTimeAg)
             isAgain = true
+            duration= 3000
             const countDown = startCountDown.querySelector('span')
             countDown.innerText = 3;
             quizStart.style.display = 'flex'
