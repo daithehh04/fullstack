@@ -3,16 +3,16 @@ const btnStart = document.querySelector('.btn-start')
 const startCountDown = document.querySelector('.start-count__down')
 const quizStart = document.querySelector('.quiz-start')
 const quizContent = document.querySelector('.quiz-content')
-const quiz = document.querySelector('.quiz')
 const quizPerform = document.querySelector('.quiz-perform')
 const soundCorrect = document.querySelector('.correct-answer')
 const soundIncorrect = document.querySelector('.incorrect-answer')
-let isPlay = false
+let isAgain = false
 let countStreak = 0
 let streakQuestion = 0
 let QUESTION = 1
 let SCORE = 0
 let CORRECT_QUESTION = 0
+let duration = 4000
 let animationId
 const getTotalQuestion = async () => {
   const {data} = await client.get(`/questions`)
@@ -30,6 +30,11 @@ const handleQuestionQuiz = async () => {
   if(QUESTION > totalQuestion) {
     QUESTION = totalQuestion
   }
+  if(isAgain) {
+    QUESTION = 1
+  }
+  isAgain = false
+  console.log('QUESTION',QUESTION);
   const data = await getQuestion(QUESTION)
   const dataQuestion = data.questions
   const dataAnswer = data.answers
@@ -63,11 +68,11 @@ const handleQuestionQuiz = async () => {
   </div>
   <div class="quiz-noti"></div>
   `
-  function countdownTimer() {
+  //Handle time question
+  function handleTimeQuestion() {
       const timeQuestion = document.querySelector(".time-question");
       const animationDuration = 8000;
       let startTime = null;
-
       function animate(currentTime) {
         if (!startTime) {
           startTime = currentTime;
@@ -76,77 +81,82 @@ const handleQuestionQuiz = async () => {
         const progress = Math.min(1, elapsedTime / animationDuration);
 
         timeQuestion.style.width = `${(1 - progress) * 100}%`;
-
         if (progress < 1) {
           animationId = requestAnimationFrame(animate)
         } else {
           handleNextQuestion()
+          console.log('next1');
         }
       }
       animationId = requestAnimationFrame(animate);
   }
-  if(isPlay) {
-    countdownTimer()
-  } else {
-    isPlay = true
-  }
+  const timeId = setTimeout(() => {
+    handleTimeQuestion()
+  },duration)
+  duration = 0
+  // Handle next question
   const handleNextQuestion =() => {
-    QUESTION++
+    QUESTION+=1
     if(QUESTION > totalQuestion) {
-     setTimeout(() => {
-      quizContent.style.display = 'none'
-      quizPerform.style.display = 'block'
-      
-      quizPerform.innerHTML =  `
-      <div class="result-quiz">
-        <div class="container">
-          <p>Game performance</p>
-          <div class="accuracy">
-            Accuracy
-            <div class="accuracy-progress">
-              <div class="progress-bar"></div>
+      setTimeout(() => {
+        QUESTION = totalQuestion
+        quizContent.style.display = 'none'
+        quizPerform.style.display = 'block'
+        
+        quizPerform.innerHTML =  `
+        <div class="result-quiz">
+          <div class="container">
+            <p>Game performance</p>
+            <div class="accuracy">
+              Accuracy
+              <div class="accuracy-progress">
+                <div class="progress-bar"></div>
+              </div>
             </div>
+            <div class="performance">
+              <div><span>${SCORE}</span>Score</div>
+              <div><span>${countStreak}</span>Streak</div>
+              <div><span>${CORRECT_QUESTION}</span>Correct</div>
+              <div><span>${totalQuestion - CORRECT_QUESTION}</span>Incorrect</div>
+            </div>
+            <button>Play again</button>
           </div>
-          <div class="performance">
-            <div><span>${SCORE}</span>Score</div>
-            <div><span>${countStreak}</span>Streak</div>
-            <div><span>${CORRECT_QUESTION}</span>Correct</div>
-            <div><span>${totalQuestion - CORRECT_QUESTION}</span>Incorrect</div>
-          </div>
-          <button>Play again</button>
-        </div>
-      </div>`
-      
-      const progressBar = document.querySelector('.accuracy-progress .progress-bar')
-      progressBar.style.width = Math.round(CORRECT_QUESTION * 100 / totalQuestion).toFixed(2) + '%'
-      progressBar.innerText = Math.round(CORRECT_QUESTION * 100 / totalQuestion).toFixed(0) + '%'
-      const handlePlayAgain = () => {
-        const btnPlay = document.querySelector('.result-quiz button')
-        btnPlay.addEventListener('click',function() {
-          isPlay = false
-          const countDown = startCountDown.querySelector('span')
-          countDown.innerText = 3;
-          quizStart.style.display = 'flex'
-          btnStart.classList.remove('hide')
-          startCountDown.classList.add('hide')
-          quizContent.style.transform = 'translateX(-100%)'
-          quizContent.style.display = 'none'
-          QUESTION = 1
-          SCORE = 0
-          CORRECT_QUESTION = 0
-          streakQuestion = 0
-          countStreak = 0
-          quizPerform.innerHTML = ""
-          handleClickStart()
-          handleQuestionQuiz()
-        })
-      }
-      handlePlayAgain()
-     },2000)
+        </div>`
+        
+        const progressBar = document.querySelector('.accuracy-progress .progress-bar')
+        progressBar.style.width = Math.round(CORRECT_QUESTION * 100 / totalQuestion).toFixed(2) + '%'
+        progressBar.innerText = Math.round(CORRECT_QUESTION * 100 / totalQuestion).toFixed(0) + '%'
+        // Handle Click Button play again
+        const handlePlayAgain = () => {
+          const btnPlay = document.querySelector('.result-quiz button')
+          btnPlay.addEventListener('click',function() {
+            // cancelAnimationFrame(animationId);
+            isAgain = true
+            const countDown = startCountDown.querySelector('span')
+            countDown.innerText = 3;
+            quizStart.style.display = 'flex'
+            btnStart.classList.remove('hide')
+            startCountDown.classList.add('hide')
+            quizContent.style.transform = 'translateX(-100%)'
+            quizContent.style.display = 'none'
+            QUESTION = 1
+            SCORE = 0
+            CORRECT_QUESTION = 0
+            streakQuestion = 0
+            countStreak = 0
+            quizPerform.innerHTML = ""
+            handleClickStart()
+            handleQuestionQuiz()
+          })
+        }
+        handlePlayAgain()
+      },2000)
     } else {
       handleQuestionQuiz()
     }
   }
+
+  // Streak question
   const streak = document.querySelector('.streak .num-streak')
   let withStreak = streakQuestion / 3 * 100
   if(withStreak >= 100) {
@@ -157,6 +167,7 @@ const handleQuestionQuiz = async () => {
   const answerQuiz = quizContent.querySelector('.answers')
   const notiQuiz = quizContent.querySelector('.quiz-noti')
   const arrIdAnswer = []
+  // Handle when choose answer
   answerQuiz.addEventListener('click',function(e) {
     e.target.classList.add('selected')
     const idChooseAnswer = +e.target.getAttribute('data-id')
@@ -204,17 +215,15 @@ const handleQuestionQuiz = async () => {
         CORRECT_QUESTION+=1
         const score = document.querySelector('.score span')
         score.innerText = SCORE
+        handleNextQuestion()
       } else {
         streakQuestion = 0
         streak.style.width = 0
         soundIncorrect.play()
         notiQuiz.innerText = 'Incorrect'
         notiQuiz.style.background = 'red'
-      }
-      setTimeout(() => {
         handleNextQuestion()
-      },100)
-     
+      }
     }
     if(dataQuestion.correctAnswerId.length === 1) {
       cancelAnimationFrame(animationId);
@@ -230,6 +239,7 @@ const handleQuestionQuiz = async () => {
 }
 handleQuestionQuiz()
 
+// handle start quiz
 const handleClickStart = () => {
   btnStart.addEventListener('click',function() {
     this.classList.add('hide')
@@ -245,9 +255,6 @@ const handleClickStart = () => {
           quizStart.style.display = 'none'
           quizContent.style.transform = 'translateX(0)'
           quizContent.style.display = 'block'
-          if(isPlay) {
-            handleQuestionQuiz()
-          } 
         } else {
         countDown.innerText = numCountDown;
         }
