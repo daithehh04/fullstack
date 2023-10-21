@@ -109,15 +109,17 @@ const getProfile = async () => {
       client.setToken(token.accessToken)
       const {data,response} = await client.get(`/users/profile`)
       if(!response.ok) {
-        requestRefresh()
+        const {data,response} = await requestRefresh(token.refreshToken)
+        if(response.ok) {
+          localStorage.setItem("login_token",JSON.stringify(data.data.token))
+          getProfile()
+        }
       } else {
         name.innerText = 'Hi, ' + data.data.name
       }
     } 
   }
 }
-
-
 
 const handleLogged = () => {
   const token = JSON.parse(localStorage.getItem('login_token'))
@@ -142,7 +144,7 @@ const handleLogged = () => {
       btnSignIn.classList.add('hidden')
       btnSignOut.classList.remove('hidden')
       // handle sign out
-      btnSignOut.addEventListener('click',async function() {
+      const handleSignOut = async () => {
         client.setToken(token.accessToken)
         isLoading = true
         loading()
@@ -166,36 +168,27 @@ const handleLogged = () => {
           name.style.display='none'
           handleLogged()
         } else {
-          Toastify({
-            text: `${info.message}`,
-            close: true,
-            className: "info",
-            style: {
-              background: "#55efc4",
-            }
-          }).showToast();
-          requestRefresh()
-          localStorage.removeItem('login_token')
-          formPost.remove()
-          btnSignIn.classList.remove('hidden')
-          btnSignOut.classList.add('hidden')
-          name.style.display='none'
-          handleLogged()
+          const {data,response} = await requestRefresh(token.refreshToken)
+          if(response.ok) {
+            localStorage.setItem("login_token",JSON.stringify(data.data.token))
+            handleSignOut()
+          }
         }
-      })
-      const titleEle = document.querySelector('.form-post .title')
-      const contentEle = document.querySelector('.form-post .content')
-      formPost.addEventListener('submit', async function(e) {
+      }
+      btnSignOut.addEventListener('click',handleSignOut)
+      // handle post blog
+      const handlePostBlog = async() => {
+        const titleEle = document.querySelector('.form-post .title')
+        const contentEle = document.querySelector('.form-post .content')
         client.setToken(token.accessToken)
-        e.preventDefault()
         const dataPost = {
           title: titleEle.value,
           content: contentEle.value
         }
         isLoading = true
         loading()
-        const { data: info,response } = await client.post('/blogs', dataPost);
-        isLoading = true
+        const {data:info,response} = await client.post('/blogs', dataPost);
+        isLoading = false
         loading()
         if(response.ok) {
           Toastify({
@@ -208,7 +201,17 @@ const handleLogged = () => {
           }).showToast();
           renderBlogs()
           formPost.reset()
+        } else {
+          const {data,response} = await requestRefresh(token.refreshToken)
+          if(response.ok) {
+            localStorage.setItem("login_token",JSON.stringify(data.data.token))
+            handlePostBlog()
+          }
         }
+      }
+      formPost.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        handlePostBlog()
       })
     }
   } 
@@ -312,17 +315,8 @@ formRegister.addEventListener('submit',async function(e) {
 })
 
 // 
-const requestRefresh = async () => {
-  const token = JSON.parse(localStorage.getItem('login_token'))
-  if(token) {
-    if(token.refreshToken) {
-      const {data,response} = await client.post("/auth/refresh-token",{
-        refreshToken: token.refreshToken
-      })
-      if(response.ok) {
-        localStorage.setItem('login_token',JSON.stringify(data.data.token))
-      }
-    }
-  }
-  renderBlogs()
+const requestRefresh = (refreshToken) => {
+  return client.post("/auth/refresh-token",{
+      refreshToken
+    })
 }
