@@ -151,7 +151,7 @@ const handleLogged = () => {
         const { data: info } = await client.post("/auth/logout", {});
         isLoading = false
         loading()
-        if(info.status_code === 'SUCCESS') {
+        // if(info.status_code === 'SUCCESS') {
           Toastify({
             text: `${info.message}`,
             close: true,
@@ -167,13 +167,13 @@ const handleLogged = () => {
           btnSignOut.classList.add('hidden')
           name.style.display='none'
           handleLogged()
-        } else {
-          const {data,response} = await requestRefresh(token.refreshToken)
-          if(response.ok) {
-            localStorage.setItem("login_token",JSON.stringify(data.data.token))
-            handleSignOut()
-          }
-        }
+        // } else {
+        //   const {data,response} = await requestRefresh(token.refreshToken)
+        //   if(response.ok) {
+        //     localStorage.setItem("login_token",JSON.stringify(data.data.token))
+        //     handleSignOut()
+        //   }
+        // }
       }
       btnSignOut.addEventListener('click',handleSignOut)
       // handle post blog
