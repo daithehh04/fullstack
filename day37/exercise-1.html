@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <div id="root">
+    <header class="header">
+      <div class="container">
+        <h1>Blogs</h1>
+        <div class="logged">
+          <span class="author">Loading...</span>
+          <button class="btn-sign_in">Sign in</button>
+          <button class="hidden btn-sign_out">Sign out</button>
+        </div>
+      </div>
+    </header>
+    <main class="container">
+      <div class="form-post_blog"></div>
+      <div class="list-blog">
+      </div>
+    </main>
+    <form class="form form-login" method="post">
+      <div class="row-input">
+        <label for="emailLogin">Email</label>
+        <input type="text" id="emailLogin" name="email" placeholder="the@gmail.com" class="email-login">
+      </div>
+      <div  class="row-input">
+        <label for="passwordLogin">Password</label>
+        <input type="password" id="passwordLogin" name="password" class="password-login">
+      </div>
+      <div class="btn"><button type="submit">Sign in</button></div>
+      <p>No account? <button type="button" class="btn-create"> Create one</button></p>
+    </form>
+    <form class="form form-register" method="post">
+      <div class="row-input">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Dai The" class="name-register">
+      </div>
+      <div class="row-input">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="the@gmail.com" class="email-register">
+      </div>
+      <div class="row-input">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="password-register">
+      </div>
+      <div class="btn"><button type="submit">Sign up</button></div>
+      <p>Already have an account? <button type="button" class="btn-sign">Sign in</button></p>
+    </form>
+    <div class="overlay"></div>
+    <div class="loader"></div>
+    <div class="overlay-loader"></div>
+  </div>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="module" src="./assets/js/main.js"></script>
+</body>
+</html>

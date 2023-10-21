@@ -1,0 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+input,textarea,button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+.header {
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-blog {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.header button {
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: gray;
+  color: #fff;
+  padding: 8px 25px;
+  border-radius: 99px;
+}
+
+.header button.hidden {
+  display: none;
+}
+
+.blog-item {
+  padding-bottom: 0.5rem;
+  border-bottom: 1.5px solid #ccc;
+}
+
+.blog-item:last-child {
+  border: none;
+}
+
+.blog-item .info {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.blog-item .time-create {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #444444;
+}
+
+.blog-item .avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: pink;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.blog-item .title {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  font-family: initial;
+}
+
+.blog-item .desc {
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+.blog-item .btn-detail {
+  margin-top: 1rem;
+}
+
+.blog-item a {
+  margin-bottom: 0.5rem;
+  width: max-content;
+  display: block;
+  color: #171717;
+}
+
+.form {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  padding: 2rem;
+  width: 500px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 50px;
+}
+
+.form .row-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.form .row-input label {
+  display: block;
+  min-width: 80px;
+}
+.form input {
+  width: 100%;
+  height: 44px;
+  padding-left: 10px;
+  border: 1px solid #ccc;
+}
+
+.form input::placeholder {
+  color: #b1b1b1;
+}
+
+.form p {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.form {
+  background: #fff;
+  z-index: 2;
+  display: none;
+}
+
+.form button[type="button"] {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #fd79a8;
+}
+.form button[type="submit"] {
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid #444444;
+  padding: 8px 25px;
+  border-radius: 99px;
+}
+
+.form-login.show,.form-register.show {
+  display: block;
+}
+.form .btn {
+  text-align: center;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+}
+
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.form-post {
+  margin-top: 2rem;
+}
+
+.form-post input{
+  width: 60%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  padding: 0 15px;
+  height: 44px;
+}
+
+.form-post textarea {
+  width: 60%;
+  font-size: 1rem;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+
+.form-post label {
+  display: inline-block;
+  min-width: 120px;
+  margin-bottom: 4px;
+}
+
+.form-post .row-input {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-post button {
+  border: 1px solid #444444;
+  padding: 8px 15px;
+  border-radius: 99px;
+  cursor: pointer;
+}
+
+.header .logged {
+  display: flex;
+  align-items: center;
+}
+
+.header .author {
+  margin-right: 2rem;
+  font-weight: 500;
+  display: none;
+}
+
+.loader {
+  position: absolute;
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  z-index: 99;
+  border: 5px solid pink;
+  border-top-color: #fc0480;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.overlay-loader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  z-index: 4;
+  background-color: rgba(255, 255, 255, 0.6);
+}
