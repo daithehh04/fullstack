@@ -227,6 +227,14 @@ input,textarea,button {
   display: none;
 }
 
+.content .date-blog {
+  margin-top: 1rem;
+  background: #444444;
+  color: #fff;
+  width: max-content; 
+  padding: 4px 10px;
+}
+
 .loader {
   position: absolute;
   top: calc(50% - 1rem);

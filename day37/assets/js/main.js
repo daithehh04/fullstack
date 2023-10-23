@@ -1,4 +1,5 @@
 import {client} from './client.js'
+import { datePicker } from './date-picker.js'
 const listBlog = document.querySelector('.list-blog')
 const formLogin = document.querySelector('.form-login')
 const formRegister = document.querySelector('.form-register')
@@ -56,6 +57,9 @@ const renderBlogs = async() => {
       return result + "ago";
     }
     const timeBlog = formatTimeDifference(daysDifference, hoursDifference, minutesDifference);
+    const dateOfBlog = `${createdAt.getDate()} / ${createdAt.getMonth() + 1} / ${createdAt.getFullYear()} | 
+    ${createdAt.getHours()}:${createdAt.getMinutes() < 10? "0" + createdAt.getMinutes(): createdAt.getMinutes()
+  }`;
     return (
       `<div class="blog-item">
             <div class="info">
@@ -66,6 +70,7 @@ const renderBlogs = async() => {
               </div>
             </div>
             <div class="content">
+              <div class="date-blog">${dateOfBlog}</div>
               <div class="title">${blog.title}</div>
               <div class="desc">${blog.content}</div>
             </div>
@@ -102,6 +107,7 @@ function handleSwitchLogin() {
 }
 btnFormRegister.addEventListener('click',handleSwitchLogin)
 
+// Get profile user
 const getProfile = async () => {
   const token = JSON.parse(localStorage.getItem('login_token'))
   if(token) {
@@ -113,6 +119,8 @@ const getProfile = async () => {
         if(response.ok) {
           localStorage.setItem("login_token",JSON.stringify(data.data.token))
           getProfile()
+        } else {
+          handleSignOut()
         }
       } else {
         name.innerText = 'Hi, ' + data.data.name
@@ -120,77 +128,65 @@ const getProfile = async () => {
     } 
   }
 }
-
+const formPost = document.createElement('form')
+formPost.className = 'form-post'
+formPost.innerHTML = `
+  <div class="row-input">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" class="title" required/>
+  </div>
+  <div class="row-input">
+    <label for="content">Content</label>
+    <textarea name="content" id="content" cols="30" rows="10" class="content" required></textarea>
+  </div>
+  <div class="row-input">
+    <label for="time">Choose date</label>
+    <input id="date-picker"/>
+  </div>
+  <button>Post Blog</button>
+  `
 const handleLogged = () => {
   const token = JSON.parse(localStorage.getItem('login_token'))
   if(token) {
     if(token.accessToken) {
-      const formPost = document.createElement('form')
-      formPost.className = 'form-post'
-      formPost.innerHTML = `
-        <div class="row-input">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" class="title">
-        </div>
-        <div class="row-input">
-          <label for="content">Content</label>
-          <textarea name="content" id="content" cols="30" rows="10" class="content"></textarea>
-        </div>
-        <button>Post Blog</button>
-        `
       formPostBlog.append(formPost)
+      const date = document.getElementById("date-picker");
+      datePicker(date)
       name.style.display = 'block'
       getProfile()
       btnSignIn.classList.add('hidden')
       btnSignOut.classList.remove('hidden')
-      // handle sign out
-      const handleSignOut = async () => {
-        client.setToken(token.accessToken)
-        isLoading = true
-        loading()
-        const { data: info } = await client.post("/auth/logout", {});
-        isLoading = false
-        loading()
-        // if(info.status_code === 'SUCCESS') {
-          Toastify({
-            text: `${info.message}`,
-            close: true,
-            className: "info",
-            style: {
-              background: "#55efc4",
-            }
-          }).showToast();
-          handleReset()
-          localStorage.removeItem('login_token')
-          formPost.remove()
-          btnSignIn.classList.remove('hidden')
-          btnSignOut.classList.add('hidden')
-          name.style.display='none'
-          handleLogged()
-        // } else {
-        //   const {data,response} = await requestRefresh(token.refreshToken)
-        //   if(response.ok) {
-        //     localStorage.setItem("login_token",JSON.stringify(data.data.token))
-        //     handleSignOut()
-        //   }
-        // }
-      }
-      btnSignOut.addEventListener('click',handleSignOut)
-      // handle post blog
+      
       const handlePostBlog = async() => {
         const titleEle = document.querySelector('.form-post .title')
         const contentEle = document.querySelector('.form-post .content')
-        client.setToken(token.accessToken)
         const dataPost = {
           title: titleEle.value,
           content: contentEle.value
         }
+        client.setToken(token.accessToken)
         isLoading = true
         loading()
         const {data:info,response} = await client.post('/blogs', dataPost);
         isLoading = false
         loading()
-        if(response.ok) {
+        if(!response.ok) {
+          const {data,response} = await requestRefresh(token.refreshToken)
+          if(response.ok) {
+            localStorage.setItem("login_token",JSON.stringify(data.data.token))
+            handlePostBlog()
+          } else {
+              formPost.reset()
+              Toastify({
+                text: `Đăng bài thất bại`,
+                close: true,
+                className: "info",
+                style: {
+                  background: "#ea8685",
+                }
+              }).showToast();
+            }
+        } else {
           Toastify({
             text: `${info.message}`,
             close: true,
@@ -201,22 +197,93 @@ const handleLogged = () => {
           }).showToast();
           renderBlogs()
           formPost.reset()
-        } else {
-          const {data,response} = await requestRefresh(token.refreshToken)
-          if(response.ok) {
-            localStorage.setItem("login_token",JSON.stringify(data.data.token))
-            handlePostBlog()
-          }
         }
       }
       formPost.addEventListener('submit', async (e) => {
         e.preventDefault()
-        handlePostBlog()
+        const time =(date._flatpickr.selectedDates[0].toString())
+        const dateTime = new Date(time)
+        const datePostBlog = `${dateTime.getDate()} / ${dateTime.getMonth() + 1} / ${dateTime.getFullYear()} lúc 
+          ${dateTime.getHours()} : ${dateTime.getMinutes() < 10? "0" + dateTime.getMinutes(): dateTime.getMinutes()
+        }`
+        if(time) {
+          isLoading = true
+          loading()
+          setTimeout(() => {
+            Toastify({
+              text: `Bài viết sẽ được đăng vào ngày ${datePostBlog}`,
+              close: true,
+              className: "info",
+              style: {
+                background: "#4b7bec",
+              }
+            }).showToast();
+            formPost.reset()
+            isLoading = false
+            loading()
+          },1000)
+        } else {
+          handlePostBlog()
+        }
       })
     }
-  } 
+  }
 }
 handleLogged()
+// handle sign out
+const handleSignOut = async () => {
+  const formPost = document.querySelector('.form-post')
+  const token = JSON.parse(localStorage.getItem('login_token'))
+  if(token) {
+    if(token.accessToken) {
+      client.setToken(token.accessToken)
+      isLoading = true
+      loading()
+      const { data: info } = await client.post("/auth/logout", {});
+      isLoading = false
+      loading()
+      if(info.status_code === 'SUCCESS') {
+        Toastify({
+          text: `${info.message}`,
+          close: true,
+          className: "info",
+          style: {
+            background: "#55efc4",
+          }
+        }).showToast();
+        handleReset()
+        localStorage.removeItem('login_token')
+        formPost.remove()
+        btnSignIn.classList.remove('hidden')
+        btnSignOut.classList.add('hidden')
+        name.style.display='none'
+      } else {
+        const {data,response} = await requestRefresh(token.refreshToken)
+        if(response.ok) {
+          localStorage.setItem("login_token",JSON.stringify(data.data.token))
+          handleSignOut()
+        } else {
+          Toastify({
+            text: `${info.message}`,
+            close: true,
+            className: "info",
+            style: {
+              background: "#ea8685",
+            }
+          }).showToast();
+          handleReset()
+          localStorage.removeItem('login_token')
+          formPost.remove()
+          btnSignIn.classList.remove('hidden')
+          btnSignOut.classList.add('hidden')
+          name.style.display='none'
+        }
+      }
+    }
+  }
+}
+btnSignOut.addEventListener('click',handleSignOut)
+
 const handleLogin = async (data) => {
   isLoading = true
   loading()
@@ -265,7 +332,7 @@ const handleRegister = async (data) => {
       close: true,
       className: "info",
       style: {
-        background: "#ff7675",
+        background: "#ea8685",
       }
     }).showToast();
   }
