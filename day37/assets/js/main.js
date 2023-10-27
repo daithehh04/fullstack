@@ -66,10 +66,10 @@ const htmlBlog = (blog,check) => {
     // Cắt nhiều dấu xuống dòng thành 1 dấu xuống dòng
     content = content?.replace(/\n{2,}/g, "\n");
     // Handle Regex
-    content = regexEmail(content)
-    content = regexLink(content)
-    content = regexPhone(content)
     content = regexYoutube(content)
+    content = regexEmail(content)
+    content = regexPhone(content)
+    content = regexLink(content)
     return (
       `<div class="blog-item">
             <div class="info">
@@ -126,7 +126,7 @@ const renderBlogs = async() => {
         }
       }else {
         Toastify({
-          text: `Đăng nhập để xem!`,
+          text: `Đăng nhập để xem !`,
           close: true,
           className: "info",
           style: {
