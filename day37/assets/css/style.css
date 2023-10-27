@@ -261,3 +261,18 @@ input,textarea,button {
   z-index: 4;
   background-color: rgba(255, 255, 255, 0.6);
 }
+
+.blog-detail {
+  border-radius: 2rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 999;
+  width: 70%;
+  height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  padding: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

@@ -1,5 +1,7 @@
 import {client} from './client.js'
 import { datePicker } from './date-picker.js'
+import { regexEmail,regexPhone,regexLink,regexYoutube } from './regex.js'
+const root = document.querySelector('#root')
 const listBlog = document.querySelector('.list-blog')
 const formLogin = document.querySelector('.form-login')
 const formRegister = document.querySelector('.form-register')
@@ -14,6 +16,8 @@ const formPostBlog = document.querySelector('.form-post_blog')
 const name = document.querySelector('.header .author')
 const loader = document.querySelector('.loader')
 const overlayLoader = document.querySelector('.overlay-loader')
+const divBlogDetail = document.createElement('div')
+divBlogDetail.className = 'blog-detail'
 let isLoading = true
 
 const loading = () => {
@@ -25,13 +29,25 @@ const loading = () => {
     overlayLoader.style.display = 'block'
   }
 }
-const renderBlogs = async() => {
-  const { data: blogs } = await client.get("/blogs");
-  isLoading = false
-  loading()
-  const html = blogs.data.map((blog) => {
-    const nameUser = blog.userId.name
-    const avatar = nameUser.trim()[0]
+function formatTimeDifference(days, hours, minutes) {
+  let result = "";
+  if (days > 0) {
+    result += days + " day" + (days > 1 ? "s" : "") + " ";
+  }
+  if (hours > 0) {
+    result += hours + " hour" + (hours > 1 ? "s" : "") + " ";
+  }
+  if (minutes > 0) {
+    result += minutes + " minute" + (minutes > 1 ? "s" : "") + " ";
+  }
+  if (result === "") {
+    return "just now";
+  }
+  return result + "ago";
+}
+const htmlBlog = (blog,check) => {
+  const nameUser = blog?.userId?.name
+    const avatar = nameUser?.trim()[0]
     // time create blog
     const createTime = blog.createdAt
     const currentTime = new Date();
@@ -40,47 +56,86 @@ const renderBlogs = async() => {
     const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     const hoursDifference = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutesDifference = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-    function formatTimeDifference(days, hours, minutes) {
-      let result = "";
-      if (days > 0) {
-        result += days + " day" + (days > 1 ? "s" : "") + " ";
-      }
-      if (hours > 0) {
-        result += hours + " hour" + (hours > 1 ? "s" : "") + " ";
-      }
-      if (minutes > 0) {
-        result += minutes + " minute" + (minutes > 1 ? "s" : "") + " ";
-      }
-      if (result === "") {
-        return "just now";
-      }
-      return result + "ago";
-    }
     const timeBlog = formatTimeDifference(daysDifference, hoursDifference, minutesDifference);
     const dateOfBlog = `${createdAt.getDate()} / ${createdAt.getMonth() + 1} / ${createdAt.getFullYear()} | 
     ${createdAt.getHours()}:${createdAt.getMinutes() < 10? "0" + createdAt.getMinutes(): createdAt.getMinutes()
   }`;
+    let content = blog?.content
+    // Cắt nhiều dấu cách thành 1 dấu cách
+    content = content?.replace(/\s+/g, " ")
+    // Cắt nhiều dấu xuống dòng thành 1 dấu xuống dòng
+    content = content?.replace(/\n{2,}/g, "\n");
+    // Handle Regex
+    content = regexEmail(content)
+    content = regexLink(content)
+    content = regexPhone(content)
+    content = regexYoutube(content)
     return (
       `<div class="blog-item">
             <div class="info">
               <div class="avatar">${avatar}</div>
               <div>
-                <div class="name">${blog.userId.name}</div>
+                <div class="name">${blog.userId?.name}</div>
                 <div class="time-create">${timeBlog}</div>
               </div>
             </div>
             <div class="content">
               <div class="date-blog">${dateOfBlog}</div>
-              <div class="title">${blog.title}</div>
-              <div class="desc">${blog.content}</div>
+              <div class="title">${blog?.title}</div>
+              <div class="desc">${content}</div>
             </div>
-            <a href="#" target="_blank" class="btn-detail"># View more</a>
-            <a href="#" target="_blank" class="btn-profile"># ${blog.userId.name}</a>
+            ${!check ? 
+            `<a href="#" target="_blank" class="btn-detail" data-id =${blog?._id}># View more</a>`
+            : ''}
           </div>
       `
     )
+}
+const renderBlogs = async() => {
+  const { data: blogs } = await client.get("/blogs");
+  isLoading = false
+  loading()
+  let check = false
+  const html = blogs.data.map((blog) => {
+    return htmlBlog(blog,check)
   }).join("")
   listBlog.innerHTML = html
+
+  // Handle view detail
+  const btnDetail = document.querySelectorAll('.btn-detail')
+  btnDetail.forEach((btn) => {
+    btn.addEventListener('click',async function(e) {
+      e.preventDefault()
+      const token = JSON.parse(localStorage.getItem('login_token'))
+      if(token) {
+        if(token.accessToken) {
+          isLoading = true
+          loading()
+          e.preventDefault()
+          const id = btn.getAttribute('data-id')
+          const {data,response} = await client.get(`/blogs/${id}`)
+          isLoading = false
+          loading()
+          let check = true
+          if(response.ok) {
+            divBlogDetail.innerHTML = htmlBlog(data,check)
+            overlay.classList.add('show')
+            divBlogDetail.innerHTML = htmlBlog(data.data)
+            root.append(divBlogDetail)
+          }
+        }
+      }else {
+        Toastify({
+          text: `Đăng nhập để xem!`,
+          close: true,
+          className: "info",
+          style: {
+            background: "#ea8685",
+          }
+        }).showToast();
+      }
+    })
+  })
 }
 renderBlogs()
 
@@ -95,6 +150,7 @@ function handleReset() {
   overlay.classList.remove('show')
   formLogin.reset()
   formRegister.reset()
+  divBlogDetail.remove()
 }
 overlay.addEventListener('click',handleReset)
 btnFormLogin.addEventListener('click',function() {
@@ -145,6 +201,7 @@ formPost.innerHTML = `
   </div>
   <button>Post Blog</button>
   `
+
 const handleLogged = () => {
   const token = JSON.parse(localStorage.getItem('login_token'))
   if(token) {
@@ -175,7 +232,8 @@ const handleLogged = () => {
           if(response.ok) {
             localStorage.setItem("login_token",JSON.stringify(data.data.token))
             handlePostBlog()
-          } else {
+          } 
+          else {
               formPost.reset()
               Toastify({
                 text: `Đăng bài thất bại`,
@@ -201,11 +259,12 @@ const handleLogged = () => {
       }
       formPost.addEventListener('submit', async (e) => {
         e.preventDefault()
-        const time =(date._flatpickr.selectedDates[0].toString())
+        const time =(date._flatpickr.selectedDates[0]?.toString())
         const dateTime = new Date(time)
         const datePostBlog = `${dateTime.getDate()} / ${dateTime.getMonth() + 1} / ${dateTime.getFullYear()} lúc 
           ${dateTime.getHours()} : ${dateTime.getMinutes() < 10? "0" + dateTime.getMinutes(): dateTime.getMinutes()
         }`
+        console.log(time);
         if(time) {
           isLoading = true
           loading()
