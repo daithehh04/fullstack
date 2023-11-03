@@ -18,7 +18,9 @@ function Home() {
     }
   };
   const getApiKey = async (userEmail) => {
+    setLoading(true)
     const {data,response} = await client.get(`/api-key?email=${userEmail}`)
+    setLoading(false)
     return {data,response}
   }
 
@@ -42,27 +44,9 @@ function Home() {
             localStorage.setItem("userEmail", userEmail);
             setApiKey(apiKey)
             getTodos(apiKey)
-            toast.success(`Chào mừng ${userEmail.slice(0, userEmail.indexOf("@"))} quay trở lại!`, {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: false,
-              progress: undefined,
-              theme: "light",
-              });
+            toast.success(`Chào mừng ${userEmail.slice(0, userEmail.indexOf("@"))} quay trở lại!`)
           } else {
-            toast.error(`${data.message}`, {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: false,
-              progress: undefined,
-              theme: "light",
-              });
+            toast.error(`${data.message}`)
             return setTimeout(() => window.location.reload(), 3000);
           }
         })
@@ -70,16 +54,7 @@ function Home() {
     } else {
       const userEmail = localStorage.getItem("userEmail");
       if (userEmail) {
-        toast.success(`Chào mừng ${userEmail.slice(0, userEmail.indexOf("@"))} quay trở lại!`, {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-          });
+        toast.success(`Chào mừng ${userEmail.slice(0, userEmail.indexOf("@"))} quay trở lại!`)
       } else {
         localStorage.removeItem("userEmail");
         localStorage.removeItem("apiKey");

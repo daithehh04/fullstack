@@ -5,40 +5,27 @@ import { toast, ToastContainer } from 'react-toastify';
 
 function FormTodo({apiKey,setLoading,getTodos}) {
   const [value,setValue] = useState()
-  function addTodo() {
-    return client.post('/todos', {value}, apiKey);
+  async function addTodo() {
+    setLoading(true)
+    console.log(value);
+    console.log(apiKey);
+    const {data,response} = await client.post('/todos', {value}, apiKey);
+    setLoading(false)
+    return {data,response}
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
     if(!value || value.trim().length < 2) {
-      toast.warn('Todo cần có ít nhất 2 kí tự!', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-        });
+      toast.warn('Todo cần có ít nhất 2 kí tự!')
     } else {
-      setLoading(true)
       const {data,response} = await addTodo()
-      setLoading(false)
       if(response.ok) {
         setValue("")
-        toast.success('Thêm thành công!', {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "light",
-          });
-          getTodos(apiKey)
-      } 
+        toast.success('Thêm thành công!')
+        getTodos(apiKey)
+      } else {
+        toast.error(`${data.message}`)
+      }
     }
   }
   const handleChange = (e) => {

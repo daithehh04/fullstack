@@ -21,7 +21,6 @@ export const client = {
       options.body = JSON.stringify(body);
     }
     const response = await fetch(url, options);
-
     const data = await response.json();
 
     return { response, data };

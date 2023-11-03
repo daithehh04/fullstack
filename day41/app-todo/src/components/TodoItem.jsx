@@ -7,56 +7,45 @@ function TodoItem({apiKey, todo, setLoading, getTodos}) {
   let value = todo.todo
   const [isUpdate,setIsUpdate] = useState(false)
   const [valueUpdate,setValueUpdate] = useState()
-  const [check,setCheck] = useState()
+  const [check,setCheck] = useState(false)
   const deleteTodos = async () => {
     setLoading(true)
     const { data, response } = await client.delete(`/todos/${todo._id}`, apiKey);
     setLoading(false)
     if(response.ok) {
-      toast.success(`${data.message}`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-        });
-        getTodos(apiKey)
+      toast.success(`${data.message}`)
+    } else {
+      localStorage.removeItem("userEmail");
+      localStorage.removeItem("apiKey");
+      window.location.reload();
     }
+    setIsUpdate(false)
   }
 
   const updateTodos = async () => {
     setLoading(true)
-    console.log('valueUpdate',valueUpdate);
     const { data, response } = await client.patch(`/todos/${todo._id}`,{valueUpdate}, apiKey);
     console.log(data);
     console.log(response);
     setLoading(false)
     if(response.ok) {
-      toast.success(`${data.message}`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-        });
+      toast.success(`${data.message}`)
         getTodos(apiKey)
         value = valueUpdate
+    } else {
+      localStorage.removeItem("userEmail");
+      localStorage.removeItem("apiKey");
+      window.location.reload();
     }
     setIsUpdate(false)
   }
   return (
     <>
-      <input type="text" defaultValue={value} readOnly={!isUpdate} onChange={(e) => setValueUpdate(e.target.value)}/>
+      <input className={`${check ? 'completed' : ""}`} type="text" defaultValue={value} readOnly={!isUpdate} onChange={(e) => setValueUpdate(e.target.value)}/>
       <div className="flex row">
        {isUpdate &&  <div className="flex complete">
           <label htmlFor="checkbox">Not Completed</label>
-          <input type="checkbox" id="checkbox"/>
+          <input type="checkbox" id="checkbox" defaultChecked={check} onClick={() => setCheck(!check)}/>
         </div>}
         <div className="flex">
           {isUpdate && <Button className="orange" onClick={() => setIsUpdate(false)}>Thoát</Button>}
