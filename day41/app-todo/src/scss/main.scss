@@ -1,0 +1,153 @@
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+}
+input {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+button {
+  margin-right: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  border-radius: 4px;
+  padding:  0.5rem 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all .3s;
+  color: #fff;
+  &.green {
+    background-color: #14B8A6;
+  }
+  &.red {
+    background-color: #EF4444;
+  }
+  &.orange {
+    background-color: #F97316;
+  }
+  &:hover {
+    scale: 0.95;
+  }
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  max-width: 24rem;
+  padding: 8px 8px;
+  border-bottom: 1px solid #14B8A6;
+  input {
+    padding-left: 10px;
+    margin-right: 1rem;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    background-color: transparent;
+    font-size: 1rem;
+    color: #fff;
+    &::placeholder {
+      color: #9CA3AF;
+    }
+    caret-color: #fff;
+  }
+}
+
+.app {
+  padding: 2rem;
+}
+
+.container {
+  background-color: #334155;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+.list-todo {
+  width: 100%;
+  max-width: 48rem;
+  li {
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    input[type="text"] {
+      outline: none;
+      color: #000;
+      width: 100%;
+      height: 38px;
+      padding: 0 1rem;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    .row {
+      margin-top: 10px;
+      justify-content: space-between;
+    }
+    .complete {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      input[type="checkbox"] {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+}
+
+
+.loader {
+  position: absolute;
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  z-index: 99;
+  border: 6px solid #bdddd9;
+  border-top-color: #14B8A6;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.overlay-loader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  z-index: 4;
+  background-color: rgba(255, 255, 255, 0.6);
+}
