@@ -44,7 +44,7 @@ function Home() {
             localStorage.setItem("userEmail", userEmail);
             setApiKey(apiKey)
             getTodos(apiKey)
-            toast.success(`Chào mừng ${userEmail.slice(0, userEmail.indexOf("@"))} quay trở lại!`)
+            toast.success(`Chào bạn ${userEmail.slice(0, userEmail.indexOf("@"))}!`)
           } else {
             toast.error(`${data.message}`)
             return setTimeout(() => window.location.reload(), 3000);
@@ -84,7 +84,7 @@ function Home() {
             <li>Không có todo</li>
           )}
         </ul>
-        <ToastContainer />
+        <ToastContainer autoClose={3000}/>
       </div>
       {loading && <Loading/>}
     </div>

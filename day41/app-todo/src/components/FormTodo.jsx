@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import Button from "./Button"
 import { client } from "../utils/client";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 function FormTodo({apiKey,setLoading,getTodos}) {
   const [value,setValue] = useState()
@@ -37,7 +37,6 @@ function FormTodo({apiKey,setLoading,getTodos}) {
         <input type="text" name="todo" placeholder="Thêm một việc làm mới" autoFocus="" onChange={handleChange} ref={refInput}/>
         <Button className="green">Thêm mới</Button>
       </form>
-      <ToastContainer />
     </>
   )
 }
