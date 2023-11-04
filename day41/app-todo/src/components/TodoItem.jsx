@@ -46,6 +46,7 @@ function TodoItem({apiKey, todo, setLoading, getTodos}) {
   const handleExit = () => {
     setValueUpdate(value)
     setIsUpdate(false)
+    setCheck(todo.isCompleted)
   }
   return (
     <>
