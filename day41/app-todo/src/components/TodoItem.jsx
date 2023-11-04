@@ -52,7 +52,7 @@ function TodoItem({apiKey, todo, setLoading, getTodos}) {
       <input className={`${check ? 'completed' : ""}`} type="text" value={valueUpdate} readOnly={!isUpdate} onChange={(e) => setValueUpdate(e.target.value)}/>
       <div className="flex row">
        {isUpdate &&  <div className="flex complete">
-          <label htmlFor="checkbox">Not Completed</label>
+          <label htmlFor="checkbox">{check?'Completed':'Not Completed'}</label>
           <input type="checkbox" id="checkbox" defaultChecked={check} onClick={() => setCheck(!check)}/>
         </div>}
         <div className="flex">
