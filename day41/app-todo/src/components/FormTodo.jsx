@@ -7,9 +7,7 @@ function FormTodo({apiKey,setLoading,getTodos}) {
   const [value,setValue] = useState()
   async function addTodo() {
     setLoading(true)
-    console.log(value);
-    console.log(apiKey);
-    const {data,response} = await client.post('/todos', {value}, apiKey);
+    const {data,response} = await client.post('/todos', { todo:value }, apiKey);
     setLoading(false)
     return {data,response}
   }

@@ -24,7 +24,7 @@ function TodoItem({apiKey, todo, setLoading, getTodos}) {
 
   const updateTodos = async () => {
     setLoading(true)
-    const { data, response } = await client.patch(`/todos/${todo._id}`,{valueUpdate}, apiKey);
+    const { data, response } = await client.patch(`/todos/${todo._id}`,{todo:valueUpdate}, apiKey);
     console.log(data);
     console.log(response);
     setLoading(false)
