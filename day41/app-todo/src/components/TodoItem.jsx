@@ -24,7 +24,7 @@ function TodoItem({apiKey, todo, setLoading, getTodos}) {
 
   const updateTodos = async () => {
     setLoading(true)
-    const { data, response } = await client.patch(`/todos/${todo._id}`,{todo:valueUpdate}, apiKey);
+    const { data, response } = await client.patch(`/todos/${todo._id}`,{todo:valueUpdate, isCompleted:check}, apiKey);
     console.log(data);
     console.log(response);
     setLoading(false)
@@ -41,7 +41,7 @@ function TodoItem({apiKey, todo, setLoading, getTodos}) {
   }
   return (
     <>
-      <input className={`${check ? 'completed' : ""}`} type="text" defaultValue={value} readOnly={!isUpdate} onChange={(e) => setValueUpdate(e.target.value)}/>
+      <input className={`${todo.isCompleted ? 'completed' : ""}`} type="text" defaultValue={value} readOnly={!isUpdate} onChange={(e) => setValueUpdate(e.target.value)}/>
       <div className="flex row">
        {isUpdate &&  <div className="flex complete">
           <label htmlFor="checkbox">Not Completed</label>

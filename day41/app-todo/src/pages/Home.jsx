@@ -7,6 +7,7 @@ import Loading from "../components/Loading";
 
 function Home() {
   const [todos,setTodos] = useState([])
+  console.log(todos);
   const [loading,setLoading] = useState(false)
   const [apiKey, setApiKey] = useState(localStorage.getItem("apiKey"));
   const getTodos = async (apiKey) => {
