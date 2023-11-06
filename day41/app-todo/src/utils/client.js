@@ -5,8 +5,11 @@ export const client = {
   setUrl: function (url) {
     this.serverApi = url;
   },
-  send: async function (url, method = "GET", body = null, api = null) {
+  send: async function (url, method = "GET",params = {}, body = null, api = null) {
     url = `${this.serverApi}${url}`;
+    if (Object.keys(params).length) {
+      url = url + "?" + new URLSearchParams(params).toString();
+    }
     const headers = {
       "Content-Type": "application/json"
     };
@@ -26,23 +29,23 @@ export const client = {
     return { response, data };
   },
 
-  get: function (url, api = null) {
-    return this.send(url, "GET", null, api);
+  get: function (url, params, api = null) {
+    return this.send(url, "GET", params, null, api);
   },
 
   post: function (url, body, api = null) {
-    return this.send(url, "POST", body, api);
+    return this.send(url, "POST",{}, body, api);
   },
 
   put: function (url, body, api = null) {
-    return this.send(url, "PUT", body, api);
+    return this.send(url, "PUT",{}, body, api);
   },
 
   patch: function (url, body, api = null) {
-    return this.send(url, "PATCH", body, api);
+    return this.send(url, "PATCH",{}, body, api);
   },
 
   delete: function (url, api = null) {
-    return this.send(url, "DELETE", null, api);
+    return this.send(url, "DELETE",{}, null, api);
   },
 };

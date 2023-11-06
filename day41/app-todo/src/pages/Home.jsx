@@ -9,9 +9,13 @@ function Home() {
   const [todos,setTodos] = useState([])
   const [loading,setLoading] = useState(false)
   const [apiKey, setApiKey] = useState(localStorage.getItem("apiKey"));
+  const [valueSearch,setValueSearch] = useState({
+    q:""
+  })
+
   const getTodos = async (apiKey) => {
     setLoading(true)
-    const { data, response } = await client.get('/todos', apiKey);
+    const { data, response } = await client.get('/todos',valueSearch, apiKey);
     setLoading(false)
     if(response.ok) {
       setTodos(data.data.listTodo)
@@ -19,7 +23,7 @@ function Home() {
   };
   const getApiKey = async (userEmail) => {
     setLoading(true)
-    const {data,response} = await client.get(`/api-key?email=${userEmail}`)
+    const {data,response} = await client.get(`/api-key?email=${userEmail}`,{},apiKey)
     setLoading(false)
     return {data,response}
   }
@@ -28,46 +32,52 @@ function Home() {
     if (apiKey) {
       getTodos(apiKey);
     }
-  },[])
+  },[valueSearch])
 
   useEffect(() => {
     if (!apiKey) {
+      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
       const userEmail =
         localStorage.getItem("userEmail") ||
         window.prompt("Please enter your email:", "example@example.com");
-      if (userEmail) {
-        getApiKey(userEmail).then((res) => {
-          const {data,response} = res
-          if(response.ok) {
-            let apiKey = data.data.apiKey
-            localStorage.setItem("apiKey", apiKey);
-            localStorage.setItem("userEmail", userEmail);
-            setApiKey(apiKey)
-            getTodos(apiKey)
-            toast.success(`Chào bạn ${userEmail.slice(0, userEmail.indexOf("@"))}!`)
+      if(emailRegex.test(userEmail)) {
+        if (userEmail) {
+          getApiKey(userEmail).then((res) => {
+            const {data,response} = res
+            if(response.ok) {
+              let apiKey = data.data.apiKey
+              localStorage.setItem("apiKey", apiKey);
+              localStorage.setItem("userEmail", userEmail);
+              setApiKey(apiKey)
+              getTodos(apiKey)
+              toast.success(`Chào bạn ${userEmail.slice(0, userEmail.indexOf("@"))}!`)
+            } else {
+              toast.error(`${data.message}`)
+              return setTimeout(() => window.location.reload(), 3000);
+            }
+          })
+        }else {
+          const userEmail = localStorage.getItem("userEmail");
+          if (userEmail) {
+            toast.success(`Chào mừng ${userEmail.slice(0, userEmail.indexOf("@"))} quay trở lại!`)
           } else {
-            toast.error(`${data.message}`)
-            return setTimeout(() => window.location.reload(), 3000);
+            localStorage.removeItem("userEmail");
+            localStorage.removeItem("apiKey");
+            window.location.reload();
           }
-        })
-      }
-    } else {
-      const userEmail = localStorage.getItem("userEmail");
-      if (userEmail) {
-        toast.success(`Chào mừng ${userEmail.slice(0, userEmail.indexOf("@"))} quay trở lại!`)
+        }
       } else {
-        localStorage.removeItem("userEmail");
-        localStorage.removeItem("apiKey");
-        window.location.reload();
+        toast.warn("Email không hợp lệ!!!")
+        return setTimeout(() => window.location.reload(), 3000);
       }
-    }
+    } 
   }, []);
  
   return (
     <div className="app">
       <div className="container">
         <h1 className="title">Welcome to Todo App!</h1>
-        <FormTodo apiKey={apiKey} setLoading={setLoading} getTodos={getTodos}/>
+        <FormTodo apiKey={apiKey} setLoading={setLoading} getTodos={getTodos} onSearch={setValueSearch}/>
         <ul className="list-todo">
           {todos.length>0 ? (
             todos.map((todo,index) => (
