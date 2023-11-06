@@ -3,7 +3,7 @@ import Button from "./Button"
 import { client } from "../utils/client";
 import { toast } from 'react-toastify';
 
-function FormTodo({apiKey,setLoading,getTodos, onSearch}) {
+function FormTodo({apiKey,setLoading,getTodos, onSearch,onAdd}) {
   const [value,setValue] = useState()
   const [isSearch,setIsSearch] = useState(false)
   const refInput = useRef()
@@ -20,11 +20,12 @@ function FormTodo({apiKey,setLoading,getTodos, onSearch}) {
     if(!value || value.trim().length < 2) {
       toast.warn('Todo cần có ít nhất 2 kí tự!')
     } else {
+      onAdd(true)
       const {data,response} = await addTodo()
       if(response.ok) {
         toast.success('Thêm thành công!')
         getTodos(apiKey)
-        refInput.current.value = ""
+        setValue("")
         refInput.current.focus()
       } else {
         toast.error(`${data.message}`)
@@ -60,7 +61,7 @@ function FormTodo({apiKey,setLoading,getTodos, onSearch}) {
   return (
     <div className="flex">
       <form method="post" onSubmit={handleSubmit}>
-        <input type="text" name="todo" placeholder="Thêm một việc làm mới" autoFocus="" onChange={handleChange} ref={refInput}/>
+        <input type="text" name="todo" value={value || ""} placeholder="Thêm một việc làm mới" autoFocus="" onChange={handleChange} ref={refInput}/>
         <Button className="green">Thêm mới</Button>
       </form>
       <Button className="orange" onClick={handleClickSearch}>Tìm kiếm</Button>

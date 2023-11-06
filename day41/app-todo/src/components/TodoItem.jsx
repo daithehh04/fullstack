@@ -3,7 +3,7 @@ import Button from "./Button"
 import { client } from "../utils/client"
 import { toast } from "react-toastify"
 
-function TodoItem({apiKey, todo, setLoading, getTodos}) {
+function TodoItem({apiKey, todo, setLoading, getTodos,onAdd,isAdd}) {
   let value = todo.todo
   const [isUpdate,setIsUpdate] = useState(false)
   const [valueUpdate,setValueUpdate] = useState(value)
@@ -23,6 +23,12 @@ function TodoItem({apiKey, todo, setLoading, getTodos}) {
     setIsUpdate(false)
   }
 
+  useEffect(() => {
+    if(isAdd) {
+      handleExit()
+      onAdd(false)
+    }
+  },[isAdd])
   useEffect(() => {
     setValueUpdate(value)
   },[value])

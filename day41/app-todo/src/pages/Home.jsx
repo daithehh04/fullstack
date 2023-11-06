@@ -8,6 +8,7 @@ import Loading from "../components/Loading";
 function Home() {
   const [todos,setTodos] = useState([])
   const [loading,setLoading] = useState(false)
+  const [add,setAdd] = useState(false)
   const [apiKey, setApiKey] = useState(localStorage.getItem("apiKey"));
   const [valueSearch,setValueSearch] = useState({
     q:""
@@ -77,12 +78,14 @@ function Home() {
     <div className="app">
       <div className="container">
         <h1 className="title">Welcome to Todo App!</h1>
-        <FormTodo apiKey={apiKey} setLoading={setLoading} getTodos={getTodos} onSearch={setValueSearch}/>
+        <FormTodo apiKey={apiKey} onAdd={setAdd} setLoading={setLoading} getTodos={getTodos} onSearch={setValueSearch}/>
         <ul className="list-todo">
           {todos.length>0 ? (
             todos.map((todo,index) => (
               <li key={index*Math.random()}>
                 <TodoItem 
+                  isAdd={add}
+                  onAdd={setAdd}
                   apiKey={apiKey}
                   todo={todo}
                   setLoading={setLoading}
