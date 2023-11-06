@@ -56,21 +56,21 @@ function Home() {
               return setTimeout(() => window.location.reload(), 3000);
             }
           })
-        }else {
-          const userEmail = localStorage.getItem("userEmail");
-          if (userEmail) {
-            toast.success(`Chào mừng ${userEmail.slice(0, userEmail.indexOf("@"))} quay trở lại!`)
-          } else {
-            localStorage.removeItem("userEmail");
-            localStorage.removeItem("apiKey");
-            window.location.reload();
-          }
         }
       } else {
         toast.warn("Email không hợp lệ!!!")
         return setTimeout(() => window.location.reload(), 3000);
       }
-    } 
+    } else {
+      const userEmail = localStorage.getItem("userEmail");
+      if (userEmail) {
+        toast.success(`Chào mừng ${userEmail.slice(0, userEmail.indexOf("@"))} quay trở lại!`)
+      } else {
+        localStorage.removeItem("userEmail");
+        localStorage.removeItem("apiKey");
+        window.location.reload();
+      }
+    }
   }, []);
  
   return (

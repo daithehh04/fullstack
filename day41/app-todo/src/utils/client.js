@@ -7,7 +7,7 @@ export const client = {
   },
   send: async function (url, method = "GET",params = {}, body = null, api = null) {
     url = `${this.serverApi}${url}`;
-    if (Object.keys(params).length) {
+    if (Object.keys(params).length>1) {
       url = url + "?" + new URLSearchParams(params).toString();
     }
     const headers = {
