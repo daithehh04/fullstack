@@ -17,15 +17,16 @@ function Login({setLoading,setApiKey}) {
           localStorage.setItem("apiKey", apiKey);
           localStorage.setItem("email", value);
         } else {
-          toast.error(`${response.message}`);
+          toast.error(`${res.message}`);
           localStorage.removeItem("apiKey");
           localStorage.removeItem("email");
         }
+        setLoading(false)
       });
     } else {
       toast.warn("Vui lòng nhập đúng định dạng Email!");
     }
-    setLoading(false)
+    
   }
   return (
     <div className='login'>

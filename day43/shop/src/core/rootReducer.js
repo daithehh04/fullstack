@@ -8,12 +8,14 @@ export const rootReducer = (state, action) => {
       const existProductItem = state.products[existProductIndex]
       let updateItems;
       if (existProductItem) {
-        existProductItem.amount += 1;
-        existProductItem.quantity -= 1;
+         const updateItem = {
+          ...existProductItem,
+          amount: existProductItem.amount + 1,
+          quantity: existProductItem.quantity - 1
+        }
         updateItems = [...state.products];
-        const cartData = JSON.parse(localStorage.getItem("cart"));
-        cartData[existProductIndex].amount = +cartData[existProductIndex].amount + 1;
-        localStorage.setItem("cart", JSON.stringify(cartData));
+        updateItems[existProductIndex] = updateItem
+        localStorage.setItem("cart", JSON.stringify(updateItems));
       } else {
         const newProduct = { ...action.payload, amount: 1 };
         updateItems = [...state.products, newProduct];

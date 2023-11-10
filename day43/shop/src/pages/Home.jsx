@@ -25,7 +25,6 @@ function Home() {
     if(apiKey) {
       getProfile()
         .then((res) => {
-          console.log(res);
           if (res.code === 200) {
             toast.success(`Chào mừng ${res.data.emailId.name} quay trở lại`);
           } else {
