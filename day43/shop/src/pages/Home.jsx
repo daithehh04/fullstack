@@ -45,7 +45,6 @@ function Home() {
           <ProductItem key={product._id} product={product}/>
         ))}
         </div>
-        {/* <p className='text-no_cart'>Chưa có gì trong giỏ hàng!</p> */}
         <TableCart setLoading={setLoading}/>
       </div>
       {loading && <Loading/>}

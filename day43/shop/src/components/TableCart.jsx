@@ -17,15 +17,17 @@ function TableCart({setLoading}) {
     setLoading(true)
     const {data,response} = await client.post("/orders",body,localStorage.getItem("apiKey"))
     setLoading(false)
-    console.log(response);
     if(response.ok) {
       dispatch({
         type: "cart/delete"
       })
       toast.info('Đã thanh toán')
     } else {
-      toast.warn(response.message)
+      toast.warn(data.message)
     }
+  }
+  if(!products.length) {
+    return <p className='text-no_cart'>Chưa có gì trong giỏ hàng!</p>
   }
   return (
     <div>
