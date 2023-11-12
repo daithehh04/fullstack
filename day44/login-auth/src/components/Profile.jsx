@@ -11,7 +11,7 @@ const apiKeys = import.meta.env.VITE_KEY_EMAILJS
 const Profile = () => {
   const { isLoading, user, isAuthenticated } = useAuth0();
   const [loading, setLoading] = useState(false);
-  const sendEmail = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     emailjs
@@ -55,7 +55,7 @@ const Profile = () => {
             )}
           </div>
 
-          <form action="" className="form" onSubmit={sendEmail}>
+          <form action="" className="form" onSubmit={handleSubmit}>
             <div className="field">
               <label htmlFor="email">Email của bạn* </label>
               <input
