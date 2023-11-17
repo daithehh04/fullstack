@@ -11,7 +11,7 @@ import { useSelector } from '../core/useSelector'
 import { getLocalStorage } from '../utils/localStorage'
 
 export default function SliderThumbWithTooltip() {
-  const [sliderValue, setSliderValue] = useState(getLocalStorage('RANGE_NUMBER'))
+  const [sliderValue, setSliderValue] = useState(getLocalStorage('RANGE_NUMBER') || 100)
   const [showTooltip, setShowTooltip] = useState(false)
   const {dispatch} = useSelector()
   const handleChangeSlider = (v) => {
