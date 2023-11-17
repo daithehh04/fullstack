@@ -4,7 +4,8 @@ import {
   clearLocalStorage,
 } from "../utils/localStorage";
 const data = getLocalStorage("data");
-const MAX_TIME = Math.ceil(Math.log2(getLocalStorage("RANGE_NUMBER")));
+const RANGE_NUMBER = !getLocalStorage('RANGE_NUMBER').length ? 100 : getLocalStorage('RANGE_NUMBER')
+const MAX_TIME = Math.ceil(Math.log2(RANGE_NUMBER));
 const randomNum = Math.floor(Math.random() * getLocalStorage('RANGE_NUMBER')) + 1
 export const initialState = {
   section: data.length || 0,

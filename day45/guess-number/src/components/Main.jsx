@@ -7,7 +7,7 @@ import SliderThumbWithTooltip from "./Slider.jsx";
 import { getLocalStorage } from "../utils/localStorage.js";
 const Main = () => {
   const { state } = useSelector();
-  const RANGE_NUMBER = getLocalStorage('RANGE_NUMBER') || 100
+  const RANGE_NUMBER = !getLocalStorage('RANGE_NUMBER').length ? 100 : getLocalStorage('RANGE_NUMBER')
   const MAX_TIME = Math.ceil(Math.log2(RANGE_NUMBER));
   const { maxTimes } = state;
   const { message } = state;
