@@ -5,12 +5,15 @@ import Form from "./Form.jsx";
 import ResultTable from "./ResultTable.jsx";
 import SliderThumbWithTooltip from "./Slider.jsx";
 import { getLocalStorage } from "../utils/localStorage.js";
+import ModalConFirm from "./Modal.jsx";
 const Main = () => {
   const { state } = useSelector();
-  const RANGE_NUMBER = !getLocalStorage('RANGE_NUMBER').length ? 100 : getLocalStorage('RANGE_NUMBER')
-  const MAX_TIME = Math.ceil(Math.log2(RANGE_NUMBER));
-  const { maxTimes } = state;
-  const { message } = state;
+  let RANGE_NUMBER = getLocalStorage('RANGE_NUMBER')
+  if(Array.isArray(RANGE_NUMBER) && !RANGE_NUMBER.length ) {
+    RANGE_NUMBER = 100
+  }
+  const MAX_TIME = Math.ceil(Math.log2(RANGE_NUMBER))
+  const { maxTimes,message } = state;
   return (
     <Box p="4" mt={4}>
       <Divider
@@ -29,11 +32,12 @@ const Main = () => {
         Còn {maxTimes}/{MAX_TIME} lần
       </Heading>
       <Heading as="h2" color="teal.700">
-        Bạn cần tìm kiếm một số từ 1 đến {RANGE_NUMBER || 100}
+        Bạn cần tìm kiếm một số từ 1 đến {RANGE_NUMBER}
       </Heading>
       <SliderThumbWithTooltip/>
       <Form />
       <ResultTable />
+      <ModalConFirm/>
     </Box>
   );
 };

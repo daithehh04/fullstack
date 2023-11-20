@@ -11,7 +11,10 @@ import { useSelector } from '../core/useSelector'
 import { getLocalStorage } from '../utils/localStorage'
 
 export default function SliderThumbWithTooltip() {
-  const RANGE_NUMBER = !getLocalStorage('RANGE_NUMBER').length ? 100 : getLocalStorage('RANGE_NUMBER')
+  let RANGE_NUMBER = getLocalStorage('RANGE_NUMBER')
+  if(Array.isArray(RANGE_NUMBER) && !RANGE_NUMBER.length ) {
+    RANGE_NUMBER = 100
+  }
   const [sliderValue, setSliderValue] = useState(RANGE_NUMBER)
   const [showTooltip, setShowTooltip] = useState(false)
   const {dispatch} = useSelector()

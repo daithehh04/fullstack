@@ -1,0 +1,156 @@
+.cart {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  .cart-wrapper {
+    margin-top: 3rem;
+    display: flex;
+    gap: 2rem;
+    .checkout {
+      width: 30%;
+      position: fixed;
+      top: 14rem;
+      .total-price {
+        font-size: 2.4rem;
+        font-weight: 600;
+      }
+      .link-home,button {
+        line-height: 1;
+        cursor: pointer;
+        margin-top: 2rem;
+        border: none;
+        width: 100%;
+        display: block;
+        text-decoration: none;
+        background-color: orangered;
+        color: #fff;
+        font-size: 2rem;
+        padding: 1rem;
+        text-align: center;
+        font-weight: 700;
+      }
+    }
+    .list-cart {
+      width: 65%;
+      margin-left: auto;
+    }
+  }
+  .title {
+    font-size: 3.6rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  .cart-item {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 3rem;
+    margin-left: auto; 
+    margin-right: auto;
+    display: flex;
+    .link-item {
+      display: block;
+      width: 200px;
+    }
+    .thumb {
+      object-fit: cover;
+      height: 200px;
+      width: 200px;
+      cursor: pointer;
+    }
+    .info {
+      width: 100%;
+      margin-left: 2rem;
+      .brand {
+        font-size: 2.4rem;
+        font-weight: 700;
+      }
+      .name {
+        margin-top: 1rem;
+        font-size: 2rem;
+      }
+      .price {
+        display: block;
+        margin-top: 0.6rem;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: orangered;
+      }
+      .quantity {
+        margin-top: 2rem;
+        font-size: 2.2rem;
+      }
+      .block {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 2.4rem;
+        font-weight: 500;
+        gap: 1rem;
+        .delete-icon {
+          transition: all .3s;
+          &:hover {
+            color: orangered;
+            cursor: pointer;
+          }
+         }
+      }
+    }
+    .actions {
+      margin-top: 1rem;
+      border: 1px solid orangered;
+      width: max-content;
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: orangered;
+      span {
+        border-left: 1px solid orangered;
+        border-right: 1px solid orangered;
+        padding: 4px 8px;
+      }
+      button {
+        font-weight: 700;
+        border: none;
+        background: none;
+        padding: 4px 8px;
+        cursor: pointer;
+        &.disable {
+          cursor: initial;
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+  .no-cart {
+    font-size: 2rem;
+    margin-top: 9rem;
+    text-align: center;
+    .icon {
+      font-size: 4rem;
+      color: orangered;
+      display: flex;
+      justify-content: center;
+    }
+    .btn {
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 2rem;
+      border: none;
+      border-radius: 4px;
+      width: max-content;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      text-decoration: none;
+      background-color: orangered;
+      color: #fff;
+      font-size: 2rem;
+      padding: 1rem 2rem;
+      text-align: center;
+      font-weight: 700;
+    }
+  }
+}

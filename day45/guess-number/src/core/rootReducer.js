@@ -4,14 +4,18 @@ import {
   clearLocalStorage,
 } from "../utils/localStorage";
 const data = getLocalStorage("data");
-const RANGE_NUMBER = !getLocalStorage('RANGE_NUMBER').length ? 100 : getLocalStorage('RANGE_NUMBER')
+let RANGE_NUMBER = getLocalStorage('RANGE_NUMBER')
+if(Array.isArray(RANGE_NUMBER) && !RANGE_NUMBER.length ) {
+  RANGE_NUMBER = 100
+}
 const MAX_TIME = Math.ceil(Math.log2(RANGE_NUMBER));
-const randomNum = Math.floor(Math.random() * getLocalStorage('RANGE_NUMBER')) + 1
+// const randomNum = Math.floor(Math.random() * getLocalStorage('RANGE_NUMBER')) + 1
 export const initialState = {
   section: data.length || 0,
-  maxTimes: MAX_TIME,
+  maxTimes: Math.ceil(Math.log2(RANGE_NUMBER)),
   data: data || [],
-  randomOfRangeNumber: randomNum,
+  RANGE_NUMBER: RANGE_NUMBER,
+  randomOfRangeNumber: Math.floor(Math.random() * RANGE_NUMBER) + 1,
   isAddTable: false,
   message: "Chào mừng bạn đến với trò chơi đoán số!",
 };
@@ -56,19 +60,12 @@ export const rootReducer = (state, action) => {
         maxTimes: MAX_TIME
       }
     }
-    case "SET_MAX_TIMES": {
-      return {
-        ...state,
-        maxTimes: action.payload
-      }
-    }
     case "PLAY_AGAIN_FORM": {
       
       return {
         ...state,
         maxTimes: action.payload,
         section: data.length > 0 ? state.turn + 1 : 0,
-        randomOfRangeNumber: randomNum,
         message: "Chào mừng bạn đến với trò chơi đoán số!",
         isAddTable: false,
       };

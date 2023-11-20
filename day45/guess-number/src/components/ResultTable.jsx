@@ -11,16 +11,15 @@ import {
   Thead,
   Tbody,
   Text,
-  IconButton,
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
+
 import { useSelector } from "../core/useSelector";
 import { getLocalStorage } from "../utils/localStorage";
 const ResultTable = () => {
   const tableRef = useRef(null);
   const pageTableRef = useRef(0);
 
-  const { state, dispatch } = useSelector();
+  const { state } = useSelector();
   const { isAddTable } = state;
   const data = getLocalStorage("data") || [];
 
@@ -69,25 +68,16 @@ const ResultTable = () => {
     };
   }, [data]);
 
-  const deleteTable = () => {
-    dispatch({ type: "REMOVE_TABLE" });
-  };
+  if(!data.length) {
+    return null
+  }
   return (
     <Box mt={4}>
-      {data.length ? (
+      {data.length && (
         <Flex
           overflow={data?.length > 0 ? "scroll hidden" : "hidden"}
           ref={tableRef}
         >
-          <IconButton
-            position="fixed"
-            right="16px"
-            color="#1d4044"
-            background="teal"
-            variant="solid"
-            icon={<DeleteIcon />}
-            onClick={deleteTable}
-          />
           {data.map((item, index) => {
             return (
               <TableContainer
@@ -137,8 +127,6 @@ const ResultTable = () => {
             );
           })}
         </Flex>
-      ) : (
-        ""
       )}
     </Box>
   );

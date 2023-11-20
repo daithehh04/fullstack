@@ -1,0 +1,34 @@
+.products {
+  padding-top: 7rem;
+  .title {
+    text-align: center;
+    font-size: 3.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .list-product {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 3rem;
+  }
+  .pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .page-item {
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 2rem;
+      margin: 2rem 1rem;
+      padding: 0.6rem 1rem;
+      &.active {
+        color: #fff;
+        font-weight: 700;
+        background-color: orangered;
+      }
+    }
+  }
+}
+
