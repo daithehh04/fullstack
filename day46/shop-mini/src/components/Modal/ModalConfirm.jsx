@@ -26,7 +26,7 @@ export default function ModalConFirm({isOpen, onClose, product}) {
           <ModalHeader fontSize={'2rem'} color={'#e74c3c'} fontWeight={700}>Confirm!</ModalHeader>
           <ModalCloseButton fontSize={'1.4rem'}/>
           <ModalBody pb={6} fontSize={'1.8rem'} fontWeight={500}>
-            Bạn chắc chắn chứ?
+            Bạn chắc chắn muốn xóa {product?.name} chứ?
           </ModalBody>
           <ModalFooter>
             <Button colorScheme='red' onClick={handleRemove} padding={'1.6rem'} mr={3} fontSize={'1.6rem'}>
