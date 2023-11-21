@@ -28,8 +28,8 @@ function Products() {
   const totalPage = useSelector(state => state.cart.totalPage)
   const status = useSelector(state => state.cart.statusProduct)
   useEffect(() => {
-    const newFilter = { ...queryRef.current, page: pageValue };
-    queryRef.current = newFilter;
+    const newQuery = { ...queryRef.current, page: pageValue };
+    queryRef.current = newQuery;
     const params = queryRef.current
     dispatch(fetchProducts(params))
     if (
@@ -50,6 +50,8 @@ function Products() {
     // setItemOffset(event.selected * itemsPerPage);
     const queryParams = { page: selectedPage };
     const searchString = queryString.stringify(queryParams);
+    console.log('selectedPage',selectedPage);
+    console.log('searchString',searchString);
     navigate(`/products?${searchString}`);
     window.scroll({
       top: 0,

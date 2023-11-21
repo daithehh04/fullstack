@@ -26,7 +26,7 @@ function Cart() {
   }, [cart]);
   const handleIncreaseCart = (product) => {
     dispatch(add(product))
-    toast('Đã thêm 1 sản phẩm')
+    toast.success('Đã thêm 1 sản phẩm')
   }
   const handleDecreaseCart = (product) => {
     if(product.amount === 1) {
@@ -34,7 +34,7 @@ function Cart() {
       setCartRemove(product)
     } else {
       dispatch(decrease(product))
-      toast('Đã giảm 1 sản phẩm')
+      toast.success('Đã giảm 1 sản phẩm')
     }
   }
   const handleRemoveCart = (product) => {
@@ -44,7 +44,7 @@ function Cart() {
 
   const handleCheckout = () => {
     dispatch(delete_cart())
-    toast.info('Thank you! You have successfully paid.')
+    toast.success('Thank you! You have successfully paid.')
   }
   return (
     <div className="cart">

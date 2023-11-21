@@ -16,7 +16,7 @@ function App() {
           })}
         </Route>
       </Routes>
-      <ToastContainer pauseOnHover={false} autoClose={1500}/>
+      <ToastContainer position="top-center" pauseOnHover={false} autoClose={1500}/>
     </>
   )
 }

@@ -28,7 +28,7 @@ export default function ModalConFirm({isOpen, onClose, product}) {
             Bạn chắc chắn chứ?
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme='orange' onClick={handleRemove} padding={'1.6rem'} mr={3} fontSize={'1.6rem'}>
+            <Button colorScheme='red' onClick={handleRemove} padding={'1.6rem'} mr={3} fontSize={'1.6rem'}>
               Ok
             </Button>
             <Button onClick={onClose} padding={'1.6rem'} fontSize={'1.6rem'}>Cancel</Button>

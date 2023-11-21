@@ -16,7 +16,7 @@ function ProductDetail() {
   const productDetail = useSelector(state => state.cart.productDetail)
   const handleAddCart = (product) => {
     dispatch(add(product))
-    toast('Thêm sản phẩm thành công')
+    toast.success('Thêm sản phẩm thành công')
   }
   if(status === 'pending') {
     return <Loading />

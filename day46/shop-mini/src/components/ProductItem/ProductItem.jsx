@@ -5,13 +5,14 @@ import "./ProductItem.scss"
 import { useDispatch } from "react-redux";
 import { add } from "../../stores/slices/productSlice";
 import { toast } from 'react-toastify';
+import { Tooltip } from '@chakra-ui/react'
 
 function ProductItem({product}) {
   const {name,image,price,_id} = product
   const dispatch = useDispatch()
   const handleAddCart = () => {
     dispatch(add(product))
-    toast.info('Đã thêm sản phẩm vào giỏ hàng')
+    toast.success('Đã thêm sản phẩm vào giỏ hàng')
   }
   return (
     <div className="product-item">
@@ -23,7 +24,9 @@ function ProductItem({product}) {
       </NavLink>
       <div className="info">
         <span className="price">${price}</span>
-        <div className="cart-icon" onClick={handleAddCart}><CartIcon/></div>
+        <Tooltip label="Add to cart" fontSize={'1.3rem'} padding={'4px'} hasArrow placement='top'>
+          <div className="cart-icon" onClick={handleAddCart}><CartIcon/></div>
+        </Tooltip>
       </div>
     </div>
   )
