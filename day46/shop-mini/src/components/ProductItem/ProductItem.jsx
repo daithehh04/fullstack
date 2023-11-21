@@ -23,7 +23,7 @@ function ProductItem({product}) {
         <h3 className="name">{name}</h3>
       </NavLink>
       <div className="info">
-        <span className="price">${price}</span>
+        <span className="price">${price.toLocaleString()}</span>
         <Tooltip label="Add to cart" fontSize={'1.3rem'} padding={'4px'} hasArrow placement='top'>
           <div className="cart-icon" onClick={handleAddCart}><CartIcon/></div>
         </Tooltip>

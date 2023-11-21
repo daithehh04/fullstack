@@ -30,7 +30,7 @@ function ProductDetail() {
         <p className="desc">{productDetail?.description}</p>
         <div className="block">
           <p className="category">Category: {productDetail?.category}</p>
-          <span className="price">${productDetail?.price}</span>
+          <span className="price">${productDetail?.price?.toLocaleString()}</span>
         </div>
         <div className="btn-group">
           <Link to={'/'} className="btn">Go home</Link>

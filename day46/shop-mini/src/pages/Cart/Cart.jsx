@@ -64,7 +64,7 @@ function Cart() {
         <div className="cart-wrapper">
           <div className="checkout">
             <p className="total-price">
-              Total: ${totalPrice}
+              Total: ${totalPrice.toLocaleString()}
             </p>
             <button onClick={handleCheckout}>Check out</button>
             <Link to={'/'} className="link-home">Home</Link>
@@ -85,10 +85,10 @@ function Cart() {
               <div className="info">
                 <h2 className="brand">{product.brand}</h2>
                 <h3 className="name">{product.name}</h3>
-                <span className="price">${product.price}</span>
+                <span className="price">${product.price.toLocaleString()}</span>
                 <p className="quantity">Còn lại: {product.quantity}</p>
                 <div className="block">
-                  <p className="total">${product.amount * product.price}</p>
+                  <p className="total">${(product.amount * product.price).toLocaleString()}</p>
                   <div className="delete-icon" onClick={() => handleRemoveCart(product)}>
                     <DeleteIcon />
                   </div>
