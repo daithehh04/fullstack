@@ -24,6 +24,9 @@ function Cart() {
     );
     setTotalPrice(pice)
   }, [cart]);
+  useEffect(() => {
+    window.scroll(0,0)
+  },[])
   const handleIncreaseCart = (product) => {
     dispatch(add(product))
     toast.success('Đã thêm 1 sản phẩm')
@@ -63,8 +66,8 @@ function Cart() {
             <p className="total-price">
               Total: ${totalPrice}
             </p>
-            <Link to={'/'} className="link-home">Home</Link>
             <button onClick={handleCheckout}>Check out</button>
+            <Link to={'/'} className="link-home">Home</Link>
           </div>
           <div className="list-cart">
             {cart.map((product,index) => (

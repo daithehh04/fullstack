@@ -22,9 +22,9 @@ export default function ModalConFirm({isOpen, onClose, product}) {
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent padding={'1rem'}>
-          <ModalHeader fontSize={'1.8rem'}>Confirm</ModalHeader>
-          <ModalCloseButton fontSize={'1.2rem'}/>
-          <ModalBody pb={6} fontSize={'1.6rem'}>
+          <ModalHeader fontSize={'2rem'} color={'#e74c3c'} fontWeight={700}>Confirm!</ModalHeader>
+          <ModalCloseButton fontSize={'1.4rem'}/>
+          <ModalBody pb={6} fontSize={'1.8rem'} fontWeight={500}>
             Bạn chắc chắn chứ?
           </ModalBody>
           <ModalFooter>
