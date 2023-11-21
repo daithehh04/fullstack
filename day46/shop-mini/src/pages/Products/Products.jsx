@@ -50,8 +50,6 @@ function Products() {
     // setItemOffset(event.selected * itemsPerPage);
     const queryParams = { page: selectedPage };
     const searchString = queryString.stringify(queryParams);
-    console.log('selectedPage',selectedPage);
-    console.log('searchString',searchString);
     navigate(`/products?${searchString}`);
     window.scroll({
       top: 0,

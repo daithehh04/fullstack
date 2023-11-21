@@ -24,6 +24,7 @@ export const fetchProductDetail = createAsyncThunk(
     return data.data
     } catch (error) {
       toast.error('Error !')
+      console.log(error);
       throw error
     }
   }
