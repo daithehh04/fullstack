@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import "./ProductDetail.scss"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
@@ -9,6 +9,7 @@ import Loading from "../../components/Loading/Loading";
 function ProductDetail() {
   const {id} = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const status = useSelector(state => state.cart.statusProductDetail)
   useEffect(() => {
     dispatch(fetchProductDetail(id))
@@ -20,6 +21,9 @@ function ProductDetail() {
   }
   if(status === 'pending') {
     return <Loading />
+  }
+  if(!productDetail) {
+    navigate('/')
   }
   return (
     <div className="product-detail">

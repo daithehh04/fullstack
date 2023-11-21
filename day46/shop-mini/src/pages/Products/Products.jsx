@@ -16,9 +16,6 @@ function Products() {
   const searchParams = new URLSearchParams(location.search);
 // Lấy giá trị của tham số 'page'
   let pageValue = searchParams.get('page');
-  if(+pageValue < 1) {
-    pageValue = 1
-  }
   const queryRef = useRef({
     page: 1,
     limit: 20
@@ -27,6 +24,9 @@ function Products() {
   const listProduct = useSelector(state => state.cart.products)
   const totalPage = useSelector(state => state.cart.totalPage)
   const status = useSelector(state => state.cart.statusProduct)
+  if(+pageValue < 1 || +pageValue > totalPage) {
+    pageValue = 1
+  }
   useEffect(() => {
     const newQuery = { ...queryRef.current, page: pageValue };
     queryRef.current = newQuery;
