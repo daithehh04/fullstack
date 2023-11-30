@@ -3,7 +3,7 @@ import { Avatar } from "@nextui-org/react"
 function Information({skills, history}) {
   return (
     <div className="w-[25rem] flex flex-col items-center border border-solid border-[#ccc] p-4 rounded-lg shadow-medium">
-       <Avatar src="https://portfolio-sage-delta.vercel.app/assets/images/avatar.jpg" className="w-[15rem] h-[15rem] text-large" />
+       <Avatar src="https://portfolio-daithehh04.vercel.app/assets/images/avatar.jpg" className="w-[15rem] h-[15rem] text-large" />
        {/* Skills */}
        <div className="mt-4 skills">
         <h3 className="heading">{skills.title}</h3>
