@@ -1,0 +1,27 @@
+{
+  "contact" : {
+    "title": "Thông tin liên hệ"
+  },
+  "project" : {
+    "title": "Các dự án cá nhân",
+    "desc1": "Dự án thiết lập nhằm giúp việc quản lý công việc một cách tốt hơn. Công nghệ sử dụng: HTML, CSS, Javascript, ReactJs, Material-ui, Dnd-kit ...",
+    "desc2": "Dự án mô tả việc mua hàng trên các trang thương mại điện tử như thêm, xóa sản phẩm khỏi giỏ hàng. Công nghệ sử dụng: HTML, CSS, Javascript, ReactJs ..."
+  },
+  "hobby": {
+    "title": "Sở thích cá nhân",
+    "hobbies": [
+      "Nghe nhạc, Đọc sách, Xem thời sự ...",
+      "Các môn thể thao: Đá bóng, Bóng bàn, Cầu lông ...",
+      "Tìm hiểu các công nghệ mới..."
+    ]
+  },
+  "skills": {
+    "title": "Kỹ năng",
+    "heading1": "Kỹ năng làm việc",
+    "heading2": "Các kỹ năng khác",
+    "text2": "Kỹ năng nghiên cứu và tìm kiếm tương đối tốt. Tư duy làm việc, kỹ năng làm việc nhóm tốt so với độ tuổi."
+  },
+  "history": {
+    "title": "Lịch sử"
+  }
+}

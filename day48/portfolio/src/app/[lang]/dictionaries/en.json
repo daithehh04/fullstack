@@ -1,0 +1,27 @@
+{
+  "contact" : {
+    "title": "Contact Info"
+  },
+  "project" : {
+    "title": "My projects",
+    "desc1": "The project is set up to help manage work better. Technologies used: HTML, CSS, Javascript, ReactJs, Material-ui, Dnd-kit...",
+    "desc2": "The project describes purchases on e-commerce sites such as adding and removing products from the shopping cart. Technology used: HTML, CSS, Javascript, ReactJs..."
+  },
+  "hobby": {
+    "title": "My Hobbies",
+    "hobbies": [
+      "Listen to music, Read books, Watch the news...",
+      "Sports: Soccer, Table Tennis, Badminton...",
+      "Learn new technologies..."
+    ]
+  },
+  "skills": {
+    "title": "My skills",
+    "heading1": "Web developer",
+    "heading2": "Other skills",
+    "text2": "Relatively good research and search skills. Working thinking, good teamwork skills compared to age."
+  },
+  "history": {
+    "title": "History"
+  }
+}
