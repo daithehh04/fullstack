@@ -5,8 +5,13 @@ import Link from "next/link";
 
 export async function generateMetadata({ params: {id} }) {
   const tour = await getData(id)
+  if(Object.keys(tour).length !== 0) {
+    return {
+      title: tour.home.name + ' | Checkout',
+    }
+  }
   return {
-    title: tour.home.name + ' | Checkout',
+    title: 'Error | Checkout',
   }
 }
 

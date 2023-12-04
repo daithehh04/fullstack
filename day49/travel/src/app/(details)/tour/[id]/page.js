@@ -4,9 +4,14 @@ import { API, URL_IMG } from "~/utils/config";
 
 export async function generateMetadata({ params: {id} }) {
   const data = await getDataDetail(id)
-  return {
-    title: data.home.name + ' | Travel' ,
+  if(Object.keys(data).length !== 0) {
+    return {
+      title: data.home.name + ' | Travel' ,
+    }
   }
+  return {
+    title: 'Error | Travel' ,
+  } 
 }
 
 const getDataDetail = async (id) => {
