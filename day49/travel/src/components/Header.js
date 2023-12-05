@@ -7,7 +7,7 @@ import Search from "./Search"
 function Header() {
   const pathname = usePathname()
   return (
-    <div className="flex py-3 shadow-lg px-[5%] fixed w-full top-0 bg-primary z-10">
+    <div className="flex justify-between h-[5rem] py-3 shadow-lg px-[5%] fixed w-full top-0 bg-primary z-10">
       <ul className="flex gap-[2rem] items-center">
         <li className="nav-link">
           <Link href={'/'} className={`${pathname === '/' && 'active'}`}>Trang chủ</Link>
@@ -16,7 +16,7 @@ function Header() {
           <Link href={'/gallery'} className={`${pathname === '/gallery' && 'active'}`}>Thư viện</Link>
         </li>
       </ul>
-      <Search/>
+      {/* <Search/> */}
       <ThemeSwitcher/>
     </div>
   )

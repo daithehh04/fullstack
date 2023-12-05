@@ -28,7 +28,7 @@ async function TourDetail({params}) {
   }
   const {home,destinationBox,destinations,services,servicesBox,galleryBox,gallery,blogBox,blog} = data
   return (
-    <div className="mt-[3.6rem] mb-[5rem]">
+    <div className="mt-[5.6rem] mb-[5rem]">
       <h3 className="text-center text-[4rem] font-semibold">{home?.name}</h3>
       <span className="block mb-3 font-semibold text-center text-[1.2rem]">{home?.content}</span>
       <p className="px-[5%] text-center mb-4">{home?.textcontent}</p>

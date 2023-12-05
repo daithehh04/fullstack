@@ -8,7 +8,7 @@ const getData = async () => {
 async function Gallery() {
   const data = await getData()
   return (
-    <div className="wide my-[5rem]">
+    <div className="wide my-[7rem]">
       {data.map((destination,index) => {
         const gallery = destination.galleryBox
         const title = destination.gallery.content

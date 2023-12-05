@@ -11,7 +11,14 @@ const getData = async () => {
 async function Home() {
   const data = await getData()
   return (
-    <div className="wide my-[5rem] grid grid-cols-3 gap-[2rem]">
+    <>
+      <div className="relative banner">
+        <div className="absolute bottom-[-4rem] left-[50%] -translate-x-1/2 p-[2rem] bg-primary shadow-xl rounded-md">
+          <Search/>
+        </div>
+      </div>
+      <h2 className="text-center text-[3rem] font-semibold mt-[8rem]">Popular Destinations</h2>
+      <div className="wide mb-[5rem] mt-[2rem] grid grid-cols-3 gap-[2rem]">
       {data?.map((tour,index) => {
         const {name,content,textcontent} = tour.home
         return (
@@ -34,7 +41,9 @@ async function Home() {
           </div>
         )
       })}
-    </div>
+      </div>
+    </>
+    
   )
 }
 

@@ -1,6 +1,5 @@
 import { API } from "~/utils/config";
 import Form from "../Form";
-import { MdTour } from "react-icons/md";
 import Link from "next/link";
 
 export async function generateMetadata({ params: {id} }) {
@@ -29,8 +28,7 @@ async function Checkout({params: {id}}) {
     </div>
   }
   return (
-    <div>
-      <h2 className="text-center mt-[5rem] text-[2rem] font-semibold gap-2 flex items-center justify-center">Book Tour to {tour.home.name} <MdTour color="green"/></h2>
+    <div className="checkout pt-[7rem] pb-[5rem]">
        <Form name={tour.home.name}/>
     </div>
   )

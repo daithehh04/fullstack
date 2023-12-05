@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import emailjs from "@emailjs/browser";
 import {Button, Input} from "@nextui-org/react";
+import { MdTour } from "react-icons/md";
 import toast from 'react-hot-toast';
 import Loading from '~/components/Loading';
 const serviceId = 'service_99is4ha'
@@ -53,7 +54,8 @@ function Form({name}) {
       );
   }
   return (
-    <div className="mb-[5rem]">
+    <div className='mx-auto bg-primary w-max p-[2rem]'>
+      <h2 className="text-center text-[2rem] font-semibold gap-2 flex items-center justify-center text-yellow-500">Book Tour to {name} <MdTour color="green"/></h2>
        <form action="" onSubmit={handleSubmit} className='w-[400px] mx-auto pt-[2rem] flex flex-col gap-[1rem] relative z-[4]'>
       <Input
         isReadOnly
