@@ -7,7 +7,7 @@ import LoginBtn from "./LoginBtn";
 function Header() {
   const pathname = usePathname();
   return (
-    <div className="flex h-[5rem] py-3 shadow-lg px-[5%] fixed w-full top-0 bg-primary items-center z-10">
+    <div className="flex h-[5rem] py-3 shadow-lg px-[5%] fixed w-full top-0 bg-primary items-center z-50">
       <ul className="flex gap-[2rem] items-center">
         <li className="nav-link">
           <Link href={"/"} className={`${pathname === "/" && "active"}`}>
