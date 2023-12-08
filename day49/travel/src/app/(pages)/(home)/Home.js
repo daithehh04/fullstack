@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link";
 import { MdLocationOn } from "react-icons/md";
 import Search from "~/components/Search";
-import { API, URL_IMG } from "~/utils/config"
+import { API, URL_IMG } from "~/utils/config";
 
 const getData = async () => {
   const res = await fetch(`${API}/pages`)

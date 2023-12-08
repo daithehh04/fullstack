@@ -36,6 +36,7 @@ module.exports = {
           // ... rest of the colors
         }
       }
-    })
+    }),
+    
   ]
 }

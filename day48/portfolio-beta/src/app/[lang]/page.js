@@ -1,9 +1,9 @@
 import { getDictionary } from "./dictionaries"
-import Header from "@/components/Header";
-import Information from "@/components/Information";
-import Contact from "@/components/Contact";
-import Project from "@/components/Project";
-import Hobbies from "@/components/Hobbies";
+import Header from "~/components/Header";
+import Information from "~/components/Information";
+import Contact from "~/components/Contact";
+import Project from "~/components/Project";
+import Hobbies from "~/components/Hobbies";
 
 export default async function Home({params: {lang}}) {
   const dict = await getDictionary(lang)

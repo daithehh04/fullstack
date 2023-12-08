@@ -50,7 +50,7 @@ function Search() {
         />
       
       </div>
-      <div className="absolute w-full top-[4.5rem] bg-primary z-20 max-h-[11rem] shadow-xl overflow-auto" style={{boxShadow: ' rgba(0, 0, 0, 0.35) 0px 5px 15px;'}}>
+      <div className="absolute w-full top-[4.5rem] bg-primary z-20 max-h-[11rem] shadow-xl overflow-auto">
       {loading && <p className="w-full p-3">Loading...</p>}
       {!loading && <ul>
         {!!data?.length && data?.map((item,index) => (
