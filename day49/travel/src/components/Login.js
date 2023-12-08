@@ -32,8 +32,6 @@ function Login() {
         }
       );
       const data = await response.json();
-      console.log("data", data);
-      console.log("response", response);
       if (response.ok) {
         signIn("credentials", {
           user: JSON.stringify(data),
@@ -50,7 +48,7 @@ function Login() {
     redirect("/");
   }
   return (
-    <div className="flex flex-col h-[100vh] bg-white !z-[199] relative items-center justify-center">
+    <div className="flex flex-col h-[100vh] bg-primary !z-[199] relative items-center justify-center">
       <h3 className="text-[2.5rem] mb-2 font-semibold">Log In</h3>
       <form
         action=""
