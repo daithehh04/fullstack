@@ -4,7 +4,8 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-export async function generateMetadata({ params: { id } }) {
+export async function generateMetadata({ params }) {
+  const id = params.id.split('~')[1]
   const session = await getServerSession();
   if (!session) {
     return redirect("/signin");
@@ -13,6 +14,11 @@ export async function generateMetadata({ params: { id } }) {
   if (Object.keys(tour).length !== 0) {
     return {
       title: tour.home.name + " | Checkout",
+      description: tour.home.content.slice(0, 150),
+      openGraph: {
+        title: tour.home.name + " | Checkout",
+        description: tour.home.content.slice(0, 150),
+      },
     };
   }
   return {
@@ -25,7 +31,8 @@ const getData = async (id) => {
   const data = await res.json();
   return data;
 };
-async function Checkout({ params: { id } }) {
+async function Checkout({ params }) {
+  const id = params.id.split('~')[1]
   const tour = await getData(id);
   if (Object.keys(tour).length === 0) {
     return (

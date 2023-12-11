@@ -5,13 +5,18 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { FaRegEyeSlash, FaGithub, FaRegEye } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
 function Login() {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => setIsVisible(!isVisible);
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -62,15 +67,34 @@ function Login() {
           placeholder="Enter your email"
           variant="bordered"
           isRequired
+          startContent={
+            <MdEmail className="flex-shrink-0 text-xl pointer-events-none text-default-400" />
+          }
           onChange={handleChange}
         />
         <Input
-          type="password"
           name="password"
           label="Password"
           placeholder="Enter your password"
           variant="bordered"
           isRequired
+          startContent={
+            <RiLockPasswordFill className="flex-shrink-0 text-xl pointer-events-none text-default-400" />
+          }
+          endContent={
+            <button
+              className="focus:outline-none"
+              type="button"
+              onClick={toggleVisibility}
+            >
+              {isVisible ? (
+                <FaRegEyeSlash className="text-xl pointer-events-none text-default-400" />
+              ) : (
+                <FaRegEye className="text-xl pointer-events-none text-default-400" />
+              )}
+            </button>
+          }
+          type={isVisible ? "text" : "password"}
           onChange={handleChange}
         />
         <Button
@@ -95,7 +119,7 @@ function Login() {
             }}
           >
             <FaGithub fontSize={"1.4rem"} />
-            Github
+            Sign in with Github
           </Button>
         </div>
         <div>
@@ -110,7 +134,7 @@ function Login() {
             }}
           >
             <FcGoogle fontSize={"1.4rem"} />
-            Google
+            Sign in with Google
           </Button>
         </div>
         <p className="text-center">

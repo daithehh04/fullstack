@@ -4,13 +4,19 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { MdEmail, MdOutlineDriveFileRenameOutline } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
 function Register() {
   const [form, setForm] = useState({
     email: "",
     password: "",
     name: "",
   });
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => setIsVisible(!isVisible);
   const router = useRouter();
   const handleChange = (e) => {
     setForm({
@@ -61,6 +67,9 @@ function Register() {
           placeholder="Enter your name"
           variant="bordered"
           isRequired
+          startContent={
+            <MdOutlineDriveFileRenameOutline className="flex-shrink-0 text-xl pointer-events-none text-default-400" />
+          }
           onChange={handleChange}
         />
         <Input
@@ -70,15 +79,34 @@ function Register() {
           placeholder="Enter your email"
           variant="bordered"
           isRequired
+          startContent={
+            <MdEmail className="flex-shrink-0 text-xl pointer-events-none text-default-400" />
+          }
           onChange={handleChange}
         />
         <Input
-          type="password"
           name="password"
           label="Password"
           placeholder="Enter your password"
           variant="bordered"
           isRequired
+          startContent={
+            <RiLockPasswordFill className="flex-shrink-0 text-xl pointer-events-none text-default-400" />
+          }
+          endContent={
+            <button
+              className="focus:outline-none"
+              type="button"
+              onClick={toggleVisibility}
+            >
+              {isVisible ? (
+                <FaRegEyeSlash className="text-xl pointer-events-none text-default-400" />
+              ) : (
+                <FaRegEye className="text-xl pointer-events-none text-default-400" />
+              )}
+            </button>
+          }
+          type={isVisible ? "text" : "password"}
           onChange={handleChange}
         />
         <Button
@@ -91,7 +119,7 @@ function Register() {
           Sign Up
         </Button>
         <p className="text-center">
-          You have account?{" "}
+          Do you have account?{" "}
           <Link
             href={"/signin"}
             className="underline decoration-[1.5] text-danger"

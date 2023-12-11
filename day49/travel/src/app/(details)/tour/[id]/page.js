@@ -2,11 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { API, URL_IMG } from "~/utils/config";
 
-export async function generateMetadata({ params: { id } }) {
+export async function generateMetadata({ params }) {
+  const id = params.id.split('~')[1]
   const data = await getDataDetail(id);
   if (Object.keys(data).length !== 0) {
     return {
       title: data.home.name + " | Travel",
+      description: data.home.textcontent.slice(0, 150),
+      openGraph: {
+        title: data.home.name + " | Travel",
+        description: data.home.textcontent.slice(0, 150),
+      },
     };
   }
   return {
@@ -19,7 +25,8 @@ const getDataDetail = async (id) => {
   return res.json();
 };
 async function TourDetail({ params }) {
-  const data = await getDataDetail(params.id);
+  const id = params.id.split('~')[1]
+  const data = await getDataDetail(id);
   if (Object.keys(data).length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-[100vh]">

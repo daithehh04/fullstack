@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MdLocationOn } from "react-icons/md";
 import Search from "~/components/Search";
 import { API, URL_IMG } from "~/utils/config";
+import { altSlug } from "~/utils/slugify";
 
 const getData = async () => {
   const res = await fetch(`${API}/pages`);
@@ -48,13 +49,13 @@ async function Home() {
                 <p className="line-clamp-4">{textcontent}</p>
                 <div className="flex items-center justify-between mt-6">
                   <Link
-                    href={`/tour/${tour.id}`}
+                    href={`/tour/${altSlug(name)}-${altSlug(content)}~${tour.id}`}
                     className="btn text-yellow-500 font-semibold py-[0.5rem]"
                   >
                     View more
                   </Link>
                   <Link
-                    href={`/checkout/${tour.id}`}
+                    href={`/checkout/${altSlug(name)}-${altSlug(content)}~${tour.id}`}
                     className="btn text-yellow-500 font-semibold py-[0.5rem]"
                   >
                     Book now
