@@ -122,7 +122,7 @@ function Register() {
           Do you have account?{" "}
           <Link
             href={"/signin"}
-            className="underline decoration-[1.5] text-danger"
+            className="text-danger"
           >
             Sign in
           </Link>

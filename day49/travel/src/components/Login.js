@@ -15,7 +15,6 @@ function Login() {
     password: "",
   });
   const [isVisible, setIsVisible] = useState(false);
-
   const toggleVisibility = () => setIsVisible(!isVisible);
   const handleChange = (e) => {
     setForm({
@@ -140,7 +139,7 @@ function Login() {
         <p className="text-center">
           Don't you have account?{" "}
           <Link
-            className="underline decoration-[1.5] text-danger"
+            className="text-danger"
             href={"/signup"}
           >
             Sign up

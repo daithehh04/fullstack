@@ -4,6 +4,7 @@ import { Providers } from './Providers'
 import { Toaster } from 'react-hot-toast';
 import Header from '~/components/Header';
 import AuthProvider from '~/components/AuthProvider';
+import Footer from '~/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
           <Providers>
             <Header/>
             {children}
+            <Footer/>
             <Toaster />
           </Providers>
         </AuthProvider>
