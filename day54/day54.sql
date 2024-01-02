@@ -1,3 +1,6 @@
+-- Tạo database
+CREATE DATABASE database_03_daithe;
+
 ------------- Table rooms --------------
 CREATE TABLE "rooms" (
   "id" varchar(20) PRIMARY KEY NOT NULL,
