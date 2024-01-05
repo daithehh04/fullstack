@@ -1,0 +1,45 @@
+<h2>Chỉnh sửa khóa học</h2>
+<form action="/update/<%= dataCourse.id %>" method="post">
+  <div class="mb-3">
+    <label for="">Tên</label>
+    <input
+      type="text"
+      name="name"
+      value="<%=Object.keys(olds).length ? olds.name : dataCourse.name %>"
+      class="form-control"
+      placeholder="Tên ..."
+    />
+    <span class="text-danger"> <%= errors.name %> </span>
+  </div>
+  <div class="mb-3">
+    <label for="">Mô tả</label>
+    <input
+      type="text"
+      name="desc"
+      value="<%= Object.keys(olds).length ? olds.desc : dataCourse.desc %>"
+      class="form-control"
+      placeholder="Mô tả ..."
+    />
+    <span class="text-danger"> <%= errors.desc %> </span>
+  </div>
+  <div class="mb-3">
+    <label for="">Giá</label>
+    <input
+      type="text"
+      name="price"
+      value="<%= Object.keys(olds).length ? olds.price : dataCourse.price %>"
+      class="form-control"
+      placeholder="Giá ..."
+    />
+    <span class="text-danger"> <%= errors.price %> </span>
+  </div>
+  <div class="mb-3">
+    <label for="">Trạng thái</label>
+    <select name="status" id="" class="form-select">
+      <option value="active" <%= (dataCourse.status) ? 'selected' : '' %> >Kích hoạt</option>
+      <option value="inactive" <%= (!dataCourse.status) ? 'selected' : '' %> >Chưa kích hoạt</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Lưu</button>
+  <a href="/" class="btn btn-danger">Hủy</a>
+</form>
