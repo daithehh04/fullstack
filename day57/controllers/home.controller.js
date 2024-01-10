@@ -39,19 +39,19 @@ module.exports = {
       if (user !== null) {
         const isMatch = await bcrypt.compare(password, user.password);
         const status = user.status;
-        if (status) {
-          if (isMatch) {
+        if (isMatch) {
+          if (status) {
             req.session.login = true;
             req.session.user = user;
             return res.redirect("/");
           } else {
             req.flash("oldLogin", req.body);
-            req.flash("wrong", "Tên đăng nhập hoặc mật khẩu không đúng!");
+            req.flash("wrong", "Tài khoản chưa được kích hoạt!");
             return res.redirect("/login");
           }
         } else {
           req.flash("oldLogin", req.body);
-          req.flash("wrong", "Tài khoản chưa được kích hoạt!");
+          req.flash("wrong", "Tên đăng nhập hoặc mật khẩu không đúng!");
           return res.redirect("/login");
         }
       } else {
