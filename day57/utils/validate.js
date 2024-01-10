@@ -1,7 +1,12 @@
 const { check } = require("express-validator");
 module.exports = {
   login: () => {
-    return [check("email", "Vui lòng nhập đúng định dạng email!").isEmail()];
+    return [
+      check("email", "Vui lòng nhập đúng định dạng email!").isEmail(),
+      check("password", "Mật khẩu phải có ít nhất 6 kí tự").isLength({
+        min: 6,
+      }),
+    ];
   },
   register: () => {
     return [
