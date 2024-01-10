@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h2>Xin chào <%= user.name %></h2>
+    <p>Email: <%= user.email %></p>
+    <p>Trạng thái: <%= user.status ? 'Kích hoạt' : 'Chưa kích hoạt' %></p>
+    <a href="/logout">Đăng xuất</a>
+  </body>
+</html>
