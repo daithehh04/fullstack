@@ -1,12 +1,12 @@
 <div class="login-page bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 offset-lg-1 mb-5">
-        <h1 class="mb-3 text-center mt-4">Register</h1>
-        <div class="bg-white shadow rounded">
+      <div class="mb-5 col-lg-10 offset-lg-1">
+        <h1 class="mt-4 mb-3 text-center">Register</h1>
+        <div class="bg-white rounded shadow">
           <div class="row">
             <div class="col-md-7 pe-0">
-              <div class="form-left h-100 py-5 px-5">
+              <div class="px-5 py-5 form-left h-100">
                 <form action="" method="post" class="row g-4">
                   <div class="col-12">
                     <label>Name<span class="text-danger">*</span></label>
@@ -67,6 +67,24 @@
                     >
                   </div>
                   <div class="col-12">
+                    <label>Re-enter Password<span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <i class="bi bi-lock-fill"></i>
+                      </div>
+                      <input
+                        type="password"
+                        class="form-control"
+                        name="rePassword"
+                        value="<%= old?.rePassword %>"
+                        placeholder="Enter Password"
+                      />
+                    </div>
+                    <%- notExactly.length ? `
+                    <div class="text-danger">${notExactly[0]}</div>
+                    `: '' %>
+                  </div>
+                  <div class="col-12">
                     <label>Status<span class="text-danger">*</span></label>
                     <div class="input-group">
                       <div class="input-group-text">
@@ -82,7 +100,7 @@
                   <div class="col-12">
                     <button
                       type="submit"
-                      class="btn btn-primary px-4 float-end mt-4"
+                      class="px-4 mt-4 btn btn-primary float-end"
                     >
                       Register
                     </button>
@@ -97,7 +115,7 @@
             </div>
             <div class="col-md-5 ps-0 d-none d-md-block">
               <div
-                class="form-right h-100 bg-primary text-white text-center pt-5"
+                class="pt-5 text-center text-white form-right h-100 bg-primary"
               >
                 <i class="bi bi-bootstrap"></i>
                 <h2 class="fs-1">Welcome Back!!!</h2>

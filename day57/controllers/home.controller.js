@@ -69,12 +69,13 @@ module.exports = {
     const msg = req.flash("msg");
     const exist = req.flash("exist");
     const old = req.flash("old");
+    const notExactly = req.flash("notExactly");
     const login = req.session.login;
-    console.log(errors);
     if (!login) {
       return res.render("register/index", {
         errors,
         msg,
+        notExactly,
         validate,
         exist,
         old: old[0],
@@ -86,27 +87,33 @@ module.exports = {
   handleRegister: async (req, res) => {
     const result = validationResult(req);
     if (result.isEmpty()) {
-      const { name, email, password, status } = req.body;
-      const userExist = await User.findOne({ where: { email } });
-      if (userExist === null) {
-        const saltRounds = 10;
-        bcrypt.hash(password, saltRounds, async function (err, hash) {
-          try {
-            await User.create({
-              name,
-              email,
-              password: hash,
-              status: status === "active",
-            });
-          } catch (error) {
-            console.log(error);
-          }
-        });
-        req.flash("msg", "Đăng kí thành công");
-        return res.redirect("/login");
+      const { name, email, password, status, rePassword } = req.body;
+      if (password === rePassword) {
+        const userExist = await User.findOne({ where: { email } });
+        if (userExist === null) {
+          const saltRounds = 10;
+          bcrypt.hash(password, saltRounds, async function (err, hash) {
+            try {
+              await User.create({
+                name,
+                email,
+                password: hash,
+                status: status === "active",
+              });
+            } catch (error) {
+              console.log(error);
+            }
+          });
+          req.flash("msg", "Đăng kí thành công");
+          return res.redirect("/login");
+        } else {
+          req.flash("old", req.body);
+          req.flash("exist", "Email đã tồn tại!");
+          return res.redirect("/register");
+        }
       } else {
         req.flash("old", req.body);
-        req.flash("exist", "Email đã tồn tại!");
+        req.flash("notExactly", "Mật khẩu không trùng khớp!");
         return res.redirect("/register");
       }
     }
