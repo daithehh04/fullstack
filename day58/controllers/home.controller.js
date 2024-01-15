@@ -147,16 +147,16 @@ module.exports = {
     return res.redirect("/register");
   },
   logout: async (req, res) => {
-    res.clearCookie('userToken');
     const token = req.cookies.userToken
     await Device.update(
       {
-      status: false,
+        status: false,
       },
       {
         where: {token}
       }
-    )
+      )
+    res.clearCookie('userToken');
     res.redirect("/login");
   },
 };
