@@ -1,0 +1,50 @@
+<h2>Sửa người dùng</h2>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">Tên</label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      placeholder="Tên ..."
+      value="<%= user?.name %>"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="">Email</label>
+    <input
+      type="email"
+      name="email"
+      value="<%= user?.email %>"
+      class="form-control"
+      placeholder="Email ..."
+    />
+  </div>
+  <div class="mb-3">
+    <label for="">Trạng thái</label>
+    <select name="status" id="" class="form-select">
+      <option <%= (user.status) ? 'selected' : '' %>  value="active" >Kích hoạt</option>
+      <option <%= (!user.status) ? 'selected' : '' %>  value="inactive" >Chưa kích hoạt</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <h3>Danh sách khóa học</h3>
+    <% courses?.forEach(course => { 
+      const isChecked = user?.courses?.find(c => +c.id === +course.id)
+      %>
+      <label for="" class="d-block">
+        <input name="courses" type="checkbox" value="<%= course.id %>" <%= isChecked ? 'checked' : '' %>>
+        <%= course?.name %>
+      </label>
+    <% }) %>
+  </div>
+  <div class="mb-3">
+    <h3>Danh sách bài viết</h3>
+    <% user?.posts?.forEach(post => { %>
+     <p><%= post?.title %></p>
+    <% }) %>
+  </div>
+  
+  <button type="submit" class="btn btn-success">Lưu</button>
+  <a href="/users" class="btn btn-danger">Hủy</a>
+</form>
