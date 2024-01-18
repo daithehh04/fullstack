@@ -7,14 +7,15 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    user: "daithehh04@gmail.com",
-    pass: "kxfw zbgw cmne ulol",
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
   },
 })
 
 const sendMail = async (to, subject, message, id) => {
+  console.log("process.env.MAIL_USER", process.env.MAIL_USER)
   const info = await transporter.sendMail({
-    from: '"Dai The 👻" <daithehh04@gmail.com>', // sender address
+    from: "Dai The 👻", // sender address
     to,
     subject, // Subject line
     html: `${message} <img src="https://day59-chi.vercel.app/tracking-pixel/${id}" alt="" />`, // html body
