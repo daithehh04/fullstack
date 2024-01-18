@@ -1,3 +1,13 @@
 {
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+  "version": 2,
+  "routes": [
+    {
+      "src": "/((?!.*\\.\\w+$).*)",
+      "dest": "/app.js"
+    },
+    {
+      "src": "/(.+\\.[a-z]+)$",
+      "dest": "/public/$1"
+    }
+  ]
 }
