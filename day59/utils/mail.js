@@ -17,7 +17,7 @@ const sendMail = async (to, subject, message, id) => {
     from: '"Dai The 👻" <daithehh04@gmail.com>', // sender address
     to,
     subject, // Subject line
-    html: `${message} <img src="localhost:3000/tracking-pixel/${id}" alt="" />`, // html body
+    html: `${message} <img src="https://day59-chi.vercel.app/tracking-pixel/${id}" alt="" />`, // html body
   })
   return info
 }

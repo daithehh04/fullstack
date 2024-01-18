@@ -60,9 +60,13 @@ module.exports = {
   },
 
   handleTracking: async (req, res) => {
-    const mailId = req.params.id
-    console.log("mailId", mailId)
-    console.log("pathTracking", pathTracking)
+    const { id } = req.params
+    await Email.update(
+      { status: true },
+      {
+        where: { id },
+      }
+    )
     res.sendFile(pathTracking)
   },
 }
