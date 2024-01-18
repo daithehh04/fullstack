@@ -3,15 +3,8 @@ const model = require("../models/index")
 const moment = require("moment")
 const validate = require("../utils/validate")
 const sendMail = require("../utils/mail")
-const path = require("path")
 const Email = model.Email
-const pathTracking = path.resolve(
-  __dirname,
-  "..",
-  "public",
-  "images",
-  "thumb.jpg"
-)
+
 module.exports = {
   index: async (req, res) => {
     const errors = req.flash("errors")
@@ -67,6 +60,6 @@ module.exports = {
         where: { id },
       }
     )
-    res.sendFile(pathTracking)
+    res.json()
   },
 }
