@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- ok?.length ? `
+    <div class="alert alert-success" role="alert">${ok[0]}</div>
+    `: '' %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <a href="/send-mail">Send mail</a>
+    <div>
+      <a href="/history">History</a>
+    </div>
+  </body>
+</html>
