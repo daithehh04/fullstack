@@ -8,9 +8,6 @@ module.exports = {
     host: process.env.POSTGRES_HOST,
     dialect: process.env.POSTGRES_DIALECT || "postgres",
     port: process.env.POSTGRES_PORT || 5432,
-    define: {
-      underscored: true,
-    },
     dialectOptions: {
       ssl: {
         require: true,
