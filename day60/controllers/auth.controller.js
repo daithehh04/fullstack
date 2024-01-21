@@ -45,7 +45,7 @@ module.exports = {
     await User.update(
       {
         id_reset: idReset,
-        expired_at: new Date(currentTime.getTime() + 1 * 60 * 1000),
+        expired_at: new Date(currentTime.getTime() + 15 * 60 * 1000),
       },
       {
         where: {
