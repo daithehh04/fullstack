@@ -45,7 +45,7 @@ module.exports = {
     await User.update(
       {
         id_reset: idReset,
-        expired_at: new Date(currentTime.getTime() + 15 * 60 * 1000),
+        expired_at: new Date(currentTime.getTime() + 1 * 60 * 1000),
       },
       {
         where: {
@@ -75,6 +75,10 @@ module.exports = {
     })
     if (!user) {
       return res.render("auth/404", { expired: false })
+    }
+    const timeExpired = user.expired_at - new Date()
+    if (timeExpired < 0) {
+      return res.render("auth/404", { expired: true })
     }
     return res.render("auth/reset_password", {
       errors,
