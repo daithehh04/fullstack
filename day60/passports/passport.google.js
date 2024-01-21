@@ -3,10 +3,9 @@ const { User } = require("../models/index")
 
 module.exports = new GoogleStrategy(
   {
-    clientID:
-      "283236165929-ktpc9istus4cqbieq0mvgs3218btilev.apps.googleusercontent.com",
-    clientSecret: "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",
-    callbackURL: "http://localhost:3000/auth/google/callback",
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: "https://day60-ten.vercel.app/auth/google/callback",
   },
   async function (accessToken, refreshToken, profile, cb) {
     const { name, email } = profile._json
