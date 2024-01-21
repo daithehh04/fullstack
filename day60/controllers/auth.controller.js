@@ -54,7 +54,7 @@ module.exports = {
         },
       }
     )
-    const resetLink = `http://localhost:3000/auth/reset-password/${idReset}`
+    const resetLink = `https://day60-ten.vercel.app/auth/reset-password/${idReset}`
     let loading = false
     try {
       loading = true
