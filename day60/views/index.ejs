@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- ok?.length ? `
+    <div class="alert alert-success" role="alert">${ok[0]}</div>
+    `: '' %>
+    <h1>Welcome <%= req?.user?.fullname %></h1>
+    <a href="/auth/logout">Đăng xuất</a>
+  </body>
+</html>
