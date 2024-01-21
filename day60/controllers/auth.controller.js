@@ -70,18 +70,16 @@ module.exports = {
   resetPassword: async (req, res) => {
     const errors = req.flash("errors")
     const exactly = req.flash("exactly")
-    const notify = req.flash("notify")
     const user = await User.findOne({
       where: { id_reset: req.params.id },
     })
     if (!user) {
-      return res.render("auth/404")
+      return res.render("auth/404", { expired: false })
     }
     return res.render("auth/reset_password", {
       errors,
       validate,
       exactly,
-      notify,
     })
   },
   handleResetPassword: async (req, res) => {
@@ -97,12 +95,11 @@ module.exports = {
         where: { id_reset: id },
       })
       if (!user) {
-        return res.render("auth/404")
+        return res.render("auth/404", { expired: false })
       }
       const timeExpired = user.expired_at - new Date()
       if (timeExpired < 0) {
-        req.flash("notify", "Link xác thực đã hết hạn, vui lòng thử lại!")
-        return res.redirect(`/auth/reset-password/${id}`)
+        return res.render("auth/404", { expired: true })
       }
       const hashPassword = bcrypt.hashSync(password, 10)
 
