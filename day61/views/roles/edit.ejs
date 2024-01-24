@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Cập nhật Role</h1>
+    <select class="form-select mb-4" aria-label="Default select example" onchange="redirectToEdit(this)">
+      <% roles.forEach(r => { %>
+      <option value="<%= r.id %>" <%= r.id === +id ? 'selected' : '' %>>
+        <a href="/roles/edit/<%= r.id %>"><%= r.name %></a>
+      </option>
+      <% }) %>
+    </select>
+    <form action="" method="post">
+      <div class="mb-3">
+        <label for="">Tên</label>
+        <input
+          type="text"
+          name="name"
+          value="<%= name %>"
+          class="form-control"
+          placeholder="Tên ..."
+        />
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Quyền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quản lý User</td>
+            <td class="d-flex align-item-center justify-content-between">
+              <label for="view">
+                <input
+                  type="checkbox"
+                  id="view"
+                  <%= permissions.find(p =>
+                  p.value === 'user.view') ? 'checked' : '' %>
+                  name="permission"
+                  value="user.view"
+                />
+                Xem
+              </label>
+              <label for="add">
+                <input
+                  type="checkbox"
+                  id="add"
+                  <%= permissions.find(p =>
+                  p.value === 'user.add') ? 'checked' : '' %>
+                  name="permission"
+                  value="user.add"
+                />
+                Thêm
+              </label>
+              <label for="edit">
+                <input
+                  type="checkbox"
+                  id="edit"
+                  <%= permissions.find(p =>
+                  p.value === 'user.edit') ? 'checked' : '' %>
+                  name="permission"
+                  value="user.edit"
+                />
+                Sửa
+              </label>
+              <label for="del">
+                <input
+                  type="checkbox"
+                  id="del"
+                  <%= permissions.find(p =>
+                  p.value === 'user.delete') ? 'checked' : '' %>
+                  name="permission"
+                  value="user.delete"
+                />
+                Xóa
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Quản lý Roles</td>
+            <td class="d-flex align-item-center justify-content-between">
+              <label for="role.view">
+                <input type="checkbox" id="role.view" name="permission" <%=
+                permissions.find(p => p.value === 'role.view') ? 'checked' : '' %>
+                value="role.view" /> Xem
+              </label>
+              <label for="role.add">
+                <input type="checkbox" id="role.add" <%= permissions.find(p =>
+                p.value === 'role.add') ? 'checked' : '' %> name="permission"
+                value="role.add" /> Thêm
+              </label>
+              <label for="role.edit">
+                <input type="checkbox" id="role.edit" <%= permissions.find(p =>
+                p.value === 'role.edit') ? 'checked' : '' %> name="permission"
+                value="role.edit" /> Sửa
+              </label>
+              <label for="role.del">
+                <input type="checkbox" id="role.del" <%= permissions.find(p =>
+                p.value === 'role.delete') ? 'checked' : '' %> name="permission"
+                value="role.delete" /> Xóa
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/roles" class="btn btn-danger">Hủy</a>
+      <button type="submit" class="btn btn-success">Lưu</button>
+    </form>
+  </body>
+  <script>
+    function redirectToEdit(select) {
+      const selectedValue = select.value;
+      if (selectedValue) {
+        window.location.href = `/roles/edit/${selectedValue}`;
+      }
+    }
+  </script>
+</html>

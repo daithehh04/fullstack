@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý roles</title>
+  </head>
+  <main>
+    <h1>Quản lý Roles</h1>
+    <%- success?.length ? `
+    <div class="alert alert-success" role="alert">${success[0]}</div>
+    `: '' %>
+    <div class="mb-3">
+      <a href="/roles/add" class="btn btn-primary">Thêm mới</a>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th width="5%">STT</th>
+          <th>Tên</th>
+          <th width="5%">Sửa</th>
+          <th width="5%">Xóa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% roles.forEach((role,index) => { %>
+        <tr>
+          <td><%= index+1 %></td>
+          <td><%= role.name %></td>
+          <td>
+            <a href="/roles/edit/<%= role.id %>" class="btn btn-warning">Sửa</a>
+          </td>
+          <td>
+            <form
+              action="/roles/delete/<%= role.id %>"
+              method="post"
+              onsubmit="return confirm('Bạn có chắc chắn xóa không?')"
+            >
+              <button type="submit" class="btn btn-danger">Xóa</button>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </main>
+</html>

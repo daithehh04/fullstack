@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Thêm Role</h1>
+    <form action="" method="post">
+      <div class="mb-3">
+        <label for="">Tên</label>
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          placeholder="Tên ..."
+        />
+        <%- errName.length ? `
+        <div class="text-danger">${errName[0]}</div>
+        `: '' %>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Module</th>
+            <th>Quyền</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quản lý User</td>
+            <td class="d-flex align-item-center justify-content-between">
+              <label for="view">
+                <input
+                  type="checkbox"
+                  id="view"
+                  name="permission"
+                  value="user.view"
+                />
+                Xem
+              </label>
+              <label for="add">
+                <input
+                  type="checkbox"
+                  id="add"
+                  name="permission"
+                  value="user.add"
+                />
+                Thêm
+              </label>
+              <label for="edit">
+                <input
+                  type="checkbox"
+                  id="edit"
+                  name="permission"
+                  value="user.edit"
+                />
+                Sửa
+              </label>
+              <label for="del">
+                <input
+                  type="checkbox"
+                  id="del"
+                  name="permission"
+                  value="user.delete"
+                />
+                Xóa
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Quản lý Roles</td>
+            <td class="d-flex align-item-center justify-content-between">
+              <label for="role.view">
+                <input
+                  type="checkbox"
+                  id="role.view"
+                  name="permission"
+                  value="role.view"
+                />
+                Xem
+              </label>
+              <label for="role.add">
+                <input
+                  type="checkbox"
+                  id="role.add"
+                  name="permission"
+                  value="role.add"
+                />
+                Thêm
+              </label>
+              <label for="role.edit">
+                <input
+                  type="checkbox"
+                  id="role.edit"
+                  name="permission"
+                  value="role.edit"
+                />
+                Sửa
+              </label>
+              <label for="role.del">
+                <input
+                  type="checkbox"
+                  id="role.del"
+                  name="permission"
+                  value="role.delete"
+                />
+                Xóa
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/roles" class="btn btn-danger">Hủy</a>
+      <button type="submit" class="btn btn-success">Lưu</button>
+    </form>
+  </body>
+</html>
