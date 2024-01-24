@@ -54,7 +54,7 @@ module.exports = {
         },
       }
     )
-    const resetLink = `http://localhost:3000/auth/reset-password/${idReset}`
+    const resetLink = `https://day61.vercel.app/auth/reset-password/${idReset}`
     try {
       const info = await sendMail(email, "Email xác nhận", resetLink)
     } catch (error) {
