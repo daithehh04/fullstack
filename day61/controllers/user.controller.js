@@ -60,8 +60,10 @@ module.exports = {
   },
   handleAdd: async (req, res) => {
     const { name, email, password, status } = req.body
-    const courses = Array.from(req.body.courses)
-    console.log("courses", courses)
+    let courses = []
+    if (req.body.courses) {
+      courses = Array.from(req.body.courses)
+    }
     const userExist = await User.findOne({ where: { email } })
     if (userExist === null) {
       const saltRounds = 10
