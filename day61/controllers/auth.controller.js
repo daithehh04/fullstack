@@ -15,7 +15,7 @@ module.exports = {
     const err = req.flash("error")
     const ok = req.flash("ok")
     const notify = req.flash("notify")
-    res.render("auth/forgot_password", { err, ok, notify })
+    res.render("auth/forgot_password", { err, ok, notify, layout: false })
   },
   handleForgotPassword: async (req, res) => {
     const { email } = req.body
@@ -125,6 +125,7 @@ module.exports = {
       wrong,
       validate,
       old: old[0],
+      layout: false,
     })
   },
   handleRegister: async (req, res) => {

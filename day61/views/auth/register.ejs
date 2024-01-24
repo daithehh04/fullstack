@@ -1,119 +1,144 @@
-<div class="login-page bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 offset-lg-1 mb-5">
-        <h1 class="mb-3 text-center mt-4">Register</h1>
-        <div class="bg-white shadow rounded">
-          <div class="row">
-            <div class="col-md-7 pe-0">
-              <div class="form-left h-100 py-5 px-5">
-                <form action="" method="post" class="row g-4">
-                  <div class="col-12">
-                    <label>Name<span class="text-danger">*</span></label>
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <i class="bi bi-person-fill"></i>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="login-page bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="mb-5 col-lg-10 offset-lg-1">
+            <h1 class="mt-4 mb-3 text-center">Register</h1>
+            <div class="bg-white rounded shadow">
+              <div class="row">
+                <div class="col-md-7 pe-0">
+                  <div class="px-5 py-5 form-left h-100">
+                    <form action="" method="post" class="row g-4">
+                      <div class="col-12">
+                        <label>Name<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                          <div class="input-group-text">
+                            <i class="bi bi-person-fill"></i>
+                          </div>
+                          <input
+                            type="text"
+                            value="<%= old?.name %>"
+                            class="form-control"
+                            placeholder="Enter Name"
+                            name="name"
+                          />
+                        </div>
+                        <span class="text-danger"
+                          ><%- validate.getError(errors,"name") %></span
+                        >
                       </div>
-                      <input
-                        type="text"
-                        value="<%= old?.name %>"
-                        class="form-control"
-                        placeholder="Enter Name"
-                        name="name"
-                      />
-                    </div>
-                    <span class="text-danger"
-                      ><%- validate.getError(errors,"name") %></span
-                    >
-                  </div>
-                  <div class="col-12">
-                    <label>Email<span class="text-danger">*</span></label>
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <i class="bi bi-envelope-fill"></i>
+                      <div class="col-12">
+                        <label>Email<span class="text-danger">*</span></label>
+                        <div class="input-group">
+                          <div class="input-group-text">
+                            <i class="bi bi-envelope-fill"></i>
+                          </div>
+                          <input
+                            type="email"
+                            class="form-control"
+                            placeholder="Enter Email"
+                            name="email"
+                            value="<%= old?.email %>"
+                          />
+                        </div>
+                        <span class="text-danger"
+                          ><%- validate.getError(errors,"email") %></span
+                        >
                       </div>
-                      <input
-                        type="email"
-                        class="form-control"
-                        placeholder="Enter Email"
-                        name="email"
-                        value="<%= old?.email %>"
-                      />
-                    </div>
-                    <span class="text-danger"
-                      ><%- validate.getError(errors,"email") %></span
-                    >
-                  </div>
 
-                  <div class="col-12">
-                    <label>Password<span class="text-danger">*</span></label>
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <i class="bi bi-lock-fill"></i>
+                      <div class="col-12">
+                        <label
+                          >Password<span class="text-danger">*</span></label
+                        >
+                        <div class="input-group">
+                          <div class="input-group-text">
+                            <i class="bi bi-lock-fill"></i>
+                          </div>
+                          <input
+                            type="password"
+                            class="form-control"
+                            name="password"
+                            value="<%= old?.password %>"
+                            placeholder="Enter Password"
+                          />
+                        </div>
+                        <span class="text-danger"
+                          ><%- validate.getError(errors,"password") %></span
+                        >
                       </div>
-                      <input
-                        type="password"
-                        class="form-control"
-                        name="password"
-                        value="<%= old?.password %>"
-                        placeholder="Enter Password"
-                      />
-                    </div>
-                    <span class="text-danger"
-                      ><%- validate.getError(errors,"password") %></span
-                    >
-                  </div>
-                  <div class="col-12">
-                    <label
-                      >Retype password<span class="text-danger">*</span></label
-                    >
-                    <div class="input-group">
-                      <div class="input-group-text">
-                        <i class="bi bi-lock-fill"></i>
+                      <div class="col-12">
+                        <label
+                          >Retype password<span class="text-danger"
+                            >*</span
+                          ></label
+                        >
+                        <div class="input-group">
+                          <div class="input-group-text">
+                            <i class="bi bi-lock-fill"></i>
+                          </div>
+                          <input
+                            type="password"
+                            class="form-control"
+                            name="rePassword"
+                            value="<%= old?.rePassword %>"
+                            placeholder="Enter Password"
+                          />
+                        </div>
+                        <%- wrong.length ? `
+                        <div class="text-danger">${wrong[0]}</div>
+                        `: '' %>
+                        <span class="text-danger"
+                          ><%- validate.getError(errors,"rePassword") %></span
+                        >
                       </div>
-                      <input
-                        type="password"
-                        class="form-control"
-                        name="rePassword"
-                        value="<%= old?.rePassword %>"
-                        placeholder="Enter Password"
-                      />
-                    </div>
-                    <%- wrong.length ? `
-                    <div class="text-danger">${wrong[0]}</div>
-                    `: '' %>
-                    <span class="text-danger"
-                      ><%- validate.getError(errors,"rePassword") %></span
-                    >
+                      <div class="col-12">
+                        <button
+                          type="submit"
+                          class="px-4 mt-4 btn btn-primary float-end"
+                        >
+                          Register
+                        </button>
+                      </div>
+                      <div class="text-center">
+                        <p>
+                          Do you already have an account?
+                          <a href="/auth/login">Login</a>
+                        </p>
+                      </div>
+                    </form>
                   </div>
-                  <div class="col-12">
-                    <button
-                      type="submit"
-                      class="btn btn-primary px-4 float-end mt-4"
-                    >
-                      Register
-                    </button>
+                </div>
+                <div class="col-md-5 ps-0 d-none d-md-block">
+                  <div
+                    class="pt-5 text-center text-white form-right h-100 bg-primary"
+                  >
+                    <i class="bi bi-bootstrap"></i>
+                    <h2 class="fs-1">Welcome Back!!!</h2>
                   </div>
-                  <div class="text-center">
-                    <p>
-                      Do you already have an account?
-                      <a href="/auth/login">Login</a>
-                    </p>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="col-md-5 ps-0 d-none d-md-block">
-              <div
-                class="form-right h-100 bg-primary text-white text-center pt-5"
-              >
-                <i class="bi bi-bootstrap"></i>
-                <h2 class="fs-1">Welcome Back!!!</h2>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </body>
+</html>

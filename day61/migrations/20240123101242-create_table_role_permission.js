@@ -23,7 +23,6 @@ module.exports = {
           },
           key: "id",
         },
-        allowNull: false,
       },
       permission_id: {
         type: Sequelize.INTEGER,
@@ -33,7 +32,6 @@ module.exports = {
           },
           key: "id",
         },
-        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE(),
