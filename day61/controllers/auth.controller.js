@@ -71,16 +71,17 @@ module.exports = {
       where: { id_reset: req.params.id },
     })
     if (!user) {
-      return res.render("auth/404", { expired: false })
+      return res.render("auth/404", { expired: false, layout: false })
     }
     const timeExpired = user.expired_at - new Date()
     if (timeExpired < 0) {
-      return res.render("auth/404", { expired: true })
+      return res.render("auth/404", { expired: true, layout: false })
     }
     return res.render("auth/reset_password", {
       errors,
       validate,
       exactly,
+      layout: false,
     })
   },
   handleResetPassword: async (req, res) => {
@@ -96,11 +97,11 @@ module.exports = {
         where: { id_reset: id },
       })
       if (!user) {
-        return res.render("auth/404", { expired: false })
+        return res.render("auth/404", { expired: false, layout: false })
       }
       const timeExpired = user.expired_at - new Date()
       if (timeExpired < 0) {
-        return res.render("auth/404", { expired: true })
+        return res.render("auth/404", { expired: true, layout: false })
       }
       const hashPassword = bcrypt.hashSync(password, 10)
 
