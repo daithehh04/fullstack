@@ -8,10 +8,28 @@ module.exports = {
     const err = req.flash("err")
     const errID = req.flash("errID")
     const success = req.flash("success")
-    const urls = await ShortLink.findAll({
+    let { page = 1 } = req.query
+    if (!+page) {
+      page = 1
+    }
+    const limit = 3
+    const offset = (page - 1) * limit
+    let { rows: urls, count } = await ShortLink.findAndCountAll({
       order: [["created_at", "desc"]],
+      limit,
+      offset,
     })
-    res.render("shorten_urls/index", { err, errID, urls, handleDate, success })
+    const totalPage = Math.ceil(count / limit)
+
+    res.render("shorten_urls/index", {
+      err,
+      errID,
+      urls,
+      handleDate,
+      success,
+      page,
+      totalPage,
+    })
   },
   handleShortUrl: async (req, res) => {
     let { url, password, safe, id_custom } = req.body
