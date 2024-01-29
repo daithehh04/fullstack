@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+    <style>
+      table {
+        font-size: 13px;
+      }
+      th,
+      td {
+        white-space: nowrap;
+      }
+      .custom {
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10px;
+      }
+      .custom-input {
+        padding-left: 256px;
+        margin-right: -256px;
+      }
+      .custom-url {
+        display: none;
+      }
+      div:has(.custom-id:checked) + .custom-url {
+        display: block;
+      }
+      .errID {
+        bottom: -20px;
+        left: 10px;
+      }
+      /* .modal.show .modal-dialog {
+        min-width: 600px;
+      } */
+    </style>
+  </head>
+  <body>
+    <%- success?.length ? `
+    <div class="alert alert-success" role="alert">${success[0]}</div>
+    `: '' %>
+    <div class="d-flex gap-4">
+      <div class="col-7 table-responsive" style="height: fit-content">
+        <table class="table table-bordered">
+          <thead>
+            <th width="5%">STT</th>
+            <th>Liên kết gốc</th>
+            <th>Liên kết rút gọn</th>
+            <th>Mật khẩu</th>
+            <th>Lượt truy cập</th>
+            <th>Thời gian tạo</th>
+            <th width="5%">Hành động</th>
+          </thead>
+          <tbody>
+            <% urls.forEach((url,index) => { %>
+            <tr>
+              <td align="center"><%= index+1 %></td>
+              <td>
+                <a href="<%= url?.link_origin %>" target="_blank"
+                  ><%= url?.link_origin %></a
+                >
+              </td>
+              <td>
+                <a href="<%= url?.link_short %>" target="_blank"
+                  ><%= url?.link_short %></a
+                >
+              </td>
+              <td>
+                <% if (url.password) { %>
+                <button
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  onclick="modalPass('<%- (url.password) %>')"
+                  class="btn btn-info"
+                >
+                  Xem
+                </button>
+                <% } else { %>
+                <span>Không có</span>
+                <% } %>
+              </td>
+
+              <td align="center"><%= url?.number_access %></td>
+              <td><%= handleDate(url?.created_at) %></td>
+              <td align="center">
+                <form
+                  action="/shorten-urls/delete/<%= url.link_id %>"
+                  method="post"
+                  onsubmit="return confirm('Bạn có chắc chắn xóa không?')"
+                >
+                  <button type="submit" class="btn btn-danger">Xóa</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-5 left-side">
+        <form action="" method="post">
+          <div class="mb-3">
+            <label for="link" class="form-label">Liên kết</label>
+            <input type="text" name="url" class="form-control" id="link" />
+            <%- err.length ? `
+            <div class="text-danger">${err[0]}</div>
+            `: '' %>
+          </div>
+          <div class="mb-3">
+            <label for="pass" class="form-label">Mật khẩu (tùy chọn)</label>
+            <input type="text" name="password" class="form-control" id="pass" />
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="1"
+              checked
+              name="safe"
+              id="flexCheckDefault"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Chuyển hướng an toàn (Tránh bị chặn bởi facebook)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input custom-id" type="checkbox" <%=
+            errID.length ? 'checked' : '' %> id="flexCheckChecked" />
+            <label class="form-check-label" for="flexCheckChecked">
+              Tùy chỉnh ID của liên kết
+            </label>
+          </div>
+          <div class="my-3 position-relative custom-url">
+            <label for="custom" class="position-absolute custom"
+              >http://localhost:3000/shorten-urls/</label
+            >
+            <input
+              id="custom"
+              type="text"
+              name="id_custom"
+              placeholder="ID tùy chỉnh"
+              class="form-control custom-input"
+            />
+            <%- errID.length ? `
+            <div class="text-danger position-absolute errID">${errID[0]}</div>
+            `: '' %>
+          </div>
+          <button class="btn btn-primary mt-2 p-2" style="width: 100%">
+            Rút gọn
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      class="modal fade modal-lg"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Mật khẩu:</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const modalPass = (url) => {
+        const body = document.querySelector(".modal-body")
+        body.innerHTML = url
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

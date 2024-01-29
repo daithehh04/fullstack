@@ -58,6 +58,7 @@ passport.deserializeUser(async function (id, done) {
 
 app.use("/auth", guessMiddleware, require("./routes/auth"))
 app.use(authMiddleware)
+app.use("/shorten-urls", require("./routes/shorten-urls"))
 app.use("/roles", require("./routes/roles"))
 app.use("/", indexRouter)
 app.use("/users", usersRouter)

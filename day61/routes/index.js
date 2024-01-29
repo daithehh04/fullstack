@@ -1,6 +1,5 @@
 var express = require("express")
 var router = express.Router()
-const sendmailController = require("../controllers/sendmail.controller")
 const validate = require("../utils/validate")
 
 /* GET home page. */
