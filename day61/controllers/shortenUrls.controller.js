@@ -36,7 +36,7 @@ module.exports = {
     const hashPass = await bcrypt.hash(password, 10)
     await ShortLink.create({
       link_origin: url,
-      link_short: `http://localhost:3000/shorten-urls/${id_custom}`,
+      link_short: `https://day61.vercel.app/shorten-urls/${id_custom}`,
       link_id: id_custom,
       password: password ? hashPass : null,
       number_access: 0,

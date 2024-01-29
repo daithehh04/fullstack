@@ -5,7 +5,7 @@ module.exports = new GoogleStrategy(
   {
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/callback",
+    callbackURL: "https://day61.vercel.app/auth/google/callback",
   },
   async function (accessToken, refreshToken, profile, cb) {
     const { name, email } = profile._json
