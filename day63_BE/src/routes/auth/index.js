@@ -49,7 +49,7 @@ router.get(
       httpOnly: false,
     })
     // Successful authentication, redirect home.
-    res.redirect(`http://localhost:3000`)
+    res.redirect(`https://dashb-fe.vercel.app`)
   }
 )
 module.exports = router
