@@ -31,7 +31,7 @@ router.get(
       maxAge: 60 * 60 * 24 * 7,
       httpOnly: false,
     })
-    res.redirect(`http://localhost:3000`)
+    res.redirect(`https://dashb-fe.vercel.app`)
   }
 )
 
