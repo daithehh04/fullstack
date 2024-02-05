@@ -18,11 +18,7 @@ app.use(morgan("dev")) // log lỗi trực quan hơn
 app.use(helmet()) // bảo vệ thông tin dự án
 app.use(compression()) // giảm dung lượng file được gửi đi
 app.use(express.json())
-app.use(
-  express.urlencoded({
-    extend: true,
-  })
-)
+app.use(express.urlencoded({ extended: true }))
 app.use(
   session({
     secret: "daithe_secret",

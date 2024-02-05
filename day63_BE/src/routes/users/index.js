@@ -3,8 +3,7 @@
 const express = require("express")
 const asyncHandler = require("../../helpers/asyncHandler")
 const userController = require("../../controllers/user.controller")
-const { authentication } = require("../../auth/authUtils")
-const authMiddleware = require("../../../../day61/middleware/auth.middleware")
+// const { authentication } = require("../../auth/authUtils")
 const router = express.Router()
 
 // router.use(authMiddleware)
