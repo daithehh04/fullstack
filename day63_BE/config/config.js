@@ -8,11 +8,11 @@ module.exports = {
     host: process.env.POSTGRES_HOST,
     dialect: process.env.POSTGRES_DIALECT || "postgres",
     port: process.env.POSTGRES_PORT || 5432,
-    // dialectOptions: {
-    //   ssl: {
-    //     require: true,
-    //   },
-    // },
+    dialectOptions: {
+      ssl: {
+        require: true,
+      },
+    },
     dialectModule: pg,
   },
   test: {
@@ -22,11 +22,11 @@ module.exports = {
     host: process.env.POSTGRES_HOST,
     dialect: process.env.POSTGRES_DIALECT || "postgres",
     port: process.env.POSTGRES_PORT || 5432,
-    // dialectOptions: {
-    //   ssl: {
-    //     require: true,
-    //   },
-    // },
+    dialectOptions: {
+      ssl: {
+        require: true,
+      },
+    },
     dialectModule: pg,
   },
   production: {
@@ -36,11 +36,11 @@ module.exports = {
     host: process.env.POSTGRES_HOST,
     dialect: process.env.POSTGRES_DIALECT || "postgres",
     port: process.env.POSTGRES_PORT || 5432,
-    // dialectOptions: {
-    //   ssl: {
-    //     require: true,
-    //   },
-    // },
+    dialectOptions: {
+      ssl: {
+        require: true,
+      },
+    },
     dialectModule: pg,
   },
 }
