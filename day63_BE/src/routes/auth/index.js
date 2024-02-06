@@ -30,6 +30,7 @@ router.get(
     res.cookie("access_token", `google~${req.user.accessToken}`, {
       maxAge: 60 * 60 * 24 * 7,
       httpOnly: false,
+      secure: true,
     })
     res.redirect(`https://dashb-fe.vercel.app`)
   }
@@ -47,6 +48,7 @@ router.get(
     res.cookie("access_token", `github~${req.user.accessToken}`, {
       maxAge: 60 * 60 * 24 * 7,
       httpOnly: false,
+      secure: true,
     })
     // Successful authentication, redirect home.
     res.redirect(`https://dashb-fe.vercel.app`)
