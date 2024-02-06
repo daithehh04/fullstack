@@ -23,7 +23,7 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "/auth/login",
+    failureRedirect: "/signin",
     failureFlash: true,
   }),
   (req, res) => {
@@ -42,7 +42,7 @@ router.get(
 
 router.get(
   "/github/callback",
-  passport.authenticate("github", { failureRedirect: "/auth/login" }),
+  passport.authenticate("github", { failureRedirect: "/signin" }),
   function (req, res) {
     res.cookie("access_token", `github~${req.user.accessToken}`, {
       maxAge: 60 * 60 * 24 * 7,
