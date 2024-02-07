@@ -24,6 +24,7 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/signin",
+    scope: ["profile", "email"],
     failureFlash: true,
   }),
   (req, res) => {
@@ -43,7 +44,10 @@ router.get(
 
 router.get(
   "/github/callback",
-  passport.authenticate("github", { failureRedirect: "/signin" }),
+  passport.authenticate("github", {
+    failureRedirect: "/signin",
+    scope: ["profile", "email"],
+  }),
   function (req, res) {
     res.cookie("access_token", `github~${req.user.accessToken}`, {
       maxAge: 60 * 60 * 24 * 7,
