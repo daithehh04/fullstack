@@ -14,7 +14,7 @@ module.exports = {
      * }], {});
      */
     const users = []
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 1; i++) {
       users.push({
         fullname: faker.person.fullName(),
         email: faker.internet.email(),

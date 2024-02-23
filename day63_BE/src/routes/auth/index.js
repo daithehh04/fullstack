@@ -23,7 +23,7 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "/signin",
+    failureRedirect: "/signin/auth",
     scope: ["profile", "email"],
     failureFlash: true,
   }),
@@ -33,7 +33,7 @@ router.get(
       httpOnly: false,
       secure: true,
     })
-    res.redirect(`https://dashb-fe.vercel.app`)
+    res.redirect(`http://localhost:3000/`)
   }
 )
 

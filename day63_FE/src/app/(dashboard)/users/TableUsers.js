@@ -50,7 +50,6 @@ function TableUsers() {
   const [page, setPage] = useState(1)
   const { mutate } = useSWRConfig()
   const router = useRouter()
-  console.log("router.query:", router.query)
   const query = {
     page,
     limit: 10,

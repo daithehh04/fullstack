@@ -1,0 +1,19 @@
+### signup
+@url_dev = http://localhost:3000
+PUT {{url_dev}}/v1/user
+Content-Type: application/json
+
+{
+  "key": "u:1001",
+  "payload": {
+    "id": 1001,
+    "name": "daithe"
+  }
+}
+###
+POST {{url_dev}}/v1/user
+Content-Type: application/json
+
+{
+  "key": "u:1001"
+}

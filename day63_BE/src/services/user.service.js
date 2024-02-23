@@ -6,6 +6,7 @@ class UserService {
       where: { email, provider },
       attributes: { exclude: ["password"] },
     })
+
     if (!user) {
       throw new NotFoundError("User không tồn tại!")
     }
