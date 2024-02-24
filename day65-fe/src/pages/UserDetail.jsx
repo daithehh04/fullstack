@@ -6,7 +6,7 @@ function UserDetail() {
   const [user, setUser] = useState(null)
   const getDetailUser = async () => {
     const response = await fetch(
-      `https://day65-daithehh04.vercel.app/v1/users/${params.id}`
+      `https://day65.vercel.app/v1/users/${params.id}`
     )
     const data = await response.json()
     setUser(data.data)

@@ -7,7 +7,6 @@ module.exports = {
     if (!usersCache) {
       const response = await fetch(`https://jsonplaceholder.typicode.com/users`)
       users = await response.json()
-      console.log("users:", users)
       await client.set("users", JSON.stringify(users), "ex", 60 * 60 * 8)
     } else {
       users = JSON.parse(usersCache)
